@@ -1,0 +1,509 @@
+[class^="sheet-rolltemplate-coc"] {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 400px;
+}
+
+[class^="sheet-rolltemplate-coc"] .inlinerollresult {
+  display: inline-block;
+  background: #bebebe;
+}
+
+@media (max-width: 464px) {
+  [class^="sheet-rolltemplate-coc"] {
+    width: 100%;
+  }
+}
+
+@media (max-width: 580px) {
+  .example [class^="sheet-rolltemplate-coc"] {
+    width: 100%;
+  }
+}
+
+.sheet-rolltemplate-coc-defence table {
+  width: 100%;
+  border: 1px solid black;
+  color: black;
+  background: #ffffff;
+}
+
+.sheet-rolltemplate-coc-defence caption {
+  text-align: center;
+  background: black;
+  color: white;
+  font-weight: bold;
+  padding: 2px;
+  border: 1px solid black;
+  line-height: 1.6em;
+}
+
+.sheet-rolltemplate-coc-defence td {
+  padding: 2px;
+  border-bottom: 1px solid black;
+}
+
+.sheet-rolltemplate-coc-defence td.sheet-template_label {
+  font-weight: bold;
+}
+
+.sheet-rolltemplate-coc-defence td.sheet-template_value {
+  text-align: center;
+}
+
+.sheet-rolltemplate-coc-defence-1 table {
+  width: 100%;
+  border: 1px solid black;
+  color: black;
+  background: #ffffff;
+}
+
+.sheet-rolltemplate-coc-defence-1 caption {
+  text-align: center;
+  background: black;
+  color: white;
+  font-weight: bold;
+  padding: 2px;
+  border: 1px solid black;
+  line-height: 1.6em;
+}
+
+.sheet-rolltemplate-coc-defence-1 td {
+  padding: 2px;
+  border-bottom: 1px solid black;
+}
+
+.sheet-rolltemplate-coc-defence-1 td.sheet-template_label {
+  font-weight: bold;
+}
+
+.sheet-rolltemplate-coc-defence-1 td.sheet-template_value {
+  text-align: center;
+}
+
+.sheet-rolltemplate-coc-vehicleattack table {
+  width: 100%;
+  border: 1px solid black;
+  color: black;
+  background: #ffffff;
+}
+
+.sheet-rolltemplate-coc-vehicleattack caption {
+  text-align: center;
+  background: black;
+  color: white;
+  font-weight: bold;
+  padding: 2px;
+  border: 1px solid black;
+  line-height: 1.6em;
+}
+
+.sheet-rolltemplate-coc-vehicleattack td {
+  padding: 2px;
+  border-bottom: 1px solid black;
+}
+
+.sheet-rolltemplate-coc-vehicleattack td.sheet-template_label {
+  font-weight: bold;
+}
+
+.sheet-rolltemplate-coc-vehicleattack td.sheet-template_value {
+  text-align: center;
+}
+
+.sheet-rolltemplate-coc table {
+  width: 100%;
+  border: 1px solid black;
+  color: black;
+  background: #ffffff;
+}
+
+.sheet-rolltemplate-coc caption {
+  text-align: center;
+  background: black;
+  color: white;
+  font-weight: bold;
+  padding: 2px;
+  border: 1px solid black;
+  line-height: 1.6em;
+}
+
+.sheet-rolltemplate-coc td {
+  padding: 2px;
+  border-bottom: 1px solid black;
+}
+
+.sheet-rolltemplate-coc td.sheet-template_label {
+  font-weight: bold;
+}
+
+.sheet-rolltemplate-coc td.sheet-template_value {
+  text-align: center;
+}
+
+.sheet-rolltemplate-coc-attack table {
+  width: 100%;
+  border: 1px solid black;
+  color: black;
+  background: #ffffff;
+}
+
+.sheet-rolltemplate-coc-attack caption {
+  text-align: center;
+  background: black;
+  color: white;
+  font-weight: bold;
+  padding: 2px;
+  border: 1px solid black;
+  line-height: 1.6em;
+}
+
+.sheet-rolltemplate-coc-attack td {
+  padding: 2px;
+  border-bottom: 1px solid black;
+}
+
+.sheet-rolltemplate-coc-attack td.sheet-template_label {
+  font-weight: bold;
+}
+
+.sheet-rolltemplate-coc-attack td.sheet-template_value {
+  text-align: center;
+}
+
+.sheet-rolltemplate-coc-1 table {
+  width: 100%;
+  border: 1px solid black;
+  color: black;
+  background: #ffffff;
+}
+
+.sheet-rolltemplate-coc-1 caption {
+  text-align: center;
+  background: black;
+  color: white;
+  font-weight: bold;
+  padding: 2px;
+  border: 1px solid black;
+  line-height: 1.6em;
+}
+
+.sheet-rolltemplate-coc-1 td {
+  padding: 2px;
+  border-bottom: 1px solid black;
+}
+
+.sheet-rolltemplate-coc-1 td.sheet-template_label {
+  font-weight: bold;
+}
+
+.sheet-rolltemplate-coc-1 td.sheet-template_value {
+  text-align: center;
+}
+
+.sheet-rolltemplate-coc-attack-1 table {
+  width: 100%;
+  border: 1px solid black;
+  color: black;
+  background: #ffffff;
+}
+
+.sheet-rolltemplate-coc-attack-1 caption {
+  text-align: center;
+  background: black;
+  color: white;
+  font-weight: bold;
+  padding: 2px;
+  border: 1px solid black;
+  line-height: 1.6em;
+}
+
+.sheet-rolltemplate-coc-attack-1 td {
+  padding: 2px;
+  border-bottom: 1px solid black;
+}
+
+.sheet-rolltemplate-coc-attack-1 td.sheet-template_label {
+  font-weight: bold;
+}
+
+.sheet-rolltemplate-coc-attack-1 td.sheet-template_value {
+  text-align: center;
+}
+
+.sheet-rolltemplate-coc-dice-roll table {
+  width: 100%;
+  border: 1px solid black;
+  color: black;
+  background: #ffffff;
+}
+
+.sheet-rolltemplate-coc-dice-roll caption {
+  text-align: center;
+  background: black;
+  color: white;
+  font-weight: bold;
+  padding: 2px;
+  border: 1px solid black;
+  line-height: 1.6em;
+}
+
+.sheet-rolltemplate-coc-dice-roll td {
+  padding: 2px;
+  border-bottom: 1px solid black;
+}
+
+.sheet-rolltemplate-coc-dice-roll td.sheet-template_label {
+  font-weight: Bold;
+}
+
+.sheet-rolltemplate-coc-dice-roll td.sheet-template_value {
+  text-align: center;
+}
+
+.sheet-rolltemplate-coc-bomadness-da-rt table, .sheet-rolltemplate-coc-bomadness-rt table, .sheet-rolltemplate-coc-pulp-bomadness-rt table, .sheet-rolltemplate-coc-bomadness-da-summ table, .sheet-rolltemplate-coc-bomadness-summ table, .sheet-rolltemplate-coc-pulp-bomadness-summ table {
+  width: 100%;
+  border: 1px solid black;
+  color: black;
+  background: #ffffff;
+}
+
+.sheet-rolltemplate-coc-bomadness-da-rt caption, .sheet-rolltemplate-coc-bomadness-rt caption, .sheet-rolltemplate-coc-pulp-bomadness-rt caption, .sheet-rolltemplate-coc-bomadness-da-summ caption, .sheet-rolltemplate-coc-bomadness-summ caption, .sheet-rolltemplate-coc-pulp-bomadness-summ caption {
+  text-align: center;
+  background: black;
+  color: white;
+  font-weight: bold;
+  padding: 2px;
+  border: 1px solid black;
+  line-height: 1.6em;
+}
+
+.sheet-rolltemplate-coc-bomadness-da-rt td, .sheet-rolltemplate-coc-bomadness-rt td, .sheet-rolltemplate-coc-pulp-bomadness-rt td, .sheet-rolltemplate-coc-bomadness-da-summ td, .sheet-rolltemplate-coc-bomadness-summ td, .sheet-rolltemplate-coc-pulp-bomadness-summ td {
+  padding: 2px;
+  border-bottom: 1px solid black;
+}
+
+.sheet-rolltemplate-coc-bomadness-da-rt td.sheet-template_label, .sheet-rolltemplate-coc-bomadness-rt td.sheet-template_label, .sheet-rolltemplate-coc-pulp-bomadness-rt td.sheet-template_label, .sheet-rolltemplate-coc-bomadness-da-summ td.sheet-template_label, .sheet-rolltemplate-coc-bomadness-summ td.sheet-template_label, .sheet-rolltemplate-coc-pulp-bomadness-summ td.sheet-template_label {
+  font-weight: Bold;
+}
+
+.sheet-rolltemplate-coc-bomadness-da-rt td.sheet-template_value, .sheet-rolltemplate-coc-bomadness-rt td.sheet-template_value, .sheet-rolltemplate-coc-pulp-bomadness-rt td.sheet-template_value, .sheet-rolltemplate-coc-bomadness-da-summ td.sheet-template_value, .sheet-rolltemplate-coc-bomadness-summ td.sheet-template_value, .sheet-rolltemplate-coc-pulp-bomadness-summ td.sheet-template_value {
+  text-align: center;
+  background: #ffffff;
+}
+
+.sheet-rolltemplate-coc-defence-2 table {
+  width: 100%;
+  border: 1px solid black;
+  color: black;
+  background: #e3dedb;
+}
+
+.sheet-rolltemplate-coc-defence-2 caption {
+  text-align: center;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  padding: 2px;
+  border: 1px solid black;
+  line-height: 1.6em;
+}
+
+.sheet-rolltemplate-coc-defence-2 td {
+  padding: 2px;
+  border-bottom: 1px solid black;
+  background: #efefef;
+}
+
+.sheet-rolltemplate-coc-defence-2 td.sheet-template_label {
+  font-weight: Bold;
+  background: #efefef;
+}
+
+.sheet-rolltemplate-coc-defence-2 td.sheet-template_value {
+  text-align: center;
+  background: #efefef;
+}
+
+.sheet-rolltemplate-coc-minionattack table {
+  width: 100%;
+  border: 1px solid black;
+  color: black;
+  background: #ffffff;
+}
+
+.sheet-rolltemplate-coc-minionattack caption {
+  text-align: center;
+  background: black;
+  color: white;
+  font-weight: bold;
+  padding: 2px;
+  border: 1px solid black;
+  line-height: 1.6em;
+}
+
+.sheet-rolltemplate-coc-minionattack td {
+  padding: 2px;
+  border-bottom: 1px solid black;
+}
+
+.sheet-rolltemplate-coc-minionattack td.sheet-template_label {
+  font-weight: bold;
+}
+
+.sheet-rolltemplate-coc-minionattack td.sheet-template_value {
+  text-align: center;
+}
+
+.sheet-rolltemplate-coc-miniondef table {
+  width: 100%;
+  border: 1px solid black;
+  color: black;
+  background: #e3dedb;
+}
+
+.sheet-rolltemplate-coc-miniondef caption {
+  text-align: center;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  padding: 2px;
+  border: 1px solid black;
+  line-height: 1.6em;
+}
+
+.sheet-rolltemplate-coc-miniondef td {
+  padding: 2px;
+  border-bottom: 1px solid black;
+  background: #efefef;
+}
+
+.sheet-rolltemplate-coc-miniondef td.sheet-template_label {
+  font-weight: Bold;
+  background: #efefef;
+}
+
+.sheet-rolltemplate-coc-miniondef td.sheet-template_value {
+  text-align: center;
+  background: #efefef;
+}
+
+.sheet-rolltemplate-coc-body-hit-loc table {
+  width: 100%;
+  border: 1px solid black;
+  color: black;
+  background: #ffffff;
+  text-align: center;
+}
+
+.sheet-rolltemplate-coc-body-hit-loc caption {
+  text-align: center;
+  background: black;
+  color: white;
+  font-weight: bold;
+  padding: 2px;
+  border: 1px solid black;
+  line-height: 1.6em;
+}
+
+.sheet-rolltemplate-coc-body-hit-loc td {
+  padding: 2px;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+.sheet-rolltemplate-coc-body-hit-loc td.sheet-template_label {
+  font-weight: Bold;
+  text-align: center;
+}
+
+.sheet-rolltemplate-coc-body-hit-loc td.sheet-template_value {
+  text-align: center;
+}
+
+.sheet-rolltemplate-coc--body-hit-loc .inlinerollresult.importantroll {
+  border: 2px solid black;
+  background: #bebebe;
+  text-align: center;
+}
+
+.charsheet button[type="roll"].sheet-old-roll {
+  color: #390c63;
+  background-color: #390c63;
+  font-weight: bolder;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0em;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.charsheet button[type="roll"].sheet-new-roll {
+  color: #18650d;
+  background-color: #248c15;
+  font-weight: bolder;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0em;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.charsheet button[type="roll"].sheet-dice-roll {
+  color: #000000;
+  background-color: #000000;
+  font-weight: bolder;
+  text-align: center;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0em;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.charsheet button[type="roll"].sheet-smallbutton-roll {
+  color: #18650d;
+  background-color: #248c15;
+  font-weight: bolder;
+  font-size: 12px;
+  text-align: center;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  padding: 0em;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.charsheet button[type="roll"].sheet-smallnonskillbutton-roll {
+  color: #000000;
+  background-color: #000000;
+  font-weight: bolder;
+  font-size: 12px;
+  text-align: center;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  padding: 0em;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.charsheet button[type="roll"].sheet-evensmallerbutton-roll {
+  color: #000000;
+  background-color: #1a1a1a;
+  font-weight: bolder;
+  font-size: 1px;
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  padding: 0em;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=r2_t1.css.map */
