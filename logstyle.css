@@ -179,7 +179,7 @@
 
 /*인라인 주사위---*/
 .message > .inlinerollresult {
-  line-height: 2;
+  line-height: 1.8;
 }
 
 span.inlinerollresult {
