@@ -6,4 +6,610 @@
    *
    * by headdrop
    */
-var styleNew=document.styleSheets[4].cssRules,styleLog=document.styleSheets[3].cssRules;const diceinput={0:/("diceroll d10.+?"backing">)/gi,2:/("diceroll d20.+?"backing">)/gi,4:/("diceroll d4.+?"backing">)/gi,6:/("diceroll d6.+?"backing">)/gi,8:/("diceroll d8.+?"backing">)/gi,9:/("diceroll d12.+?"backing">)/gi};function dropdownApp(e,t){$.each(newArr($(e)),(function(e,l){if(""!=l.slice(0,-1)){let e="";e=`<option value='${l.slice(0,-1)}'>${l.slice(0,-1)}</option>`,$(t).append(e)}}))}function newArr(e){for(var t=[],l=0;l<e.length;l++)-1===t.indexOf(e[l].innerText)&&t.push(e[l].innerText);return t.filter((function(e,t,l){return nameArrCheck(e)}))}function nameArrCheck(e){let t=/^\(.+?\)/gi.test(e),l=/^\s+$/gi.test(e);return 1!=t&&1!=l}function cssChange(e,t,l){var n=[];for(i of styleNew)n=n.concat([i.selectorText]);if(-1==n.indexOf(e)){let o=`${e} {${t} : ${l};}`;document.styleSheets[4].insertRule(o,n.length)}for(i of styleNew)i.selectorText==e&&("background-color"==t&&(i.style.backgroundColor=l),"color"==t&&(i.style.color=l))}function update(e){let t=document.querySelector("#highlighting-content");t.innerText=e,hljs.highlightAll(t)}function sync_scroll(e){let t=document.querySelector("#highlighting-content");t.scrollTop=e.scrollTop,t.scrollLeft=e.scrollLeft}function check_tab(e,t){let l=e.value;if("Tab"==t.key){t.preventDefault();let n=l.slice(0,e.selectionStart),o=l.slice(e.selectionEnd,e.value.length),s=e.selectionEnd+2;e.value=n+"  "+o,e.selectionStart=s,e.selectionEnd=s}}function tableColor(e){$("#defaultTable").spectrum({color:e,showAlpha:!0,preferredFormat:"hex",move:function(e){for(i of styleLog)".sheet-rolltemplate-default table"===i.selectorText?i.style.borderColor=e:".sheet-rolltemplate-default caption"===i.selectorText&&(i.style.backgroundColor=e)}}),$("#defaultTable").on("change",(function(){let e=getTextColorByBackgroundColor(rgb2hex(document.getElementById("defaultTable").value));for(i of styleLog)".sheet-rolltemplate-default caption"===i.selectorText&&(i.style.color=e);document.querySelector(".rule-select .sp-preview-inner").style.color=e})),document.querySelector(".rule-select .sp-preview-inner").innerText="표 제목"}function getTextColorByBackgroundColor(e,t){const l=e.substring(1),n=parseInt(l,16),o=n>>16&255,s=n>>8&255,c=n>>0&255;return 1===t?o+","+s+","+c:.2126*o+.7152*s+.0722*c<127.5?"white":"black"}function rgb2hex(e){if(-1==e.search("rgb"))return e;{function t(e){return("0"+parseInt(e).toString(16)).slice(-2)}return"#"+t((e=e.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/))[1])+t(e[2])+t(e[3])}}function hideMessageCP(e){let t=e.target.closest(".detail-button");t&&(t.nextElementSibling.classList.toggle("move"),t.firstChild.classList.toggle("move"))}function checkOpt(){if($("#ck-nospacer").is(":checked")?styleNew[1].style.setProperty("background-color","transparent","important"):styleNew[1].style.setProperty("background-color","transparent"),$("#ck-circle").is(":checked")?(styleNew[10].style.borderRadius="100%",styleNew[11].style.alignItems="center"):(styleNew[10].style.borderRadius="0%",styleNew[11].style.alignItems="stretch"),$("#ck-noimg").is(":checked")){for(var e of styleLog)".avatar"===e.selectorText&&(e.style.display="none"),".message"===e.selectorText&&(e.style.paddingLeft="15px"),".message .spacer"===e.selectorText&&(e.style.margin="0 -5px 8px -15px");document.getElementById("ck-circle").disabled=!0}else{for(var e of styleLog)".avatar"===e.selectorText&&(e.style.display=""),".message"===e.selectorText&&(e.style.paddingLeft="45px"),".message .spacer"===e.selectorText&&(e.style.margin="0 -5px 8px -45px");document.getElementById("ck-circle").disabled=!1}if($("#ck-you").is(":checked"))for(var t of styleNew)".message.you"===t.selectorText?t.selectorText=".message.you-noapply":".message.you .spacer"===t.selectorText&&(t.selectorText=".message.you .spacer-noapply");else for(var t of styleNew){let e=t.selectorText;void 0!==e&&-1!==e.indexOf("-noapply")&&(t.selectorText=e.replace("-noapply",""))}$("#ck-time").is(":checked")?styleNew[12].style.display="":styleNew[12].style.display="none",$("#ck-dice").is(":checked")?(styleNew[13].style.display="inline-block",$(".rollresult .cp-area, .rollresult .detail-button").show()):(styleNew[13].style.display="none",$(".rollresult .cp-area, .rollresult .detail-button").hide()),$("#ck-font").is(":checked")?styleNew[14].style.setProperty("font-family",'"Helvetica Neue",Helvetica,Arial,sans-serif',"important"):styleNew[14].style.setProperty("font-family","")}function addID(){let e=document.querySelectorAll("#log-content .by");for(var t of e){var l,n=t.innerText.slice(0,-1);let e=/\S+?(?=\s)/.exec(n);l=/PC\d+?\s/gi.test(n)?n.replace(/PC\d+?\s+?/gi,"").match(/\S+?(?=\s|$)/gi,"")[0]:null==e?n:e.shift(),-1!=t.parentNode.classList.value.indexOf("general")|-1!=t.parentNode.classList.value.indexOf("rollresult")&&(t.parentNode.id=l)}let o=document.querySelectorAll("#log-content .message.general:not([ID]), #log-content .message.rollresult:not([ID])");for(var s of o){for(var c=s.previousElementSibling;""==c.id;)c=c.previousElementSibling;s.id=c.id}}function imgChange(){document.querySelectorAll("#imgList>.changeImg-box").forEach((function(e,t,l){let n=e.childNodes[1].value,o=e.firstChild.firstChild.innerText.replace("의 프로필 이미지","").split(/\s/gi)[0];document.querySelectorAll(`#${o} .avatar>img`).forEach((function(e){e.src=n,e.parentElement.classList.contains("noImage")&&e.parentElement.classList.remove("noImage")}))}))}function makeGlobalCP(e,t,l){let n="color"==t?"color":"background-color",o="general"==e?".message":`.message.${e}`;"spacer"==t&&(o+=" .spacer");let s=$(o).css(n);"bg"==t?$(`.cp-area>[id^=${e}][id$=${t}]`).spectrum({color:s,preferredFormat:"hex3",showAlpha:!0,move:function(e){cssChange(o,n,e)}}):$(`.cp-area>[id^=${e}][id$=${t}]`).spectrum({color:s,preferredFormat:"hex3",move:function(e){cssChange(o,n,e)}})}$((function(){$("#rule").niceSelect(),$("[name='glo-ck']").on("change",checkOpt),$("[name='glo-name']").on("change",(function(){let e=document.querySelector("input[name='glo-name']:checked").value;document.querySelectorAll(".example .general:not(.global)").forEach((n=>{var o=styleNew.length;let s=[];if(byId=n.id,""==byId.index|/\s/g);else{for(i of styleNew)s=s.concat([i.selectorText]);if(-1==s.indexOf("#"+byId)&&(document.styleSheets[3].insertRule(`#${byId} {}`,o),s.push(byId)),o=styleNew.length,"default"===e&&-1!=s.indexOf(`#${byId} .by`)){let e=styleNew[5].style.color;for(l of styleNew)l.selectorText===`#${byId} .by`&&(e=l.style.color,l.style.color="");for(m of styleNew)m.selectorText===`#${byId}`&&(m.style.color=e)}}if("indi-name"===e){-1==s.indexOf(`#${byId} .by`)&&(document.styleSheets[4].insertRule(`#${byId} .by {}`,o),s.push(`#${byId} .by`));let e=styleNew[5].style.color;for(l of styleNew)l.selectorText==="#"+byId&&(e=l.style.color,l.style.color="");for(m of styleNew)m.selectorText===`#${byId} .by`&&""!=e&&(m.style.color=e)}t(byId)})),selectorText=[]})),document.querySelector(".example").addEventListener("click",hideMessageCP),tableColor("rgba(112, 32, 130, 1)"),$(".modal-content .reset, #modal-submit, .modal-close, #download-modal .reset, .modal-layer").on("click",(()=>{modaltog()})),document.getElementById("css-modal-openbtn").addEventListener("click",(()=>modaltog("#css-modal"))),document.getElementById("css-download").addEventListener("click",(()=>modaltog("#download-modal"))),new ClipboardJS("#copy"),$("[name='line']").change((()=>{var e=$("[name='line']:checked").val();$(".line-number").text(e)})),document.getElementById("log_submit").addEventListener("click",(function e(){$._data($("#log-input"),e),function(){null!=document.getElementById("profileImg")&&$("#profileImg").remove();$(".name-select>h2").nextAll().remove();const e='<select id="Name" style="visibility:hidden">\n    <option disabled selected>캐릭터를 선택하세요</option>\n  </select>';$(".name-select>h2")[0].insertAdjacentHTML("afterend",e),$(".example .general").not(".global").remove()}();var l=document.getElementById("log-input").value.replace(/(src="\/)/g,'src="https://app.roll20.net//');for(key of(l=(l=(l=(l=(l=(l=(l=l.replace(/\r|\n/gi,"")).replace(/(<span class="by">)\s+?/gi,'<span class="by">')).replace(/<span class=&quot;basicdiceroll&quot;>(.+?)<\/span>/gi,"$1")).replace(/(data-messageid=").+?"/gi,"")).replace(/(?<=\<a )href.+?"(?=>)/gi,"")).replace(/(<img class="sheet-brdright").+?\>/gi,"")).replace('roll20-colourised"','"'),Object.keys(diceinput)))l=l.replace(diceinput[key],"$1"+key);document.getElementById("log-content").innerHTML=l,addID(),$("#Name").change((function(){var e=$(this).find(":selected").text();let l=/\S+?(?=\s)/.exec(e);/PC\d+?\s/gi.test(e)?byId=e.replace(/PC\d+?\s+?/gi,"").match(/\S+?(?=\s|$)/gi,"")[0]:byId=null==l?e:l.shift();let n=[];$(".example .content>div").each((function(){n.push($(this).attr("id"))})),$("#Name").next().find(`[data-value='${$(this).val()}']`).addClass("disabled");let o=$(`.content span.by:contains('${e}:')`).siblings(".avatar:not('.noImage')").children("img").attr("src"),s=`<div class="message general" id=${byId}><div class="detail-button"><i class="material-icons-round">arrow_forward_ios</i></div><div class="cp-area"><i class="material-icons-round cp-close sp-replacer">close</i><input type='text' class='color-text' /><input type='text' class='color-bg' /></div><div class="spacer"></div><div class="avatar ${null==o?"noImage":""}" aria-hidden="true"><img src="${o}"></div><span class="tstamp" aria-hidden="true">January 15, 1234 5:66AM</span><span class="by">${e}:</span>안녕하세요? test 가나다</div>`;$(".example .content").append(s),t(byId)})),$(".example").on("click",".cp-close",(function(){const e=this.parentElement.parentElement.id;for(var t in styleNew)styleNew[t].selectorText==`#${e}`&&document.styleSheets[4].deleteRule(t);this.parentElement.parentElement.remove(),$("#Name").next().find(`[data-value^='${e}']`).removeClass("disabled")})),$("#Name>option").not("[disabled]").remove(),dropdownApp("#log-content .by","#Name"),$("#Name").niceSelect(),function(){const e=$(".item:last")[0],t='<div class="item" id="profileImg"><h2>프로필 이미지 수정</h2><p>음영 표시된 캐릭터는 깨진 아바타 이미지가 1개 이상 있는 캐릭터입니다. 캐릭터를 선택하고 <b>외부 이미지 주소</b>를 입력하면 일괄 변경됩니다.</p><p>변경하지 않고 그대로 두면 <b>백업시 깨진 이미지는 모두 삭제</b>됩니다.</p><div id="imgList" class="inner-box"></div>\n    <div class="btn-box">\n    <button class="btn reset"><i class="material-icons-round">replay</i></button>\n    <button class="btn apply">적용</button>\n    </div>\n    </div>';e.insertAdjacentHTML("afterend",t);const l=$("#profileImg>p")[1],n=$(".name-select>h2").nextAll();var o=n[0].cloneNode(!0),s=n[1].cloneNode(!0);o.id="changeImg",l.insertAdjacentElement("afterend",s),l.insertAdjacentElement("afterend",o),document.querySelector("#profileImg .apply").addEventListener("click",imgChange),$("#log-content .avatar>img").on("error",(function(){this.parentElement.classList.add("noImage");let e=this.parentElement.parentElement.id;document.querySelectorAll(".nice-select .option").forEach((function(t){t.textContent.split(" ")[0]===e&&t.classList.add("noImgChar")}))}))}(),$("#changeImg").change((function(){let e=this.value.split(" ")[0],t=document.querySelector(`#${e} .avatar img`).src;var l=`<div class="changeImg-box"><div><span>${$(this).val()}의 프로필 이미지</span><i class="material-icons-round close">close</i></div><input class="input-area" type="url" placeholder="외부 이미지 링크를 입력해주세요." onfocus="this.placeholder=''" onblur="this.placeholder='외부 이미지 링크를 입력해주세요.'"><img class="beforeimg" src="${t}"/><div class="preview-icon"><label class="material-icons-round">photo_size_select_actual<input type="checkbox"></label><img src=""></div></div>`;document.getElementById("imgList").insertAdjacentHTML("beforeend",l),$("#changeImg").next().find(`[data-value='${$(this).val()}']`).addClass("disabled")})),$("#imgList").on("mouseleave blur",".input-area",(function(){$(this).next().next().children("img").attr("src",$(this).val())})),$("#imgList").on("change",".preview-icon input",(function(){this.parentElement.nextElementSibling.classList.toggle("visible")})),$("#profileImg").on("click",".close",(function(){const e=$(this).prev("span").text(),t=/^.+(?=(의 프로필))/.exec(e);$(this).closest(".changeImg-box").remove(),$("#noImg").next().find(`[data-value='${t[0]}']`).removeClass("disabled")})),$("#profileImg .reset").on("click",(function(){document.querySelectorAll("#imgList .changeImg-box span").forEach((function(e){const t=/^.+(?=(의 프로필))/.exec(e.innerText);document.querySelectorAll(`#log-content #${t[0]} .avatar img`).forEach((function(e){e.src="noimg"}))}))}))})),document.querySelector(".custom .reset").addEventListener("click",(function(){pond.removeFiles(),document.getElementById("editing").value="",document.querySelector("#highlighting code").textContent=""})),document.querySelector("#html-reset").addEventListener("click",(()=>{document.querySelector("#log-input").innerText="",$("#log-content").empty()}));let e=["color","bg","spacer"];function t(e){document.styleSheets[4].insertRule(`#${e} {}`,styleNew.length);let t=document.querySelector("input[name='glo-name']:checked").value,l=$(`.example #${e} .by`).css("color"),n=$(`.example #${e}`).css("background-color"),o="indi-name"===t?" .by":"";$(`#${e} .color-text`).spectrum({color:l,preferredFormat:"hex3",move:function(t){cssChange(`#${e+o}`,"color",t)}}),$(`#${e} .color-bg`).spectrum({color:n,showAlpha:!0,preferredFormat:"hex3",move:function(t){cssChange("#"+e,"background-color",t)}})}["desc","emote","general","you","whisper"].forEach((t=>{e.forEach((e=>{makeGlobalCP(t,e)}))})),$(".cp-area>#dice-color").spectrum({color:$(".formula").css("color"),preferredFormat:"hex3",move:function(e){cssChange(".dicon","color",e)}})})),$((function(){hljs.highlightAll();let e=document.querySelector("#editing");e.oninput=function(){update(this.value),sync_scroll(this)},e.onscroll=function(){sync_scroll(this)},e.onkeydown=function(){check_tab(this,event)},document.getElementById("modal-reset").addEventListener("click",(function(){document.getElementById("editing").value="",document.getElementById("highlighting-content").innerText=""}))}));
+
+var styleNew = document.styleSheets[4].cssRules;
+var styleLog = document.styleSheets[3].cssRules;
+const diceinput = {
+  0:/("diceroll d10.+?"backing">)/gi,
+  2:/("diceroll d20.+?"backing">)/gi,
+  4:/("diceroll d4.+?"backing">)/gi,
+  6:/("diceroll d6.+?"backing">)/gi,
+  8:/("diceroll d8.+?"backing">)/gi,
+  9:/("diceroll d12.+?"backing">)/gi
+};
+
+$(function () {
+  // 이벤트 실행되는것 정리
+  $('#rule').niceSelect();
+  $("[name='glo-ck']").on("change", checkOpt);
+  $("[name='glo-name']").on("change", radioOpt);
+  document.querySelector(".example").addEventListener("click",hideMessageCP);
+  tableColor('rgba(112, 32, 130, 1)');
+
+
+  // modal 버튼
+  $(".modal-content .reset, #modal-submit, .modal-close, #download-modal .reset, .modal-layer").on("click",()=>{
+    modaltog(); //닫기
+  });
+  document.getElementById("css-modal-openbtn").addEventListener("click",()=>modaltog("#css-modal"));
+  document.getElementById("css-download").addEventListener("click",()=>modaltog("#download-modal"));
+  new ClipboardJS('#copy');
+
+  // line 값 출력
+  $("[name='line']").change(()=>{ // line 값 출력
+    var numm = $("[name='line']:checked").val();
+    $(".line-number").text(numm);
+  });
+
+  // 1. html 입력 (확인 버튼)
+  function inputHTML () {
+    var events = $._data($("#log-input"), inputHTML);
+    console.log("실행");
+    reset();
+    var log = document.getElementById("log-input").value.replace(/(src="\/)/g, `src="https://app.roll20.net//`);
+    log = log.replace(/\r|\n/gi,''); // 개행 제거
+    log = log.replace(/(<span class="by">)\s+?/gi,'<span class="by">');
+    log = log.replace(/<span class=&quot;basicdiceroll&quot;>(.+?)<\/span>/gi,'$1');
+    log = log.replace(/(data-messageid=").+?"/gi,''); // data-messageid 삭제
+    log = log.replace(/(?<=\<a )href.+?"(?=>)/gi,''); // a 안의 href삭제
+    log = log.replace(/(<img class="sheet-brdright").+?\>/gi,''); // 인세인 엑박 삭제
+    log = log.replace('roll20-colourised"','"');
+    for (key of Object.keys(diceinput)) {
+      log = log.replace(diceinput[key],'$1'+key);
+    }
+    //dice
+    document.getElementById("log-content").innerHTML = log;
+    addID();
+    nameExColor();
+    imgInput();
+    errCatch();
+  }
+  document.getElementById("log_submit").addEventListener('click', inputHTML);
+  document.querySelector(".custom .reset").addEventListener('click',resetCustom);
+  // html 리셋
+  document.querySelector("#html-reset").addEventListener('click',()=>{
+    document.querySelector("#log-input").innerText='';
+    $("#log-content").empty();
+  });
+
+  // 리셋함수
+  function reset () {
+    console.log("reset");
+    if( document.getElementById("profileImg")!=null){$("#profileImg").remove()}
+    
+    $(".name-select>h2").nextAll().remove();
+    const charColorSet = `<select id="Name" style="visibility:hidden">
+    <option disabled selected>캐릭터를 선택하세요</option>
+  </select>`;
+    $(".name-select>h2")[0].insertAdjacentHTML('afterend', charColorSet);
+    $(".example .general").not(".global").remove();
+  }
+  //커스텀시트 리셋함수
+  function resetCustom () {
+    pond.removeFiles(); 
+    document.getElementById("editing").value = '';
+    document.querySelector("#highlighting code").textContent='';
+  }
+
+  // color picker 만듦
+  let tgArr = ["desc","emote","general","you","whisper"];
+  let typeArr = ["color","bg","spacer"];
+  tgArr.forEach((itemtg) => {
+      typeArr.forEach((itemtp) => {
+          makeGlobalCP(itemtg, itemtp);
+        });
+    });
+  $(`.cp-area>#dice-color`).spectrum({
+    color: $('.formula').css('color'),
+    preferredFormat: "hex3",
+    move: function (color) {
+      cssChange(".dicon", "color", color);
+    }
+  });
+
+  function radioOpt() {
+    let checkedValue = document.querySelector("input[name='glo-name']:checked").value;
+    let exc = document.querySelectorAll(".example .general:not(.global)");
+
+    exc.forEach(element => {
+      var len = styleNew.length; //중복확인
+      let arrSel = [];
+      byId = element.id;
+      if (byId.index==''|/\s/g) {} else { // id가 공백일때는 패스
+      for (i of styleNew) arrSel = arrSel.concat([i.selectorText]);
+      console.log(byId);
+      if (arrSel.indexOf("#" + byId) == -1) {
+        document.styleSheets[3].insertRule(`#${byId} {}`, len);
+        arrSel.push(byId);
+      }
+      len = styleNew.length;
+      if (checkedValue === "default") {
+        if (arrSel.indexOf(`#${byId} .by`) != -1) {
+          let normalColor = styleNew[5].style.color;
+          for (l of styleNew) {
+            if (l.selectorText === `#${byId} .by`) {
+              normalColor = l.style.color;
+              l.style.color = '';
+            }
+          }
+          for (m of styleNew) {
+            if (m.selectorText === `#${byId}`) {
+              m.style.color = normalColor;
+            }
+          }
+        }
+      }
+      }
+
+      if (checkedValue === "indi-name") {
+        if (arrSel.indexOf(`#${byId} .by`) == -1) {
+          document.styleSheets[4].insertRule(`#${byId} .by {}`, len);
+          arrSel.push(`#${byId} .by`);
+        }
+        let indiColor = styleNew[5].style.color;
+        for (l of styleNew) {
+          if (l.selectorText === "#" + byId) {
+            indiColor = l.style.color;
+            l.style.color = '';
+          }
+        }
+        for (m of styleNew) {
+          if (m.selectorText === `#${byId} .by`) {
+            if (indiColor != '') {
+              m.style.color = indiColor;
+            }
+          }
+        }
+      }
+      // CP 업데이트
+      makeCP(byId);
+    });
+    selectorText = [];
+  } 
+
+  //Color picker 만들기
+  function makeCP(byId) {
+    document.styleSheets[4].insertRule(`#${byId} {}`, styleNew.length); // 스타일 추가
+    console.log(byId + "에 대한 color picker 실행 + CSS 생성");
+    let checkedValue = document.querySelector("input[name='glo-name']:checked").value;
+    let defaultColorText = $(`.example #${byId} .by`).css('color');
+    let defaultColorBg = $(`.example #${byId}`).css('background-color');
+    let byCheck = (checkedValue === "indi-name") ? " .by" : '';
+    $(`#${byId} .color-text`).spectrum({
+      color: defaultColorText,
+      preferredFormat: "hex3",
+      move: function (color) {
+        cssChange(`#${byId + byCheck}`, 'color', color);
+      }
+    });
+    $(`#${byId} .color-bg`).spectrum({
+      color: defaultColorBg,
+      showAlpha: true,
+      preferredFormat: "hex3",
+      move: function (color) {
+        cssChange("#" + byId, 'background-color', color);
+      }
+    });
+  }
+
+  // 캐릭터별 색상 설정 name 누르면 example 부분 나타나게
+  function nameExColor() {
+    $("#Name").change(function () {
+      var byRaw = $(this).find(":selected").text();
+
+      let byCut = /\S+?(?=\s)/.exec(byRaw);
+      if (/PC\d+?\s/gi.test(byRaw)) { // PC
+        byId = byRaw.replace(/PC\d+?\s+?/gi,'').match(/\S+?(?=\s|$)/gi,'')[0];
+      } else if (byCut==null) {
+        byId = byRaw;
+      } else {
+        byId = byCut.shift();
+      }
+      let colorByArr = [];
+      $(".example .content>div").each(function () {
+        colorByArr.push($(this).attr('id'));
+      });
+      $("#Name").next().find(`[data-value='${$(this).val()}']`).addClass("disabled");
+      // test example div message color picker update
+      let testImgSrc = $(`.content span.by:contains('${byRaw}:')`).siblings(".avatar:not('.noImage')").children("img").attr("src");
+      let exampleNoImage = (testImgSrc == undefined) ? "noImage" : "";
+      if (byRaw==="공백") {byRaw = ""}
+      let example = `<div class="message general" id=${byId}><div class="detail-button"><i class="material-icons-round">arrow_forward_ios</i></div><div class="cp-area"><i class="material-icons-round cp-close sp-replacer">close</i><input type='text' class='color-text' /><input type='text' class='color-bg' /></div><div class="spacer"></div><div class="avatar ${exampleNoImage}" aria-hidden="true"><img src="${testImgSrc}"></div><span class="tstamp" aria-hidden="true">January 15, 1234 5:66AM</span><span class="by">${byRaw}:</span>안녕하세요? test 가나다</div>`;
+      $(".example .content").append(example);
+      makeCP(byId);
+    });
+
+    //message color picker close 닫기    
+    $(".example").on("click", ".cp-close", function () {
+      const nv = this.parentElement.parentElement.id;
+      console.log(nv);
+      for (var index in styleNew) { //스타일 삭제
+        if (styleNew[index].selectorText == `#${nv}`) {
+          document.styleSheets[4].deleteRule(index);
+        }
+      }
+      this.parentElement.parentElement.remove();
+      $("#Name").next().find(`[data-value^='${nv}']`).removeClass("disabled"); // 메뉴 disable
+    });
+
+    // niceSelect 적용 --------------------------------------
+    $("#Name" + ">option").not("[disabled]").remove();
+      dropdownApp('#log-content .by', "#Name");  // selectbox styling
+      $("#Name").niceSelect();
+  }
+
+  // 캐릭터별 색상 설정의 select 를 noImg 로 가져옴
+  function imgInput() { 
+    const node1 = $(".item:last")[0];
+    const changeImgBox = `<div class="item" id="profileImg"><h2>프로필 이미지 수정</h2><p>음영 표시된 캐릭터는 깨진 아바타 이미지가 1개 이상 있는 캐릭터입니다. 캐릭터를 선택하고 <b>외부 이미지 주소</b>를 입력하면 일괄 변경됩니다.</p><p>변경하지 않고 그대로 두면 <b>백업시 깨진 이미지는 모두 삭제</b>됩니다.</p><div id="imgList" class="inner-box"></div>
+    <div class="btn-box">
+    <button class="btn reset"><i class="material-icons-round">replay</i></button>
+    <button class="btn apply">적용</button>
+    </div>
+    </div>`
+    node1.insertAdjacentHTML('afterend', changeImgBox); //.item 삽입
+
+    const node2 = $("#profileImg>p")[1]
+    const nodeList = $(".name-select>h2").nextAll();
+    var copy1 = nodeList[0].cloneNode(true);
+    var copy2 = nodeList[1].cloneNode(true);
+    copy1.id="changeImg";
+    node2.insertAdjacentElement('afterend',copy2);
+    node2.insertAdjacentElement('afterend',copy1);
+    
+    document.querySelector("#profileImg .apply").addEventListener("click",imgChange); //이벤트 연결
+
+    $("#log-content .avatar>img").on("error", function(){
+      //console.log("로드에러");
+      this.parentElement.classList.add("noImage");
+      let noImgID = this.parentElement.parentElement.id;
+      //console.log(noImgID);
+      document.querySelectorAll(".nice-select .option").forEach(function(value) {
+        if(value.textContent.split(' ')[0]===noImgID) {
+          value.classList.add("noImgChar");
+        }
+      })
+    });
+  }
+  
+
+  // dropdown 클릭하면 error image input
+  function errCatch() {
+    $("#changeImg").change(function () {
+      let imgid = this.value.split(" ")[0];
+      var profileimgurl;
+      if (document.querySelector(`#${imgid} .avatar img`)==null|undefined) {
+        profileimgurl = '';
+      } else {profileimgurl=document.querySelector(`#${imgid} .avatar img`).src ;}
+      var changeImgInput =
+        `<div class="changeImg-box"><div><span>${$(this).val()}의 프로필 이미지</span><i class="material-icons-round close">close</i></div><input class="input-area" type="url" placeholder="외부 이미지 링크를 입력해주세요." onfocus="this.placeholder=''" onblur="this.placeholder='외부 이미지 링크를 입력해주세요.'"><img class="beforeimg" src="${profileimgurl}"/><div class="preview-icon"><label class="material-icons-round">photo_size_select_actual<input type="checkbox"></label><img src=""></div></div>`;
+      document.getElementById("imgList").insertAdjacentHTML('beforeend',changeImgInput);
+      $("#changeImg").next().find(`[data-value='${$(this).val()}']`).addClass("disabled");
+    });
+    $("#imgList").on("mouseleave blur", ".input-area", function () {
+      $(this).next().next().children("img").attr("src", $(this).val());
+    });
+    $("#imgList").on("change", ".preview-icon input", function() {
+      console.log(this);
+      this.parentElement.nextElementSibling.classList.toggle("visible");
+    });
+    //noImg close
+    $("#profileImg").on("click", ".close", function () {
+      const nv = $(this).prev("span").text();
+      const nameValue = /^.+(?=(의 프로필))/.exec(nv);
+      $(this).closest(".changeImg-box").remove();
+      $("#noImg").next().find(`[data-value='${nameValue[0]}']`).removeClass("disabled");
+    });
+    // 초기화
+    $("#profileImg .reset").on("click", function() {
+      document.querySelectorAll("#imgList .changeImg-box span").forEach(function(sp){
+        const nameV = /^.+(?=(의 프로필))/.exec(sp.innerText);
+        var target = document.querySelectorAll(`#log-content #${nameV[0]} .avatar img`);
+        target.forEach(function(item){
+          item.src = "noimg";
+        })
+      })
+    })
+    $("#log-content .avatar>img").on("error", function(){
+      //console.log("로드에러");
+      this.parentElement.classList.add("noImage")});
+  }
+});
+
+
+// 드롭다운에 적용. jq에 (선택자)나 요소 넣으면 됨
+function dropdownApp(jq, selectid) {
+  $.each(newArr($(jq)), function (index, el) {
+    if (el.slice(0, -1)!='') {
+    let output = '';
+    output = `<option value='${el.slice(0, -1)}'>${el.slice(0, -1)}</option>`
+    $(selectid).append(output);
+    }
+  });
+  if ($("#공백")!=null) {
+    let outputBlank = `<option value='공백'>공백</option>`;
+    $(selectid).append(outputBlank);
+  }
+}
+
+// 중복없는 배열
+function newArr(arr) {
+  var arrObj = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (arrObj.indexOf(arr[i].innerText) === -1)
+      arrObj.push(arr[i].innerText);
+  }
+  let filtered = arrObj.filter(function (element, index, array) {
+      return nameArrCheck (element);
+    });
+  return filtered;
+}
+
+function nameArrCheck (element) { // 있으면 true 리턴
+  const reg = /^\(.+?\)/gi; // 귓속말
+  const reg2 = /^\s+$/gi; // 공백1개이상
+  let ifa = reg.test(element);
+  let ifb = reg2.test(element);
+  if (ifa==true||ifb==true) { // 귓속말이거나 공백1개이상이면 false 출력
+    return false;
+  } else return true;
+}
+//CSSOM 접근해서 css 자체를 수정하는 함수 
+function cssChange(selector, declaration, value) { //dec~= tg = target
+  var arrSel=[];
+  for (i of styleNew) arrSel = arrSel.concat([i.selectorText]);// selecttext가져오기
+  if (arrSel.indexOf(selector)==-1) { // 없으면 새로 만든다
+    let insertCssText = `${selector} {${declaration} : ${value};}`;
+    document.styleSheets[4].insertRule(insertCssText, arrSel.length); // 마지막에 추가
+  } 
+  for (i of styleNew) {
+    if (i.selectorText == selector) {
+      if (declaration == 'background-color') { //background-color
+        i.style.backgroundColor = value;
+      }
+      if (declaration == 'color') { // color
+        i.style.color = value;
+      }
+    }
+  }
+}
+
+// 커스텀 css 직접 입력
+function update(text) {
+  let result_element = document.querySelector("#highlighting-content");
+  // Update code
+  result_element.innerText = text;
+  // Syntax Highlight
+  hljs.highlightAll(result_element);
+}
+function sync_scroll(element) {
+  /* Scroll result to scroll coords of event - sync with textarea */
+  let result_element = document.querySelector("#highlighting-content");
+  // Get and set x and y
+  result_element.scrollTop = element.scrollTop;
+  result_element.scrollLeft = element.scrollLeft;
+}
+function check_tab(element, event) {
+  let code = element.value;
+  if (event.key == "Tab") {
+    /* Tab key pressed */
+    event.preventDefault(); // stop normal
+    let before_tab = code.slice(0, element.selectionStart); // text before tab
+    let after_tab = code.slice(element.selectionEnd, element.value.length); // text after tab
+    let cursor_pos = element.selectionEnd + 2; // after tab placed, where cursor moves to - 2 for 2 spaces
+    element.value = before_tab + "  " + after_tab; // add tab char - 2 spaces
+    // move cursor
+    element.selectionStart = cursor_pos;
+    element.selectionEnd = cursor_pos;
+  }
+}
+
+$(function () { // 코드 입력 창
+  hljs.highlightAll();
+  let addressCss = document.querySelector("#editing");
+  addressCss.oninput = function () { update(this.value); sync_scroll(this); }
+  addressCss.onscroll = function () { sync_scroll(this); }
+  addressCss.onkeydown = function () { check_tab(this, event); }
+  // code reset
+  document.getElementById("modal-reset").addEventListener("click", function () {
+    document.getElementById("editing").value = "";
+    document.getElementById("highlighting-content").innerText = "";
+  });
+});
+
+// 테이블 색 바꾸기
+function tableColor (defaultTableColor) {
+  $("#defaultTable").spectrum({
+    color:defaultTableColor,
+    showAlpha: true,
+    preferredFormat: "hex",
+    move: function(color) {
+      for (i of styleLog) {
+        if(i.selectorText === ".sheet-rolltemplate-default table") {i.style.borderColor = color}
+        else if(i.selectorText === ".sheet-rolltemplate-default caption") {i.style.backgroundColor = color}
+    }}
+  });
+  $("#defaultTable").on("change", function() {
+    var colorBg = document.getElementById("defaultTable").value;
+    let textColor = getTextColorByBackgroundColor(rgb2hex(colorBg));
+    for (i of styleLog) {
+      if(i.selectorText === ".sheet-rolltemplate-default caption") {i.style.color = textColor}}
+    document.querySelector(".rule-select .sp-preview-inner").style.color=textColor;
+  });
+  document.querySelector(".rule-select .sp-preview-inner").innerText="표 제목";
+  
+}
+
+// 텍스트 색상 바꾸기에 쓰이는 함수
+function getTextColorByBackgroundColor(hexColor,opt) {
+  const c = hexColor.substring(1)      // 색상 앞의 # 제거
+  const rgb = parseInt(c, 16)   // rrggbb를 10진수로 변환
+  const r = (rgb >> 16) & 0xff  // red 추출
+  const g = (rgb >>  8) & 0xff  // green 추출
+  const b = (rgb >>  0) & 0xff  // blue 추출
+  const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709
+  // 색상 선택
+  if (opt===1) {
+    var rgbNum = r+","+g+","+b;
+    return rgbNum;
+  }
+  return luma < 127.5 ? "white" : "black" // 글자색이
+}
+function rgb2hex(rgb) {
+  if (  rgb.search("rgb") == -1 ) {
+      return rgb;
+  } else {
+      rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
+      function hex(x) {
+            return ("0" + parseInt(x).toString(16)).slice(-2);
+      }
+      return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]); 
+  }
+}
+
+function hideMessageCP(e) {
+  let targetElement = e.target.closest(".detail-button");
+  if(targetElement) {
+    targetElement.nextElementSibling.classList.toggle("move");
+    targetElement.firstChild.classList.toggle("move");
+  }
+}
+
+function checkOpt() { // 체크박스
+  if ($("#ck-nospacer").is(":checked")) { // nospacer
+    styleNew[1].style.setProperty('background-color', 'transparent', 'important');
+  } else { styleNew[1].style.setProperty('background-color', 'transparent'); }
+  if ($("#ck-circle").is(":checked")) { // circle
+    styleNew[10].style.borderRadius = "100%"; // img
+    styleNew[11].style.alignItems = "center"; // .avatar
+  } else {
+    styleNew[10].style.borderRadius = "0%";
+    styleNew[11].style.alignItems = "stretch";
+  }
+  if ($("#ck-noimg").is(":checked")) { // noimg
+    for (var i of styleLog) {
+      if (i.selectorText === '.avatar') i.style.display = 'none';
+      if (i.selectorText === '.message') i.style.paddingLeft = '15px';
+      if (i.selectorText === '.message .spacer') i.style.margin = '0 -5px 8px -15px';
+    }
+    document.getElementById("ck-circle").disabled=true;
+  } else {
+    for (var i of styleLog) {
+      if (i.selectorText === '.avatar') i.style.display = '';
+      if (i.selectorText === '.message') i.style.paddingLeft = '45px';
+      if (i.selectorText === '.message .spacer') i.style.margin = '0 -5px 8px -45px';
+    }
+    document.getElementById("ck-circle").disabled=false;
+  }
+
+  if ($("#ck-you").is(":checked")) { // you
+    for (var j of styleNew) {
+      if (j.selectorText === '.message.you') j.selectorText = '.message.you-noapply';
+      else if (j.selectorText === '.message.you .spacer') j.selectorText = '.message.you .spacer-noapply';
+    }
+  } else {
+    for (var j of styleNew) {
+      let sel = j.selectorText;
+      if (sel !== undefined && sel.indexOf('-noapply') !== -1) {
+        j.selectorText = sel.replace('-noapply', '')
+      }
+    }
+  }
+  if ($("#ck-time").is(":checked")) { //.message .tstamp
+    styleNew[12].style.display="";
+  } else { styleNew[12].style.display="none"}
+  
+  if($("#ck-dice").is(":checked")) {
+    styleNew[13].style.display="inline-block";
+    $(".rollresult .cp-area, .rollresult .detail-button").show();
+  } else {
+    styleNew[13].style.display="none";
+    $(".rollresult .cp-area, .rollresult .detail-button").hide();
+  }
+  if($("#ck-font").is(":checked")) {
+    styleNew[14].style.setProperty('font-family','"Helvetica Neue",Helvetica,Arial,sans-serif','important');
+  } else {
+    styleNew[14].style.setProperty('font-family','');
+  }
+}
+
+// 전체에 id 달기
+function addID() {
+  let list = document.querySelectorAll("#log-content .by");
+  for (var x of list) {
+    var byRaw = x.innerText.slice(0, -1);
+    var byId;
+    let byCut = /\S+?(?=\s)/.exec(byRaw);
+    if (/PC\d+?\s/gi.test(byRaw)) { // PC
+      byId = byRaw.replace(/PC\d+?\s+?/gi,'').match(/\S+?(?=\s|$)/gi,'')[0];
+    } else if (byRaw=='') {
+      byId = '공백';
+      console.log(byId);
+    }else if (byCut==null) {
+      byId = byRaw;
+    } else {
+      byId = byCut.shift();
+    }
+    if (x.parentNode.classList.value.indexOf("general")!=-1|x.parentNode.classList.value.indexOf("rollresult")!=-1) {x.parentNode.id = byId;} // only .general
+  }
+  // by 없는 message 에 ID 달기
+  let noID = document.querySelectorAll("#log-content .message.general:not([ID]), #log-content .message.rollresult:not([ID])");
+  try {
+    for (var y of noID) {
+      var z = y.previousElementSibling;
+      while (z.id==null)  { z = z.previousElementSibling;}
+      y.id=z.id; 
+    }
+  } catch {console.log("err")};
+    
+  
+}
+
+// 이미지 바꾸는 함수
+function imgChange () { // 이미지 바꾸는 함수
+  var targetImgList = document.querySelectorAll("#imgList>.changeImg-box");
+  targetImgList.forEach(function(value,index,arr){
+    let changeUrl = value.childNodes[1].value;
+    let changeId = value.firstChild.firstChild.innerText.replace("의 프로필 이미지",'').split(/\s/gi)[0];
+    document.querySelectorAll(`#${changeId} .avatar`).forEach(function(item){ // document.querySelectorAll(`#${changeId} .avatar>img`)
+      if (item.firstElementChild==null) {
+        item.insertAdjacentHTML('beforeend',`<img src="${changeUrl}">`);
+      } else {item.firstElementChild.src=changeUrl;}
+      item.parentElement.classList.remove("noImage");
+    });
+  });
+}
+
+//color picker 만들기
+function makeGlobalCP(type, target, option) {
+  let tg =
+    target == "color" ? "color" :
+      target == "bg" || "spacer" ? "background-color" : "";
+  let tp =
+    (type == 'general') ? '.message': `.message.${type}`; // type:general 일때 blank
+  if (target == "spacer") {
+    tp = tp + " .spacer";
+  }
+  let defaultColor =$(tp).css(tg);
+  // target == "spacer" ? $(tp).css(tg) : $(`${tp}`).css(tg);
+
+  if (target == "bg") {
+    $(`.cp-area>[id^=${type}][id$=${target}]`).spectrum({
+      color: defaultColor,
+      preferredFormat: "hex3",
+      showAlpha: true,
+      move: function (color) {
+        cssChange(tp, tg, color);
+      }
+    });
+  }
+  else {
+    $(`.cp-area>[id^=${type}][id$=${target}]`).spectrum({
+      color: defaultColor,
+      preferredFormat: "hex3",
+      move: function (color) {
+        cssChange(tp, tg, color)
+      }
+    });
+  }
+}
