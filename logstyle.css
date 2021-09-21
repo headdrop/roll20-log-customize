@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* message color */
 /* message */
-.by + a > img, .spacer + a > img {
+.by + a > img, .spacer + a > img, .message a > img {
   max-width: 100%;
 }
 
@@ -64,7 +64,6 @@
   position: relative;
   display: inline-block;
   left: -5px;
-  vertical-align: top;
 }
 
 .by + .sheet-rolltemplate-Ninpo > .sheet-bordered {
@@ -179,6 +178,10 @@
 }
 
 /*인라인 주사위---*/
+.message > .inlinerollresult {
+  line-height: 2;
+}
+
 span.inlinerollresult {
   padding: 2px 5px;
   border: 1px solid #999;
