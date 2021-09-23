@@ -53,7 +53,9 @@ $(function () {
     log = log.replace(/(data-messageid=").+?"/gi,''); // data-messageid 삭제
     log = log.replace(/(?<=\<a )href.+?"(?=>)/gi,''); // a 안의 href삭제
     log = log.replace(/(<img class="sheet-brdright").+?\>/gi,''); // 인세인 엑박 삭제
-    log = log.replace('roll20-colourised"','"');
+    log = log.replace('roll20-colourised',''); // roll20-colourised 삭제
+    log = log.replace(/(\([^\)]+?\#.+?)(<|")/gi,'$1)$2'); // 롤꾸 안깨지게 정리
+    log = log.replace(/\[(.+?)\]\(#" (style.+?\))/gi,'<a $2">$1</a>'); // 잘린 a 붙이기
     for (key of Object.keys(diceinput)) {
       log = log.replace(diceinput[key],'$1'+key);
     }
@@ -90,22 +92,6 @@ $(function () {
     document.getElementById("editing").value = '';
     document.querySelector("#highlighting code").textContent='';
   }
-
-  // color picker 만듦
-  let tgArr = ["desc","emote","general","you","whisper"];
-  let typeArr = ["color","bg","spacer"];
-  tgArr.forEach((itemtg) => {
-      typeArr.forEach((itemtp) => {
-          makeGlobalCP(itemtg, itemtp);
-        });
-    });
-  $(`.cp-area>#dice-color`).spectrum({
-    color: $('.formula').css('color'),
-    preferredFormat: "hex3",
-    move: function (color) {
-      cssChange(".dicon", "color", color);
-    }
-  });
 
   function radioOpt() {
     let checkedValue = document.querySelector("input[name='glo-name']:checked").value;
@@ -166,6 +152,9 @@ $(function () {
     });
     selectorText = [];
   } 
+
+  //global color picker 만들기
+  makeFullGlobalCp();
 
   //Color picker 만들기
   function makeCP(byId) {
@@ -315,7 +304,23 @@ $(function () {
       this.parentElement.classList.add("noImage")});
   }
 });
-
+function makeFullGlobalCp () {
+  // color picker 만듦
+  let tgArr = ["desc","emote","general","you","whisper"];
+  let typeArr = ["color","bg","spacer"];
+  tgArr.forEach((itemtg) => {
+      typeArr.forEach((itemtp) => {
+          makeGlobalCP(itemtg, itemtp);
+        });
+    });
+  $(`.cp-area>#dice-color`).spectrum({
+    color: $('.formula').css('color'),
+    preferredFormat: "hex3",
+    move: function (color) {
+      cssChange(".dicon", "color", color);
+    }
+  });
+}
 
 // 드롭다운에 적용. jq에 (선택자)나 요소 넣으면 됨
 function dropdownApp(jq, selectid) {
@@ -560,7 +565,7 @@ function addID() {
       while (z.id==null)  { z = z.previousElementSibling;}
       y.id=z.id; 
     }
-  } catch {console.log("err")};
+  } catch(err) {console.log(err)};
     
   
 }
