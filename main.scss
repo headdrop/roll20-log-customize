@@ -1,0 +1,1188 @@
+//https://soooprmx.com/scsssass-%EB%AC%B8%EB%B2%95-%EC%A0%95%EB%A6%AC/
+
+//색상 및 그림자 변수
+$btnShadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+$itemShadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+$btnColor: #3a9488;
+$btnHovColor:  #2c695f;
+$lightColor: #C0DEC7;
+$accentLight : #F9D5D3;
+$accentLight2 : #ECA4A6;
+$btnReset: #a3afb8;
+$btnHovReset:#9c9c9c;
+$modalBg : #ECE7E0;
+$gradient : linear-gradient(to bottom, #325745 0%, #004225 100%);
+
+@font-face {
+  font-family: 'NEXON Lv1 Gothic OTF';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/headdrop/PublicBox/PretendardVariable.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Diceicon';
+  src: url("https://cdn.jsdelivr.net/gh/headdrop/roll20-log-customize/source/Diceicon.woff") format("woff");
+}
+
+
+@mixin container {
+  width: 80vw;
+  max-width: 1200px;
+  margin:auto;
+  @media screen and (max-width : 767px) {
+    width:100%;
+    padding-left:20px;
+    padding-right:20px;
+  }
+}
+
+@mixin centerboth  {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+html {
+  padding:0;
+  font-size: 10px;
+  background-color: #E9E9E9;
+}
+body {
+  margin:0;
+}
+h2 {
+  font-size: 2.5rem;
+}
+h3 {
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  font-weight: bold;
+  color:$btnHovColor;
+}
+* {
+  font-family: 'Pretendard';
+  font-weight: 400;
+}
+p {
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;  
+}
+h2, h3,.btn, .name-select { // 폰트설정
+  font-style:normal;
+  font-family:'NEXON Lv1 Gothic OTF';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* keep-all */
+h2, h3, .item, .text {
+  word-break:keep-all;
+}
+input[type="text"],textarea {
+  border:1px solid #99A89E;
+  border-radius: 2px;
+  outline:none;
+  &:active, &:focus {
+    box-shadow: inset 0 0 0 3px rgba(249,213,211,0.5);
+  }
+}
+footer  {
+  display:flex;
+  width: 100vw;
+  height: auto;
+  position: relative;
+  padding: 15px;
+
+  font-size: 1.2rem;
+  background-color: #4b4b4b;
+  align-items: center;
+  justify-content: space-around;
+  color:rgba(255,255,255,0.8);
+  div:last-child{text-align:right}
+  a { margin-right: 4px;text-decoration: none;color:rgba(255,255,255,.7);transition: all 0.3s ease-in-out;}
+  svg {fill:rgba(255,255,255,0.8);transition: all 0.3s ease-in-out;}
+  a:hover, a:active, a:focus {
+    color: $lightColor;
+    svg {fill:$lightColor;}
+  }
+  h4 {
+    margin: 0;
+    font-weight: bolder;
+    font-size:1.5rem;
+  }
+  @media screen and (max-width : 350px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    div * {
+      text-align:left;
+    }
+  }
+}
+b {font-weight:bolder;}
+
+.container {
+  @include container;
+  padding-top:20px;
+}
+#datatextarea {
+  position: absolute;
+  top: -1000vh;
+  opacity: 0;
+  cursor: default;
+  border:none;
+  padding:0!important;
+  * {resize:none}
+}
+#textchat { /*폰트 사이즈 결정 참조: https://webclub.tistory.com/122 */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  font-size: 1.3em;
+  -webkit-user-select: text;
+  }
+
+/*color*/
+.color-list div.sp-replacer {
+  margin : 0 2px;
+}
+/*공통기본*/
+.clear {
+  clear: both;
+  height: 0px;
+}
+table {
+  border-collapse: collapse;
+}
+/* 그림자 */
+.nice-select {
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+input[type=checkbox].ckbx, input[type=radio] {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+.btn {
+  box-shadow: $btnShadow;
+}
+.item, .modal-content {
+  box-shadow: $itemShadow;
+}
+.bottom {
+  background-color: white;
+  margin: 30px 0 0 0;
+  padding : 20px 10px 30px 10px;
+  &>div {
+    @include container;
+  }
+}
+
+// 아이콘
+@font-face {
+  font-family: 'Material Icons Round';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialiconsround/v74/LDItaoyNOAY6Uewc665JcIzCKsKc_M9flwmP.woff2) format('woff2');
+}
+
+.material-icons-round {
+  font-family: 'Material Icons Round';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+i {
+  cursor: pointer;
+  color:inherit;
+}
+
+// 엑박
+.opt-noImg {
+  background-color:#999;
+}
+.list:hover .opt-noImg{
+  background-color:#777;
+}
+#profileImg .list:hover .opt-noImg:not(:hover) {
+  background-color:#DDD!important;
+}
+
+// top
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+.top {
+  background-color: #fff;
+  overflow: hidden;
+  flex-direction: column;
+  padding: 0px 20px;
+  @include centerboth;
+  >div.box {
+    position:relative;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size:5rem;
+    //margin-bottom:10px;
+    color:#011a0f;
+    text-shadow:
+    1px 1px 0 $lightColor,
+    3px 3px 0 $lightColor,
+    5px 5px 0 $lightColor,
+    7px 7px 0 $lightColor,
+    9px 9px 0 $lightColor;
+    
+  }
+  .text {
+    max-width: 500px;
+    color:#444;
+    font-size: 1.4rem;
+    line-height: 1.5em;
+  }
+  h2 {
+    margin-top:12px;
+    font-size: 1.8rem;
+    font-weight:bold;
+    color:$btnHovColor;
+  }
+  p:last-of-type {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    color:#999;
+    padding:5px;
+  }
+  p>button{
+    width: calc(50% - 15px);
+    margin-top:10px;
+    
+  }
+}
+.shape-blob {
+	background:#E9E9E9;
+  z-index: 1;
+	height: 150px;
+	width: 150px;
+  overflow:hidden;
+	border-radius: 30% 50% 20% 40%;
+  animation: 
+    transform 18s ease-in-out infinite both alternate;
+  @include centerboth;
+  
+}
+@keyframes transform
+{
+    0%,
+  100% { border-radius: 33% 67% 70% 30% / 30% 30% 70% 70%; } 
+   20% { border-radius: 37% 63% 51% 49% / 37% 65% 35% 63%; } 
+   40% { border-radius: 36% 64% 64% 36% / 64% 48% 52% 36%; } 
+   60% { border-radius: 37% 63% 51% 49% / 30% 30% 70% 70%; } 
+   80% { border-radius: 40% 60% 42% 58% / 41% 51% 49% 59%; } 
+}
+.blob {
+  position:absolute;
+  border-radius: 50% 20% 40% 30%;
+  opacity:.2;
+  top:0;
+  transform: scale(1.05) rotate(90deg);
+  animation:
+    transform 10s ease-in-out infinite both alternate-reverse;
+}
+.blob2 {
+  position:absolute;
+  top:0;
+  opacity:0.1;
+  background-color:$btnColor;
+  transform:scale(1.02) rotate(120deg);
+  animation: 
+    transform 20s ease-in-out infinite both;
+}
+
+
+// 이미지 입력요청 칸
+.changeImg-box {
+  padding-top:1em;
+  position: relative;
+  span {
+    padding-bottom:2pt;
+  }
+  >div:first-child {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap:wrap;
+    margin-top:5px;
+  }
+}
+.beforeimg {
+  max-height: 28px;
+  max-width: 28px;
+  position: absolute;
+  bottom: 5px;
+  right: 37px;
+}
+.input-area {
+  border-style: none;
+  font-size: 1.2rem;
+  padding: 0.5em 7.5rem 0.5em 0.5em;
+  background: rgba(255,255,255, 0.8);
+  outline: none;
+  width:100%;
+  vertical-align: middle;
+  border-radius: 4px;
+  border-bottom: solid 2px;
+  border-image: conic-gradient(from var(--angle), #B294FF, #57E6E6,#B294FF) 1;
+  animation: 2s rotate linear infinite;
+}
+@keyframes rotate {
+  to {
+  --angle: 360deg;
+  }
+}
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@mixin none {
+  padding:0;
+  margin:0;
+  width:0;
+  height:0;
+  opacity:0;
+}
+#profileImg close {
+  font-size: 2rem;
+  color: #444;
+}
+#imgList {
+  padding: 0 5px;
+}
+.preview-icon input {
+  @include none;
+  appearance: none!important;
+}
+.preview-icon {
+  position:absolute;
+  padding-top: 0.2rem;
+  right: 0;
+  display:inline-block;
+  color: #444;
+  text-align: center;
+  font-size:2rem;
+  label {
+    cursor: pointer;
+  }
+  >img {
+    visibility: hidden;
+    size: auto;
+    max-width: 200px;
+    max-height: 200px;
+    z-index:5;
+    border: none;
+    position: absolute;
+    bottom: calc(100% + 5px);
+    right:2rem;
+  }
+  &::before {
+    content: "\e5e1";
+    font-family: 'Material Icons Round';
+    font-size:1rem;
+    position: relative;
+    bottom: 0.5rem;
+  }
+}
+
+.visible {
+  visibility:visible;
+}
+
+.preview-icon:hover>img {
+  visibility: visible;
+}
+
+.noImage {
+  display: none!important;
+}
+.example {
+  padding-left: 90px;
+
+  .message {
+    position:relative;
+  }
+}
+.detail-button {
+  $wh : 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left:- $wh +0.25rem;
+  top: calc(1rem - 7px);
+  width: $wh;
+  height: $wh;
+  background-color: inherit;
+  color:inherit;
+  border-top-left-radius:25%;
+  border-bottom-left-radius:25% ;
+  line-height: 1rem;
+  font-size: 1rem;
+  i {
+    font-size:inherit;
+    opacity: 0.7;
+    transition: 0.8s ease-in-out;
+    transform:rotate(0deg);
+  }
+  .move {
+    transform:rotate(900deg);
+  }
+  
+}
+
+/* 세팅 flex */
+h3 {
+  margin-top:20px;
+  margin-bottom:12px;
+}
+.setting {
+  max-width:100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.name-select {
+  min-height:6em;
+  margin-left: 90px;
+  font-size:1.4rem;
+  >h2 {
+    margin-bottom: 0.5em;
+  }
+}
+
+/*flex items*/
+.item {
+  background-color: #FEFEFE;
+  flex-basis:240px;
+  flex-grow:2;
+  flex-shrink:0;
+  padding: 10px;
+  font-size:1.4rem;
+  border-radius: 3px;
+  &.rule-select {
+    flex-grow:1;
+  }
+  h2 {
+    position:relative;
+    font-size: 2.5rem;
+    margin: -10px -10px 10px -10px;
+    background-color: #000000;
+    background-image: $gradient;
+    padding: 10px 10px 10px 20px;
+    color:rgb(255,255,255);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    &::after {
+      content:"";
+      display:block;
+      position: absolute;
+      width: 100%;
+      margin-left:-20px;
+      top:100%;
+      height: 5px;
+      background:$lightColor;
+    }
+  }
+  h2+p {
+    margin-top:20px;
+  }
+  p {
+    line-height: 1.8rem;
+    &:last-of-type {
+      margin-bottom:20px;
+    }
+  }
+  textarea {
+    width: 100%;
+    height:10em;
+    white-space: pre-wrap;
+    resize:vertical;
+    outline: none;
+  }
+  a, a:visited {
+    color:$btnColor;
+    text-decoration: none;
+    transition: 0.2s color ease-in-out;
+  }
+  a:hover, a:focus {
+    color:$accentLight2;
+  }
+}
+.item-full {
+  flex-basis: 100%;
+}
+.labeldiv {
+  display:flex;
+  gap:10px;
+  label{
+    display:flex;
+    align-items: center;
+    gap:5px;
+  }
+}
+.rule-select {
+  .sp-replacer {
+    height: 2em;
+    margin:0;
+    width: 100%;
+    box-shadow:$btnShadow,0 0 1px rgba(0,0,0,0.5);
+  }
+  .sp-preview-inner {
+    color: #fff;
+    padding: 2px;
+    @include centerboth;
+  }
+}
+
+
+.cp-area {
+  clip:rect(-100%, 100px, -100%, -100%);
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
+  padding:0.2em;
+  position: absolute;
+  top:2px;
+  right: calc(100% + 1.5em);
+  border-radius: 2px;
+  background-color:lightgray;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  >input[id*=color]:first-child+div.sp-replacer .sp-preview+.sp-dd {
+    display: inline-block;
+    overflow: hidden;
+    background-color:lightgray;
+    border-radius: 2px;
+    position: absolute;
+    height: 1.2rem;
+    width: 1.2rem;
+    top: 0.2rem;
+    left: 0.2rem;
+  }
+  transition: 0.8s ease-in;
+  transition-property:clip-path;
+  clip-path:inset(-100% -100% -100% -100%);
+  &.move {
+    clip-path:inset(-100% -100% -100% 150%);
+  }
+}
+.rollresult .cp-area {
+  .sp-replacer .sp-dd{
+    display: none!important;
+  }
+}
+
+.sp-replacer {
+  position:relative;
+  margin: 2px;
+}
+.cp-close {
+  background-color: transparent;
+  font-size: 2rem;
+  @include centerboth;
+}
+
+#log-content {
+  display: none;
+}
+
+
+/*버튼*/
+.btn-box {
+  display: flex;
+  gap : 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  align-items: stretch;
+  justify-content: space-between;
+  bottom:0;
+  .btn {
+    margin:0;
+  }
+}
+.btn {
+  display: inline-block;
+  margin: 5px;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  color:#fff;
+  padding: 8px 25px 8px 25px;
+  border: none;
+  letter-spacing: .02rem;
+  background-color: $btnColor;
+  outline:0;
+  cursor: pointer;
+  &:only-of-type(button) {
+    float:right;
+  }
+}
+.btn-disabled {
+  cursor:not-allowed;
+  filter:grayscale(100);
+}
+.btn {
+  transition: .3s ease-in;
+  transition-property: background-color;
+}
+.btn i {
+  transition: .5s ease-in-out;
+  transition-property: transform;
+}
+.btn-sm {
+  font-size: 1.2rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.btn:focus {
+  box-shadow: 0 0 0 3px rgba($btnColor, 0.6), $btnShadow;
+}
+.btn:hover, .btn:focus {
+  background-color: $btnHovColor;
+}
+.reset {
+  padding: 0 8px;
+  height: 3.1rem;
+  background-color:$btnReset;
+  i { margin-top: 4px;}
+  &:hover, &:focus{
+    i {transform: rotate(720deg)}
+    background-color:$btnHovReset;
+  }
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($btnReset, 0.6), $btnShadow;
+  }
+}
+hr {
+  border: 0;
+  height: 1px;
+  margin-top: 20px;
+  background-image: linear-gradient(to right, rgba($btnColor, 0), rgba($btnColor, 0.75), rgba($btnColor, 0));
+}
+
+/* checkbox + radio */
+#theme {
+  margin-top:2rem;
+}
+.item il {
+  display:flex;
+  margin-bottom: 0.6em;
+  font-size: 1.3rem;
+  align-items: center;
+  :first-child {
+    flex-shrink:0;
+  }
+}
+.global-setting {
+  flex-basis: 250px;
+}
+.glo-option {
+  position:relative;
+}
+
+input + label {
+  //position:relative;
+  padding: 0.1em 0.5em 0.1em 0.5em;
+  display: flex!important;
+  align-items:flex-start;
+  transition: background 200ms ease-in-out;
+  background-position: left;
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(90deg, $accentLight, $accentLight2);
+}
+input:checked + label {
+  color: #000;
+  font-weight:bold;
+  background-size: 100% 100%;
+}
+input:disabled + label {
+  text-decoration:line-through;
+  color:#999;
+}
+
+
+tooltip {
+  --bg: rgb(95, 96, 102);
+  display:none;
+  background-color:var(--bg);
+  border-color:var(--bg);
+  color:white;
+  font-size:1.3rem;
+  line-height: 1.6rem;
+  padding:4px 5px 4px 8px;
+  margin: 0 0 10px -10px;
+  width: calc(100% + 20px);
+  z-index:10;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+  0 2px 4px rgba(0,0,0,0.07), 
+  0 4px 8px rgba(0,0,0,0.07), 
+  0 8px 16px rgba(0,0,0,0.07),
+  0 16px 32px rgba(0,0,0,0.07), 
+  0 32px 64px rgba(0,0,0,0.07);
+  transform-origin: left top;
+  animation: slide-down 0.2s ease-in-out;
+
+}
+il:hover+tooltip {
+  display:inline-block;
+}
+@keyframes slide-down {
+  0% { opacity: 0; transform: scaleY(0);}   
+100% { opacity: 1; transform: scaleY(1);}
+}
+
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+  input[type=checkbox].ckbx,
+  input[type=radio] {
+      --active: #3a9488;
+      --active-inner: #F0F1F9;
+      --focus: 3px rgba(0,66,37, 0.3);
+      --border: #2c695f;
+      --border-hover: var(--active);
+      --background: #fff;
+      --disabled: #f6f8ff;
+      --disabled-inner: #e1e6f9;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+
+      height: 21px;
+      outline: none;
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      margin:0;
+      cursor: pointer;
+      border: 1px solid var(--bc, var(--border));
+      background: var(--b, var(--background));
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+  }
+  input[type=checkbox].ckbx:after,
+  input[type=radio]:after {
+      content: "";
+      display: block;
+      left: 0;
+      top: 0;
+      position: absolute;
+      transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+  }
+  input[type=checkbox].ckbx:checked,
+  input[type=radio]:checked {
+      --b: var(--active);
+      --bc: var(--active);
+      --d-o: 0.3s;
+      --d-t: 0.6s;
+      --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+      }
+  input[type=checkbox].ckbx:disabled,
+  input[type=radio]:disabled {
+      --b: var(--disabled);
+      cursor: not-allowed;
+      opacity: 0.9;
+      }
+      input[type=checkbox].ckbx:disabled:checked,
+  input[type=radio]:disabled:checked {
+      --b: var(--disabled-inner);
+      --bc: var(--border);
+      }
+      input[type=checkbox].ckbx:disabled + label,
+  input[type=radio]:disabled + label {
+      cursor: not-allowed;
+      }
+      input[type=checkbox].ckbx:hover:not(:checked):not(:disabled),
+  input[type=radio]:hover:not(:checked):not(:disabled) {
+      --bc: var(--border-hover);
+      }
+      input[type=checkbox].ckbx:focus,
+  input[type=radio]:focus {
+      box-shadow: 0 0 0 var(--focus);
+      }
+      input[type=checkbox].ckbx:not(.switch),
+  input[type=radio]:not(.switch) {
+      width: 21px;
+      }
+      input[type=checkbox].ckbx:not(.switch):after,
+  input[type=radio]:not(.switch):after {
+      opacity: var(--o, 0);
+      }
+      input[type=checkbox].ckbx:not(.switch):checked,
+  input[type=radio]:not(.switch):checked {
+      --o: 1;
+      }
+      input[type=checkbox].ckbx + label,
+  input[type=radio] + label {
+        font-size: 1.4rem;
+      line-height: 21px;
+      display: inline-block;
+      vertical-align: top;
+      cursor: pointer;
+      margin-left: 4px;
+      }
+  
+  input[type=checkbox].ckbx:not(.switch) {
+      border-radius: 7px;
+      }
+  input[type=checkbox].ckbx:not(.switch):after {
+      width: 5px;
+      height: 9px;
+      border: 2px solid var(--active-inner);
+      border-top: 0;
+      border-left: 0;
+      left: 7px;
+      top: 4px;
+      transform: rotate(var(--r, 20deg));
+      }
+  input[type=checkbox].ckbx:not(.switch):checked {
+      --r: 43deg;
+  }
+  input[type=checkbox].ckbx.switch {
+      width: 38px;
+      border-radius: 11px;
+  }
+  input[type=checkbox].ckbx.switch:after {
+      left: 2px;
+      top: 2px;
+      border-radius: 50%;
+      width: 15px;
+      height: 15px;
+      background: var(--ab, var(--border));
+      transform: translateX(var(--x, 0));
+  }
+  input[type=checkbox].ckbx.switch:checked {
+      --ab: var(--active-inner);
+      --x: 17px;
+      }
+  input[type=checkbox].ckbx.switch:disabled:not(:checked):after {
+      opacity: 0.6;
+  }
+  
+  input[type=radio] {
+      border-radius: 50%;
+  }
+  input[type=radio]:after {
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background: var(--active-inner);
+      opacity: 0;
+      transform: scale(var(--s, 0.7));
+  }
+  input[type=radio]:checked {
+      --s: 0.5;
+  }
+}
+
+/* nice-select */
+#profileImg {
+  $noImgbg:rgb(45, 84, 124);
+  .noImgChar {
+    background-color: rgba($noImgbg, 0.3);
+  }
+  .list:hover .noImgChar,.nice-select:hover .noImgChar {
+    background-color: rgba($noImgbg, 0.4);
+  }
+  .noImgChar:hover {
+    background-color: rgba(#233241,0.3)!important;
+  }
+}
+
+/* modal */
+
+#css-modal-openbtn {
+  width: 100%;
+}
+.modal {
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:3;
+  height: 100vh;
+  width: 100vw;
+}
+.modal-layer {
+  position:fixed;
+  top:0;
+  left:0;
+  //z-index:1;
+  height: 100vh;
+  width: 100vw;
+  background-color:rgba(0,0,0,0.6);
+  overflow:visible;
+  backdrop-filter:blur(5px);
+  cursor: pointer;
+}
+.modal-close {
+  margin:0;
+  padding:0;
+  position:absolute;
+  bottom:100%;
+  right: 0;
+  background-color : transparent;
+  color: #fff;
+  font-size: 3rem;
+  outline: none;
+  border: none;
+}
+[id$='modal'] {
+  visibility: hidden;
+  position: fixed;
+  width: var(--width);
+  height: var(--height);
+  top:calc(50vh - var(--height)/2);
+  left: calc(50vw - var(--width)/2);
+  z-index:1;
+}
+#css-modal {
+  --width: 80vw;
+  --height: 80vh; 
+}
+#download-modal, #convert-modal, #error-modal, #copy-modal {
+  --width: 400px;
+  --height: 270px;
+  @media screen and (max-width : 400px) {
+    width: calc(100vw - 20px);
+    height: auto;
+    top: 10vh;
+    left:10px;
+    .btn-box {
+      position:relative;
+      bottom:0;
+      left:0;
+    }
+  }
+}
+
+.modal-content {
+  position:relative;
+  width: 100%;
+  height: 100%;
+  background-color: $modalBg;
+  padding:10px;
+  border-radius:2px;
+  z-index:inherit;
+  font-size: 1.5rem;
+  display:flex;
+  flex-direction: column;
+  align-items: stretch;
+  h3 {
+    text-align:center;
+  }
+  p {
+    line-height: 2rem;
+    padding: 0 10px;
+    word-break: keep-all;
+  }
+  .btn-box {
+    width: calc(100% - 20px);
+    bottom: 10px;
+    left:10px;
+    position:absolute;
+    &>[id^='modal'] {
+      width: calc(50% - 20px);
+    }
+  }
+  li {
+    color:$lightColor;
+    line-height: 2.5rem;
+  }
+}
+// #convert-modal {
+//   visibility:visible;
+// }
+#error-modal {
+  &>.modal-content {
+    background-color: #444;
+    color:#fff;
+  }
+  p {text-align:center}
+  h3 {
+    color:red;
+  }
+  .btn {
+    color:#000;
+  }
+}
+#copy-modal {
+  visibility: hidden;
+  .btn-box>button[id] {
+    flex:1;
+  }
+  textarea {
+    width: 100%;
+    resize:none;
+  }
+}
+
+#page {
+  width: 100%;
+  text-align:right;
+}
+
+
+#modal-reset {
+  background-color:red;
+  
+}
+
+@import url(https://cdn.jsdelivr.net/gh/loadingio/loading.css@v2.0.0/dist/loading.min.css);
+#ld4 {
+  position: relative;
+  display: flex;
+  width: 30%;
+  justify-content: space-between;
+  top:-20px;
+  p {
+    content:"변환 진행 중입니다. . .";
+    position:absolute;
+    display: block;
+    width: 100%;
+    text-align: center;
+    top: 40px;
+    left:0;
+    font-family: 'Pretendard';
+    font-size: 1.2rem;
+    color:$modalBg;
+  }
+}
+  #ld4 div {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #D91E36; }
+  #ld4 div:nth-child(1) {
+    animation: ld4 3s linear infinite 0s; }
+  #ld4 div:nth-child(2) {
+    animation: ld4 3s linear infinite 0.15s; }
+  #ld4 div:nth-child(3) {
+    animation: ld4 3s linear infinite 0.3s; }
+  #ld4 div:nth-child(4) {
+    animation: ld4 3s linear infinite 0.45s; }
+
+@keyframes ld4 {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+    background: #59CD90;}
+  25% {
+    opacity: 1;
+    transform: scale(1.8);
+    background: #0072BB; }
+  50% {
+    opacity: 0;
+    transform: scale(0.3);
+    background: #FE4A49; }
+  75% {
+    opacity: 1;
+    transform: scale(1.8);
+    background: #FED766; }
+  100% {
+    opacity: 0;
+  }
+}
+
+.loader {
+  z-index:99;
+  display:none;
+  justify-content:center;
+  align-items: center;
+  position: fixed;
+  top:0;left:0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px);
+  height:100%;
+  width:100%;
+}
+
+/*code editor*/
+@font-face {
+  font-family: 'D2Coding';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+#highlighting-content { 
+  height: calc(var(--height) - 60px);
+  overflow-wrap:break-word;
+  word-break: break-all;
+  white-space: pre;
+  margin:0;
+}
+
+#editing, #highlighting {
+  position: fixed;
+  display: block;
+  margin: 0;
+  border: 0;
+  width: calc(var(--width) - 20px);
+  height:calc(var(--height) - 60px);
+}
+
+#editing, #highlighting, #highlighting * {
+  /* Also add text styles to highlighing tokens */
+  font-size: 15pt;
+  line-height: 20pt;
+  font-family: 'D2Coding';
+}
+
+#editing {
+  z-index: 4;
+  padding: 10px;
+}
+#highlighting {
+  z-index: 3;
+}
+
+/* Make textarea almost completely transparent */
+#editing {
+  color: transparent;
+  background: transparent;
+  caret-color: white; /* Or choose your favourite color */
+}
+/* Can be scrolled */
+#editing, #highlighting {
+  overflow: auto;
+  white-space: nowrap; /* Allows textarea to scroll horizontally */
+}
+#highlighting-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* No resize on textarea */
+#editing {
+  resize: none;
+}
+
+//------ 미디어쿼리
+
+@media screen and (min-width : 768px) {
+  .btn-box {
+    justify-content: flex-start;
+    button:last-child {
+      flex:auto;
+    }
+  }
+}

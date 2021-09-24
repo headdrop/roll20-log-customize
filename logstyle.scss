@@ -1,0 +1,236 @@
+/* message color */
+$spacer: #e1e1e1;
+$bgYou:#d3e5f5;
+$spacerYou:#b1d9fa;
+$bgPrivate:#f2f5d3;
+$spacerPrivate:#f0f092;
+$colorEmote:#653e10;
+$bgEmote:#f5e4d3;
+$spacerEmote:#f0c392;
+
+/* message */
+
+.by+a>img, .spacer+a>img, .message a > img  {
+  max-width:100%;
+}
+.message {
+  padding-left: 45px;
+  padding-right: 5px;
+  padding-bottom: 6px;
+  position: relative;
+  box-sizing: border-box;
+  line-height: 1.25em;
+  .spacer {
+    background-color: $spacer;
+    margin: 0 -5px 8px -45px;
+    height:1px;
+  }
+
+  &.rollresult .clear div {
+    display: none!important;
+  }
+}
+
+//emote
+.emote {
+  font-style: italic;
+  font-weight: 700;
+  text-align: center;
+}
+
+//desc
+.desc {
+  font-style: italic;
+  font-weight: 700;
+  text-align: center
+}
+
+/*아바타----*/
+.avatar {
+  position: absolute;
+  top: 0.2rem;
+  left: 5px;
+  width: 28px;
+  height: 28px;
+  text-align: left;
+  display:flex;
+  img {
+    padding:0;
+    width: 28px;
+    height:28px;
+    object-fit: cover;
+  }
+}
+
+/*이름*/
+.by {
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  left: -5px;
+  vertical-align: top;
+}
+.by+.sheet-rolltemplate-Ninpo>.sheet-bordered {
+  margin-top: 5px;
+}
+
+/*타임스탬프*/
+.tstamp {
+  font-size: 0.8rem;
+  color: #666;
+  display: block;
+  padding: 0;
+  margin: -4px 0 2px 0;
+  position: relative;
+  left: -5px;
+  line-height: 1em
+}
+
+.withoutavatars {
+  .message, .message.desc {
+    padding-left: 15px;
+    .spacer {
+      margin-left: -15px
+    }
+  }
+}
+
+
+//주사위
+.rollresult {
+  line-height:2.5em;
+  .spacer {
+    margin-bottom: 5px;
+  }
+  >.formula {
+    display: block;
+    width: fit-content;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 2px 5px;
+    word-break: break-all;
+    line-height: 1.5em;
+    }
+  
+  .formattedformula {
+    display:inline-block;
+    vertical-align: middle;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 2px;
+    font-size: 1.4em;
+    //padding: 5px;
+    
+  }
+}
+.rolled{
+  display: inline-block;
+  padding-left: 5px;
+  font-weight: bold;
+  font-size: 1.4em;
+  vertical-align: middle;
+}
+.dicon {
+  position: relative;
+  margin: 0 5px;
+  line-height: 1.5em;
+}
+
+.dicon .backing {
+  font-family: 'Diceicon';
+  position: absolute;
+  font-size: 1.4em;
+  font-weight: bold;
+  left: 50%;
+  transform: translateX(-48%);
+  top: 0.1em;
+  width: 0.8em;
+  text-align: center;
+  color: inherit; //#8FB1D9;
+  text-shadow: 0 0 4px;
+  opacity: .5;
+  pointer-events: none;
+  z-index: 1;
+}
+.dicon .didroll {
+  text-shadow: -1px -1px 1px #fff, 1px -1px 1px #fff, -1px 1px 1px #fff, 1px 1px 1px #fff;
+  z-index: 2;
+  position: relative;
+  color: black;
+  height: auto;
+  top: 0;
+  text-align: center;
+}
+.critsuccess .didroll {
+  color: #247305;
+  font-weight: bold;
+}
+.critfail .didroll {
+  color: #730505;
+  font-weight: bold;
+}
+
+.formula+div.clear {
+  display: none;
+}
+.formattedformula div {
+  display: inline-block;
+}
+
+
+/*인라인 주사위---*/
+span.inlinerollresult {
+  padding: 2px 5px;
+  border: 1px solid #999;
+  font-weight: bolder;
+  cursor: help;
+  background: rgba(255,255,255,0.4);
+}
+.inlinerollresult.fullcrit {
+  border-color: #247305;
+  background-color:rgba(#247305, 0.2);
+}
+.inlinerollresult.fullfail{
+  border-color: #BE202E;
+  background-color: rgba(#BE202E,0.2);
+}
+.formula .inlinerollresult {
+  font-size: inherit;
+}
+
+
+/* 기본 표 */
+.sheet-rolltemplate-default table {
+  width: 400px;
+  @media (max-width:464px) {
+    width:100%;
+  }
+  @media (max-width:580px) {
+    width:100%;
+  }
+}
+
+.sheet-rolltemplate-default table {
+  background-color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(112, 32, 130, 1);
+}
+.sheet-rolltemplate-default caption {
+  background-color: rgba(112, 32, 130, 1);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1em;
+  padding: 5px
+}
+.sheet-rolltemplate-default td {
+  padding: 5px;
+  line-height: 1.4em;
+  vertical-align: top
+}
+.sheet-rolltemplate-default td:first-child {
+  font-weight: 700;
+  text-align: right;
+  min-width: 50px;
+  padding-right: 10px
+}
+
+.sheet-rolltemplate-default tr:nth-child(even) {
+  background-color: rgba(200,200,200,0.6);
+}
