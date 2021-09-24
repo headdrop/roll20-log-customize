@@ -161,7 +161,7 @@ function downloadCss () {
   "rule" : "${rule}",
   "theme" : "${thm}",
   
-  "general" : {"color":"${styleNew[0].style.color}", "bg":"${styleNew[0].style.backgroundColor}","spacer":"${styleNew[1].style.backgroundColor}"}
+  "general" : {"color":"${styleNew[0].style.color}", "bg":"${styleNew[0].style.backgroundColor}","spacer":"${styleNew[1].style.backgroundColor}"},
   "desc" : {"color":"${styleNew[2].style.color}", "bg":"${styleNew[2].style.backgroundColor}","spacer":"${styleNew[3].style.backgroundColor}"},
   "emote" : {"color":"${styleNew[4].style.color}", "bg":"${styleNew[4].style.backgroundColor}","spacer":"${styleNew[5].style.backgroundColor}"},
   "you" : {"color":"${styleNew[6].style.color}", "bg":"${styleNew[6].style.backgroundColor}","spacer":"${styleNew[7].style.backgroundColor}"},
@@ -227,7 +227,9 @@ function fillStyle () { //완료
     }
   }
 
-  document.getElementById("styledata").innerText = "<style>"+styleLogText+styleNewText+styleArr.join('')+"</style>";
+  var styleModify= "<style>"+styleLogText+styleNewText+styleArr.join('')+"</style>";
+  styleModify = styleModify.replace(/border-image.+?(?=;)/gi,'$&!important'); //border image 보존
+  document.getElementById("styledata").innerText=styleModify;
   manufacturLog();
 }
 // 2) Log가공--------------------------------------------
