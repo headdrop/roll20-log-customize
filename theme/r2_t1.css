@@ -9,6 +9,10 @@
   background: #bebebe;
 }
 
+[class^="sheet-rolltemplate-coc"] table {
+  border-collapse: collapse !important;
+}
+
 @media (max-width: 464px) {
   [class^="sheet-rolltemplate-coc"] {
     width: 100%;
