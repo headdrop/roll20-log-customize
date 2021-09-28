@@ -86,14 +86,13 @@ $spacerEmote:#f0c392;
   line-height: 1em
 }
 
-.withoutavatars {
-  .message, .message.desc {
+.withoutavatars .message, .message.desc {
     padding-left: 15px;
     .spacer {
       margin-left: -15px
     }
   }
-}
+
 
 
 //주사위

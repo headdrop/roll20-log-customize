@@ -83,11 +83,11 @@
   line-height: 1em;
 }
 
-.withoutavatars .message, .withoutavatars .message.desc {
+.withoutavatars .message, .message.desc {
   padding-left: 15px;
 }
 
-.withoutavatars .message .spacer, .withoutavatars .message.desc .spacer {
+.withoutavatars .message .spacer, .message.desc .spacer {
   margin-left: -15px;
 }
 
