@@ -112,9 +112,10 @@ div.sheet-rolltemplate-Ninpo {
   text-align: center;
 }
 
-.sheet-rolltemplate-Ninpo div.sheet-resright > span.inlinerollresult {
+.sheet-rolltemplate-Ninpo div.sheet-resright > .inlinerollresult {
   font-size: 2em;
   color: #182C4A;
+  background-color: transparent !important;
 }
 
 .sheet-rolltemplate-Ninpo div.sheet-resright .fullcrit {
