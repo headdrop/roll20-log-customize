@@ -40,9 +40,13 @@ $(function(){
   
         //try {
           input.innerText = juice(logtext, options);
-          if($("#ck-reduce").is(":checked")) { // 체크 옵션
-            input.innerText = input.value.replace(/(\s*?id=".+?")|(\s*?class=".+?")/gi,"") //id, class 삭제
-          }
+          // id, 일부 class 삭제
+            var regex = /((?:id|data-messageid)=".+?")|(class="((?!sheet).)*?")|(aria-hidden=".+?")/gi;
+            var rawInTxt = input.value;
+            var conInTxt = rawInTxt.replace(regex,"").replace(/(div|span)\s+( style|>)/gi,"$1$2");
+
+            input.innerText = conInTxt;
+            
           $(".noImage").remove(); // 엑박 완전 제거
         //} catch (err) {
         //  console.log(err);
