@@ -241,6 +241,14 @@ input[type=checkbox].ckbx, input[type=radio] {
   }
 }
 
+.bottom hr {
+  margin: 50px;
+}
+
+.bottom h3 ~ p {
+  margin-left: 5px;
+}
+
 @font-face {
   font-family: 'Material Icons Round';
   font-style: normal;
@@ -336,11 +344,6 @@ i {
   font-size: 1.1rem;
   color: #999;
   padding: 5px;
-}
-
-.top p > button {
-  width: calc(50% - 15px);
-  margin-top: 10px;
 }
 
 .shape-blob {
@@ -623,6 +626,10 @@ h3 {
 }
 
 /*flex items*/
+.bottom .item {
+  overflow: hidden;
+}
+
 .item {
   background-color: #FEFEFE;
   -ms-flex-preferred-size: 240px;
@@ -820,7 +827,10 @@ h3 {
 }
 
 #log-content {
-  display: none;
+  height: 1px;
+  overflow: hidden;
+  position: relative;
+  top: -10px;
 }
 
 /*버튼*/
@@ -843,6 +853,19 @@ h3 {
 
 .btn-box .btn {
   margin: 0;
+}
+
+.btn-box-grid {
+  display: -ms-grid;
+  display: grid;
+  grid: 1fr / 2fr 2fr;
+}
+
+.btn-box-grid .btn-sm {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / 3;
+  background-color: #a3afb8;
 }
 
 .btn {
@@ -891,6 +914,10 @@ h3 {
   padding-bottom: 5px;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.btn-full {
+  width: -webkit-fill-available;
 }
 
 .btn:focus {
@@ -1324,43 +1351,6 @@ il:hover + tooltip {
   line-height: 2.5rem;
 }
 
-#error-modal > .modal-content {
-  background-color: #444;
-  color: #fff;
-}
-
-#error-modal p {
-  text-align: center;
-}
-
-#error-modal h3 {
-  color: red;
-}
-
-#error-modal .btn {
-  color: #000;
-}
-
-#copy-modal {
-  visibility: hidden;
-}
-
-#copy-modal .btn-box > button[id] {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-#copy-modal textarea {
-  width: 100%;
-  resize: none;
-}
-
-#page {
-  width: 100%;
-  text-align: right;
-}
-
 #modal-reset {
   background-color: red;
 }
@@ -1561,6 +1551,28 @@ il:hover + tooltip {
   resize: none;
 }
 
+#editable {
+  font-family: unset;
+  width: calc(100%-5px);
+  height: 100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: #2d547c 1px solid;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px;
+  margin: 5px;
+  cursor: text;
+}
+
+#editable:empty::before {
+  content: "복사한 내용을 여기에 Ctrl+V를 눌러 붙여넣습니다.\A로그 양이 많으면 로딩까지 시간이 걸립니다.\A이 화면에 로그가 나타날 때까지 기다려주세요.";
+  color: #666;
+  white-space: pre-line;
+  display: block;
+  /* For Firefox */
+}
+
 @media screen and (min-width: 768px) {
   .btn-box {
     -webkit-box-pack: start;
@@ -1568,6 +1580,11 @@ il:hover + tooltip {
             justify-content: flex-start;
   }
   .btn-box button:last-child {
+    -webkit-box-flex: 1;
+        -ms-flex: auto;
+            flex: auto;
+  }
+  .btn-box-half button {
     -webkit-box-flex: 1;
         -ms-flex: auto;
             flex: auto;

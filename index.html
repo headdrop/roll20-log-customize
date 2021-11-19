@@ -24,14 +24,11 @@
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   <script src="spectrum.js"></script>
   <script src="jstest.js"></script>
-  <script src="juice.js"></script>
   <script src="highlight.pack.js"></script>
 </head>
 <body>
-  <button id="testbtn" style="display:none; width:100px; height:50px; position:fixed;">테스트 버튼</button>
   <div id="datatextarea">
-    <textarea id="styledata"></textarea>
-    <textarea id="logdata"></textarea>
+    <input id="logdata">
   </div>
   <div class="top">
     <h1>Rolling Mint</h1>
@@ -48,9 +45,17 @@
       <p>Roll20 로그를 Tistory 신에디터 HTML 편집모드를 사용해 백업하기 위한 커스터마이징 페이지입니다.</p><p>크롬과 웨일 외의 브라우저에서는 정상적으로 실행되지 않을 수 있습니다.</p>
       <p>반응형 디자인 적용, 주사위 이미지 출력을 원하는 분은 <b>반드시</b> 가이드 페이지를 확인해 주세요.</p>
       <p>
-        <button class="btn" target="_blank" onclick="window.open('https://hdtrpg.notion.site/Rolling-Mint-README-533da86adc214833bdf328403e301c74')">가이드 페이지 바로가기</button>
-        <button class="btn" target="_blank" onclick="window.open('https://hdtrpg.postype.com/')">포스타입 바로가기</button></p>
-      <p><span>@HDTRPG</span><span>ver 1.2</span></p>
+        <div class="btn-box-grid">
+          <button class="btn" target="_blank" onclick="window.open('https://hdtrpg.notion.site/Rolling-Mint-README-533da86adc214833bdf328403e301c74')">가이드 페이지 바로가기</button>
+        <button class="btn" target="_blank" onclick="window.open('https://hdtrpg.postype.com/')">포스타입 바로가기</button>
+        <button class="btn btn-sm btn-full" target="_blank" onclick="window.open('https://headdrop.github.io/roll20-log-customize/ver1.2')">이전 버전 (ver1.2) 바로가기</button>
+        </div>
+        
+      </p>
+      
+
+      <!-- <p style="text-align: center;"><a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fheaddrop.github.io%2Froll20-log-customize&count_bg=%233A9488&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a></p> -->
+      <p><span>@HDTRPG</span><span>ver 2.0</span></p>
     </div>
   </div>
   <div style="overflow: hidden;">
@@ -72,11 +77,11 @@
     </svg>
   </div>
   <div class="container">
-  <div id="log-content">
-  </div>
+    <div id="log-content">
+    </div>
     <div class="setting">
       <div class="item item-full">
-        <h2>html 입력</h2>
+        <h2>HTML 입력</h2>
         <textarea id="log-input"
           placeholder='1. Roll20 > 채팅 기록&#13;&#10;2. F12 로 관리자모드 열기&#13;&#10;3. div class="textchatcontainer" id="textchat" 를 찾아 우클릭 후 Edit as HTML&#13;&#10;4. 전체 복사 후 이 창에 붙여넣기&#13;&#10;&#13;&#10;한번에 많은 양을 변환할 경우 페이지가 멈출 수 있습니다.'></textarea>
         <div class="btn-box">
@@ -84,20 +89,6 @@
           <button id="html-reset" class="btn reset"><i class="material-icons-round">replay</i></button>
           <button class="btn" id="log_submit">다음</button>
         </div>
-      </div>
-      <div class="item item-full">
-        <h2>한번에 변환할 줄 수</h2>
-        <p>한번에 <b class="line-number">1000</b>줄씩 변환합니다.</p>
-        <p>변환 중 브라우저가 응답없음 상태가 되면 값을 낮춰주세요. 기본값은 1000 입니다.</p>
-        <div class="labeldiv">
-          <label><input name="line" type="radio" value="200">200</label>
-          <label><input name="line" type="radio" value="500">500</label>
-          <label><input name="line" type="radio" value="1000" checked>1000</label>
-          <label><input name="line" type="radio" value="1500">1500</label>
-          <label><input name="line" type="radio" value="2000">2000</label>
-          <label><input name="line" type="radio" value="all">모두</label>
-        </div>
-        
       </div>
       <div class="item rule-select">
         <h2>룰 선택</h2>
@@ -157,7 +148,7 @@
           
         </div>
       </div>
-
+        
     </div>
   </div>
   <div class="bottom">
@@ -261,12 +252,32 @@
         </div>
       </div>
     </div>
-    <div class="btn-box">
-      <button class="btn" id="css-download">CSS 다운로드</button>
-      <button class="btn apply" id="get">로그 복사!</button>
+    <hr>
+    <div class="setting">
+      <div class="item">
+        <h2>마무리</h2>
+        <h3>커스터마이징을 완료했다면,</h3>
+        <button class="btn btn-full" id="log-copy">이 버튼을 누른 후 Ctrl+C 를 눌러 복사하세요</button>
+        <div id="editable" contenteditable></div>
+        <p>다음 버튼을 차례대로 누릅니다.</p>
+        <p>이 단계에서 브라우저 에러가 발생할 경우, 브라우저의 <b>시크릿 모드</b>로 이 페이지를 이용해보세요</p>
+        <div class="btn-box btn-box-half">
+          <button class="btn" id="log-paste">1. 복사 준비</button>
+          <button class="btn" id="copy" data-clipboard-target="#logdata">2. 복사하기</button>
+        </div>
+        
+      </div>
+      <div class="item">
+        <h2>기타 설정</h2>
+        <h3>CSS 설정 다운로드</h3>
+        <p>이 페이지의 css 파일 업로드에 재사용하기 위한 일부 css 코드를 다운로드합니다. 다음 이용시에 이 css 파일을 업로드하면 별도의 설정 없이도 커스텀된 로그를 백업할 수 있습니다.</p>
+        <p><b>업로드한 커스텀 시트, 직접 입력한 CSS 코드, 세부 설정</b> 그리고 <b>캐릭터별 색상 설정</b>이 백업됩니다.</p>
+        <div class="btn-box"><button id="download" class="btn">다운로드</button></div>
+      </div>
     </div>
     
-  </div></div>
+  </div>
+  </div>
   <footer>
     <div>
       <a href="https://github.com/headdrop/roll20-log-customize" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
@@ -289,50 +300,10 @@
         <textarea id="editing" spellcheck="false" onkeydown="check_tab(this, event);"></textarea>
         <pre id="highlighting" aria-hidden="true"><code class="language-css" id="highlighting-content"></code></pre>
         <i class="material-icons-round modal-close">close</i>
-        <div class="btn-box"><button class="btn" id="modal-reset">지우기</button>
-          <button class="btn" id="modal-submit">확인</button></div>
-      </div>
-    </div>
-    <div id="download-modal">
-      <div class="modal-layer"></div>
-      <div class="modal-content">
-        <h3>다운로드</h3>
-        <p>이 페이지의 css 파일 업로드에 재사용하기 위한 일부 css 코드를 다운로드합니다. 다음 이용시에 이 css 파일을 업로드하면 별도의 설정 없이도 커스텀된 로그를 백업할 수 있습니다.</p>
-        <p><b>업로드한 커스텀 시트, 직접 입력한 CSS 코드, 세부 설정</b> 그리고 <b>캐릭터별 색상 설정</b>이 백업됩니다.</p>
         <div class="btn-box">
-          <button class="btn reset">취소</button>
-          <button id="download" class="btn">다운로드</button>
+          <button class="btn" id="modal-reset">지우기</button>
+          <button class="btn" id="modal-submit">확인</button>
         </div>
-        <i class="material-icons-round modal-close">close</i>
-      </div>
-    </div>
-    <div id="copy-modal">
-      <div class="modal-layer"></div>
-      <div class="modal-content">
-        <h3>복사</h3>
-        <p>로그 내용을 <b class="line-number">1000</b>줄마다 분할해 변환합니다.<br/>'복사하기'버튼을 누르면 변환된 로그가 복사됩니다.</p>
-        <textarea id="output"></textarea>
-        <div class="btn-box">
-          <button class="btn reset">취소</button>
-          <button id="copy" class="btn" data-clipboard-target="#output" onclick="alert('클립보드에 복사하였습니다.')">복사하기</button>
-          <button id="copy-target-change" class="btn">다음</button>
-        </div>
-        <i class="material-icons-round modal-close">close</i>
-      </div>
-    </div>
-    <div id="error-modal">
-      <div class="modal-layer"></div>
-      <div class="modal-content">
-        <h3>에러</h3>
-        <p>에러가 발생했습니다. 다음을 확인한 후 다시 시도하세요.</p>
-        <ul>
-          <li>html 입력란에 입력하고 '다음' 버튼을 눌렀는지</li>
-          <li>라마바사</li>
-        </ul>
-        <div class="btn-box">
-          <button class="btn reset">창 닫기</button>
-        </div>
-        <i class="material-icons-round modal-close">close</i>
       </div>
     </div>
   </div>

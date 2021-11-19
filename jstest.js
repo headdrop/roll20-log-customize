@@ -32,14 +32,8 @@ $(function () {
     modaltog(); //닫기
   });
   document.getElementById("css-modal-openbtn").addEventListener("click",()=>modaltog("#css-modal"));
-  document.getElementById("css-download").addEventListener("click",()=>modaltog("#download-modal"));
-  new ClipboardJS('#copy');
+  // document.getElementById("css-download").addEventListener("click",()=>modaltog("#download-modal"));
 
-  // line 값 출력
-  $("[name='line']").change(()=>{ // line 값 출력
-    var numm = $("[name='line']:checked").val();
-    $(".line-number").text(numm);
-  });
 
   // 1. html 입력 (확인 버튼)
   function inputHTML () {
@@ -74,6 +68,37 @@ $(function () {
     $("#log-content").empty();
   });
 
+  //에디터로 복사
+  document.querySelector("#log-copy").addEventListener('click',()=>{
+    var copyTest = document.getElementById("log-content");
+    selectRange(copyTest);
+  });
+  function selectRange(obj) {
+    if (window.getSelection) {
+        var selected = window.getSelection();
+            selected.selectAllChildren(obj);
+        //console.log(selected.toString());
+    } else if (document.body.createTextRange) {
+        var range = document.body.createTextRange();
+            range.moveToElementText(obj);
+            range.select();
+        //alert(range.htmlText);
+    }
+  };
+  document.querySelector("#log-paste").addEventListener('click',()=>{
+    var htmlContent = document.getElementById("editable").innerHTML;
+    htmlContent = htmlContent.replace(/( id=".+?")|( class="(?!sheet-rolltemplate).+?")/gi,''); // id, class 제거
+    document.getElementById("logdata").value=htmlContent;
+  });
+  
+  //복사
+  var clipboard = new ClipboardJS('#copy');
+  clipboard.on('success', function(e) {
+    alert("로그를 복사했습니다. 티스토리 HTML 모드에서 붙여넣습니다.");
+  });
+
+
+
   // 리셋함수
   function reset () {
     console.log("reset");
@@ -92,6 +117,8 @@ $(function () {
     document.getElementById("editing").value = '';
     document.querySelector("#highlighting code").textContent='';
   }
+
+
 
   function radioOpt() {
     let checkedValue = document.querySelector("input[name='glo-name']:checked").value;
@@ -159,7 +186,6 @@ $(function () {
   //Color picker 만들기
   function makeCP(byId) {
     document.styleSheets[4].insertRule(`#${byId} {}`, styleNew.length); // 스타일 추가
-    console.log(byId + "에 대한 color picker 실행 + CSS 생성");
     let checkedValue = document.querySelector("input[name='glo-name']:checked").value;
     let defaultColorText = $(`.example #${byId} .by`).css('color');
     let defaultColorBg = $(`.example #${byId}`).css('background-color');
@@ -211,7 +237,6 @@ $(function () {
     //message color picker close 닫기    
     $(".example").on("click", ".cp-close", function () {
       const nv = this.parentElement.parentElement.id;
-      console.log(nv);
       for (var index in styleNew) { //스타일 삭제
         if (styleNew[index].selectorText == `#${nv}`) {
           document.styleSheets[4].deleteRule(index);
@@ -229,7 +254,7 @@ $(function () {
 
   // 캐릭터별 색상 설정의 select 를 noImg 로 가져옴
   function imgInput() { 
-    const node1 = $(".item:last")[0];
+    const node1 = $(".container .item:last")[0];
     const changeImgBox = `<div class="item" id="profileImg"><h2>프로필 이미지 수정</h2><p>음영 표시된 캐릭터는 깨진 아바타 이미지가 1개 이상 있는 캐릭터입니다. 캐릭터를 선택하고 <b>외부 이미지 주소</b>를 입력하면 일괄 변경됩니다.</p><p>변경하지 않고 그대로 두면 <b>백업시 깨진 이미지는 모두 삭제</b>됩니다.</p><div id="imgList" class="inner-box"></div>
     <div class="btn-box">
     <button class="btn reset"><i class="material-icons-round">replay</i></button>
@@ -249,10 +274,8 @@ $(function () {
     document.querySelector("#profileImg .apply").addEventListener("click",imgChange); //이벤트 연결
 
     $("#log-content .avatar>img").on("error", function(){
-      //console.log("로드에러");
       this.parentElement.classList.add("noImage");
       let noImgID = this.parentElement.parentElement.id;
-      //console.log(noImgID);
       document.querySelectorAll(".nice-select .option").forEach(function(value) {
         if(value.textContent.split(' ')[0]===noImgID) {
           value.classList.add("noImgChar");
@@ -300,7 +323,6 @@ $(function () {
       })
     })
     $("#log-content .avatar>img").on("error", function(){
-      //console.log("로드에러");
       this.parentElement.classList.add("noImage")});
   }
 });

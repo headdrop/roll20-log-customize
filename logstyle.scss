@@ -182,6 +182,7 @@ span.inlinerollresult {
   font-weight: bolder;
   cursor: help;
   background: rgba(255,255,255,0.4);
+  
 }
 .inlinerollresult.fullcrit {
   border-color: #247305;
@@ -194,7 +195,9 @@ span.inlinerollresult {
 .formula .inlinerollresult {
   font-size: inherit;
 }
-
+.message>.inlinerollresult {
+  line-height: 1.8em;
+}
 
 /* 기본 표 */
 .sheet-rolltemplate-default table {
