@@ -27,9 +27,6 @@
   <script src="highlight.pack.js"></script>
 </head>
 <body>
-  <div id="datatextarea">
-    <input id="logdata">
-  </div>
   <div class="top">
     <h1>Rolling Mint</h1>
     <div class="box">
@@ -42,18 +39,14 @@
     </div>
     <h2>Roll20 로그 커스터마이징 도구</h2>
     <div class="text">
-      <p>Roll20 로그를 Tistory 신에디터 HTML 편집모드를 사용해 백업하기 위한 커스터마이징 페이지입니다.</p><p>크롬과 웨일 외의 브라우저에서는 정상적으로 실행되지 않을 수 있습니다.</p>
+      <p>Roll20 로그를 Tistory 신에디터 HTML 편집모드를 사용해 백업하기 위한 커스터마이징 페이지입니다.</p>
+      <p>이 페이지는 chrome 버전 96.0.4664.45 에서 테스트하였습니다.</p>
       <p>반응형 디자인 적용, 주사위 이미지 출력을 원하는 분은 <b>반드시</b> 가이드 페이지를 확인해 주세요.</p>
-      <p>
         <div class="btn-box-grid">
           <button class="btn" target="_blank" onclick="window.open('https://hdtrpg.notion.site/Rolling-Mint-README-533da86adc214833bdf328403e301c74')">가이드 페이지 바로가기</button>
         <button class="btn" target="_blank" onclick="window.open('https://hdtrpg.postype.com/')">포스타입 바로가기</button>
         <button class="btn btn-sm btn-full" target="_blank" onclick="window.open('https://headdrop.github.io/roll20-log-customize/ver1.2')">이전 버전 (ver1.2) 바로가기</button>
         </div>
-        
-      </p>
-      
-
       <p style="text-align: center;"><a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fheaddrop.github.io%2Froll20-log-customize&count_bg=%233A9488&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a></p>
       <p><span>@HDTRPG</span><span>ver 2.0</span></p>
     </div>
@@ -258,14 +251,8 @@
         <h2>마무리</h2>
         <h3>커스터마이징을 완료했다면,</h3>
         <button class="btn btn-full" id="log-copy">이 버튼을 누른 후 Ctrl+C 를 눌러 복사하세요</button>
-        <div id="editable" contenteditable></div>
-        <p>다음 버튼을 차례대로 누릅니다.</p>
-        <p>이 단계에서 브라우저 에러가 발생할 경우, 브라우저의 <b>시크릿 모드</b>로 이 페이지를 이용해보세요</p>
-        <div class="btn-box btn-box-half">
-          <button class="btn" id="log-paste">1. 복사 준비</button>
-          <button class="btn" id="copy" data-clipboard-target="#logdata">2. 복사하기</button>
-        </div>
-        
+        <!-- <div id="editable" contenteditable></div> -->
+        <embed src="editor.html">
       </div>
       <div class="item">
         <h2>기타 설정</h2>
@@ -310,7 +297,6 @@
   <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
   <script src="laterjs.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
   <div class="loader" >
     <div id="ld4">
       <div>

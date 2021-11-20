@@ -94,7 +94,7 @@ input[type="text"],textarea {
 }
 footer  {
   display:flex;
-  width: 100vw;
+  width: 100%;
   height: auto;
   position: relative;
   padding: 15px;
@@ -130,15 +130,6 @@ b {font-weight:bolder;}
 .container {
   @include container;
   padding-top:20px;
-}
-#datatextarea {
-  position: absolute;
-  top: -1000vh;
-  opacity: 0;
-  cursor: default;
-  border:none;
-  padding:0!important;
-  * {resize:none}
 }
 #textchat { /*폰트 사이즈 결정 참조: https://webclub.tistory.com/122 */
   -webkit-text-size-adjust: 100%;
@@ -462,6 +453,9 @@ h3 {
   flex-wrap: wrap;
   gap: 15px;
 }
+.bottom .setting {
+  align-items: flex-start;
+}
 .name-select {
   min-height:6em;
   margin-left: 90px;
@@ -472,7 +466,8 @@ h3 {
 }
 
 /*flex items*/
-.bottom .item {
+.bottom .item:first-of-type {
+  height:40rem;
   overflow:hidden;
 }
 .item {
@@ -631,6 +626,7 @@ h3 {
   }
 }
 .btn-box-grid {
+  margin-top: 2rem;
   display: grid;
   grid: 1fr / 2fr 2fr;
   .btn-sm {
@@ -1167,24 +1163,12 @@ il:hover+tooltip {
 
 
 //
-#editable {
-  font-family: unset;
-  width: calc(100%-5px);
-  height: 100px;
-  overflow-y:auto;
-  overflow-x:hidden;
-  border:rgb(45, 84, 124) 1px solid;
-  box-sizing: border-box;
+embed {
+  width: 100%!important;
+  height: 200%;
   padding: 5px;
-  margin: 5px;
-  cursor:text;
 }
-#editable:empty::before{
-  content: "복사한 내용을 여기에 Ctrl+V를 눌러 붙여넣습니다.\A로그 양이 많으면 로딩까지 시간이 걸립니다.\A이 화면에 로그가 나타날 때까지 기다려주세요.";
-  color:#666;
-  white-space: pre-line;
-  display: block; /* For Firefox */
-}
+
 
 //------ 미디어쿼리
 

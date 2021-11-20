@@ -83,7 +83,7 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: auto;
   position: relative;
   padding: 15px;
@@ -162,19 +162,6 @@ b {
     padding-left: 20px;
     padding-right: 20px;
   }
-}
-
-#datatextarea {
-  position: absolute;
-  top: -1000vh;
-  opacity: 0;
-  cursor: default;
-  border: none;
-  padding: 0 !important;
-}
-
-#datatextarea * {
-  resize: none;
 }
 
 #textchat {
@@ -615,6 +602,12 @@ h3 {
   gap: 15px;
 }
 
+.bottom .setting {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
 .name-select {
   min-height: 6em;
   margin-left: 90px;
@@ -626,7 +619,8 @@ h3 {
 }
 
 /*flex items*/
-.bottom .item {
+.bottom .item:first-of-type {
+  height: 40rem;
   overflow: hidden;
 }
 
@@ -856,6 +850,7 @@ h3 {
 }
 
 .btn-box-grid {
+  margin-top: 2rem;
   display: -ms-grid;
   display: grid;
   grid: 1fr / 2fr 2fr;
@@ -1551,26 +1546,10 @@ il:hover + tooltip {
   resize: none;
 }
 
-#editable {
-  font-family: unset;
-  width: calc(100%-5px);
-  height: 100px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  border: #2d547c 1px solid;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+embed {
+  width: 100% !important;
+  height: 200%;
   padding: 5px;
-  margin: 5px;
-  cursor: text;
-}
-
-#editable:empty::before {
-  content: "복사한 내용을 여기에 Ctrl+V를 눌러 붙여넣습니다.\A로그 양이 많으면 로딩까지 시간이 걸립니다.\A이 화면에 로그가 나타날 때까지 기다려주세요.";
-  color: #666;
-  white-space: pre-line;
-  display: block;
-  /* For Firefox */
 }
 
 @media screen and (min-width: 768px) {

@@ -1,0 +1,73 @@
+@font-face {
+  font-family: 'NEXON Lv1 Gothic OTF';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/headdrop/PublicBox/PretendardVariable.woff2") format("woff2");
+}
+
+html {
+  font-family: 'Pretendard';
+  font-size:10px;
+}
+body {
+  margin:0;
+  font-size:1.4rem;
+}
+#editable {
+  font-family: unset;
+  width: 100%;
+  height: 100px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  border:rgb(45, 84, 124) 1px solid;
+  box-sizing: border-box;
+  padding: 5px;
+  cursor:text;
+}
+#editable:empty::before{
+  content: "복사한 내용을 여기에 Ctrl+V를 눌러 붙여넣습니다.\A로그 양이 많으면 로딩까지 시간이 걸립니다.\A이 화면에 로그가 나타날 때까지 기다려주세요.";
+  font-family: 'NEXON Lv1 Gothic OTF';
+  color:#666;
+  white-space: pre-line;
+  display: block; /* For Firefox */
+}
+.box {
+  display: flex;
+  gap:10px;
+  justify-content: space-between;
+}
+button {
+  font-family: 'NEXON Lv1 Gothic OTF';
+  border-radius: 4px;
+  font-size: 1.3rem;
+  color:#fff;
+  padding: 8px 25px 8px 25px;
+  border: none;
+  letter-spacing: .02rem;
+  background-color: #3a9488;
+  outline:0;
+  cursor: pointer;
+
+  transition: .3s ease-in;
+  transition-property: background-color;
+
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+button:hover, button:focus {
+  background-color: #2c695f;
+}
+
+#logdata {
+  position: absolute;
+  top: -1000vh;
+  opacity: 0;
+  cursor: default;
+  border:none;
+  padding:0!important;
+  resize:none;
+}

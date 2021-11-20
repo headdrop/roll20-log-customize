@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="editor.css">
+  </head>
+  <body>
+    <input id="logdata">
+    <div contenteditable id="editable"></div>
+    <p>다음 버튼을 차례대로 누릅니다.</p>
+    <p>이 단계에서 브라우저 에러가 발생할 경우, 브라우저의 <b>시크릿 모드</b>로 이 페이지를 이용해보세요</p>
+    <div class="box">
+      <button id="log-paste">1. 복사 준비</button>
+      <button id="copy" data-clipboard-target="#logdata">2. 복사하기</button>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script>
+      document.querySelector("#log-paste").addEventListener('click',()=>{
+        var htmlContent = document.getElementById("editable").innerHTML;
+        htmlContent = htmlContent.replace(/( id=".+?")|( class="(?!sheet-rolltemplate).+?")/gi,''); // id, class 제거
+        document.getElementById("logdata").value=htmlContent;
+      });
+      
+      //복사
+      var clipboard = new ClipboardJS('#copy');
+      clipboard.on('success', function(e) {
+        alert("로그를 복사했습니다. 티스토리 HTML 모드에서 붙여넣습니다.");
+      });
+
+    </script>
+  </body>
+</html>

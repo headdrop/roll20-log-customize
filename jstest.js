@@ -85,18 +85,7 @@ $(function () {
         //alert(range.htmlText);
     }
   };
-  document.querySelector("#log-paste").addEventListener('click',()=>{
-    var htmlContent = document.getElementById("editable").innerHTML;
-    htmlContent = htmlContent.replace(/( id=".+?")|( class="(?!sheet-rolltemplate).+?")/gi,''); // id, class 제거
-    document.getElementById("logdata").value=htmlContent;
-  });
   
-  //복사
-  var clipboard = new ClipboardJS('#copy');
-  clipboard.on('success', function(e) {
-    alert("로그를 복사했습니다. 티스토리 HTML 모드에서 붙여넣습니다.");
-  });
-
 
 
   // 리셋함수
