@@ -28,11 +28,10 @@ $(function () {
 
 
   // modal 버튼
-  $(".modal-content .reset, #modal-submit, .modal-close, #download-modal .reset, .modal-layer").on("click",()=>{
+  $(".modal-content .reset, #modal-submit, .modal-close, .reset, .modal-layer").on("click",()=>{
     modaltog(); //닫기
   });
   document.getElementById("css-modal-openbtn").addEventListener("click",()=>modaltog("#css-modal"));
-  // document.getElementById("css-download").addEventListener("click",()=>modaltog("#download-modal"));
 
 
   // 1. html 입력 (확인 버튼)
@@ -47,7 +46,10 @@ $(function () {
     log = log.replace(/(data-messageid=").+?"/gi,''); // data-messageid 삭제
     log = log.replace(/(?<=\<a )href.+?"(?=>)/gi,''); // a 안의 href삭제
     log = log.replace(/(<img class="sheet-brdright").+?\>/gi,''); // 인세인 엑박 삭제
-    log = log.replace('roll20-colourised',''); // roll20-colourised 삭제
+    if (document.getElementById("ck-colourised").checked===true) {
+      log = log.replace(/( style="background-color:).+?;"/gi,''); // roll20-colourised 삭제
+    }
+    log = log.replace('roll20-colourised','');
     log = log.replace(/(\([^\)]+?\#.+?)(<|")/gi,'$1)$2'); // 롤꾸 안깨지게 정리
     log = log.replace(/\[(.+?)\]\(#" (style.+?\))/gi,'<a $2">$1</a>'); // 잘린 a 붙이기
     for (key of Object.keys(diceinput)) {

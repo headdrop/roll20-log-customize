@@ -527,9 +527,6 @@ h3 {
     color:$accentLight2;
   }
 }
-.item-full {
-  flex-basis: 100%;
-}
 .labeldiv {
   display:flex;
   gap:10px;
@@ -702,7 +699,7 @@ hr {
 #theme {
   margin-top:2rem;
 }
-.item il {
+.item li {
   display:flex;
   margin-bottom: 0.6em;
   font-size: 1.3rem;
@@ -718,25 +715,27 @@ hr {
   position:relative;
 }
 
-input + label {
-  //position:relative;
-  padding: 0.1em 0.5em 0.1em 0.5em;
-  display: flex!important;
-  align-items:flex-start;
-  transition: background 200ms ease-in-out;
-  background-position: left;
-  background-size: 0% 100%;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(90deg, $accentLight, $accentLight2);
-}
-input:checked + label {
-  color: #000;
-  font-weight:bold;
-  background-size: 100% 100%;
-}
-input:disabled + label {
-  text-decoration:line-through;
-  color:#999;
+li {
+  input + label {
+    //position:relative;
+    padding: 0.1em 0.5em 0.1em 0.5em;
+    display: flex!important;
+    align-items:flex-start;
+    transition: background 200ms ease-in-out;
+    background-position: left;
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(90deg, $accentLight, $accentLight2);
+  }
+  input:checked + label {
+    color: #000;
+    font-weight:bold;
+    background-size: 100% 100%;
+  }
+  input:disabled + label {
+    text-decoration:line-through;
+    color:#999;
+  }
 }
 
 
@@ -1169,6 +1168,30 @@ embed {
   padding: 5px;
 }
 
+
+.item-full {
+  flex-basis: 100%;
+  .btn-box {
+    margin-top: 5px;
+  }
+  input {
+    height:15px!important;
+    width: 15px!important;
+    border-radius: 5px!important;
+    &:after {
+      left: 4px!important;
+      top: 1px!important;
+
+    }
+  }
+  label {
+    line-height:15px!important;
+    font-size:1.2rem!important;
+  }
+  textarea {
+    margin-bottom: 10px;
+  }
+}
 
 //------ 미디어쿼리
 

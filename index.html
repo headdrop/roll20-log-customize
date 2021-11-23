@@ -48,7 +48,7 @@
         <button class="btn btn-sm btn-full" target="_blank" onclick="window.open('https://headdrop.github.io/roll20-log-customize/ver1.2')">이전 버전 (ver1.2) 바로가기</button>
         </div>
       <p style="text-align: center;"><a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fheaddrop.github.io%2Froll20-log-customize&count_bg=%233A9488&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a></p>
-      <p><span>@HDTRPG</span><span>ver 2.1</span></p>
+      <p><span>@HDTRPG</span><span>ver 2.2</span></p>
     </div>
   </div>
   <div style="overflow: hidden;">
@@ -77,8 +77,9 @@
         <h2>HTML 입력</h2>
         <textarea id="log-input"
           placeholder='1. Roll20 > 채팅 기록&#13;&#10;2. F12 로 관리자모드 열기&#13;&#10;3. div class="textchatcontainer" id="textchat" 를 찾아 우클릭 후 Edit as HTML&#13;&#10;4. 전체 복사 후 이 창에 붙여넣기&#13;&#10;&#13;&#10;한번에 많은 양을 변환할 경우 페이지가 멈출 수 있습니다.'></textarea>
+          <input type="checkbox" class="ckbx"  name="glo-ck" id="ck-colourised" checked>
+          <label for="ck-colourised">roll20-colourised 색상 삭제</label>
         <div class="btn-box">
-          
           <button id="html-reset" class="btn reset"><i class="material-icons-round">replay</i></button>
           <button class="btn" id="log_submit">다음</button>
         </div>
@@ -108,36 +109,33 @@
         <h2>세부 설정</h2>
         <p>항목에 커서를 올리면 간단한 설명이 나옵니다.</p>
         <div class="glo-option">
-          <il><input type="checkbox" class="ckbx"  name="glo-ck" id="ck-nospacer">
+          <li><input type="checkbox" class="ckbx"  name="glo-ck" id="ck-nospacer">
             <label for="ck-nospacer">구분선 없애기</label>
-          </il>
-          <il><input type="checkbox" class="ckbx"  name="glo-ck" id="ck-circle">
+          </li>
+          <li><input type="checkbox" class="ckbx"  name="glo-ck" id="ck-circle">
             <label for="ck-circle">원형 프로필 사진</label>
-          </il>
-          <il><input type="checkbox" class="ckbx"  name="glo-ck" id="ck-noimg">
+          </li>
+          <li><input type="checkbox" class="ckbx"  name="glo-ck" id="ck-noimg">
             <label for="ck-noimg">프로필 사진 삭제</label>
-          </il>
-          <il><input type="checkbox" class="ckbx"  name="glo-ck" id="ck-you">
+          </li>
+          <li><input type="checkbox" class="ckbx"  name="glo-ck" id="ck-you">
             <label for="ck-you">내 메시지 배경색 투명</label>
-          </il><tooltip>자신이 작성한 메시지의 색이 다른 플레이어가 작성한 메시지의 색과 같아집니다.</tooltip>
-          <il><input type="checkbox" class="ckbx"  name="glo-ck" id="ck-colourised" checked>
-            <label for="ck-colourised">roll20-colourised 색상 삭제</label>
-          </il><tooltip>이 옵션에 체크하면 roll20 확장 프로그램인 roll20 colourised로 칠해진 메시지 컬러를 삭제합니다.<br/>이 옵션은 미리보기에 적용되지 않습니다.</tooltip>
-          <il><input type="checkbox" class="ckbx"  name="glo-ck" id="ck-time">
+          </li><tooltip>자신이 작성한 메시지의 색이 다른 플레이어가 작성한 메시지의 색과 같아집니다.</tooltip>
+          <li><input type="checkbox" class="ckbx"  name="glo-ck" id="ck-time">
             <label for="ck-time">시각 표시</label>
-          </il><tooltip>메시지 작성 시각이 표시됩니다.</tooltip>
-          <il><input type="checkbox" class="ckbx"  name="glo-ck" id="ck-dice">
+          </li><tooltip>메시지 작성 시각이 표시됩니다.</tooltip>
+          <li><input type="checkbox" class="ckbx"  name="glo-ck" id="ck-dice">
             <label for="ck-dice">주사위 아이콘 표시</label><a class="material-icons-round" href="https://www.notion.so/hdtrpg/Rolling-Mint-README-533da86adc214833bdf328403e301c74" target='_blank'>info</a>
-          </il><tooltip>일반 명령어 굴림(/r 2d6 등)에서 숫자 뒤에 주사위 아이콘을 표시합니다.<br>주의:: 티스토리에 적용할 경우, 노션 설명서를 꼭 읽은 후 적용해 주세요.</tooltip>
-          <il><input type="checkbox" class="ckbx"  name="glo-ck" id="ck-font">
+          </li><tooltip>일반 명령어 굴림(/r 2d6 등)에서 숫자 뒤에 주사위 아이콘을 표시합니다.<br>주의:: 티스토리에 적용할 경우, 노션 설명서를 꼭 읽은 후 적용해 주세요.</tooltip>
+          <li><input type="checkbox" class="ckbx"  name="glo-ck" id="ck-font">
             <label for="ck-font">Roll20 기본 폰트 사용</label>
-          </il><tooltip>Roll20화면에서 보여지는 폰트를 사용합니다.<br>이 옵션을 해제하면, 사용자의 티스토리에 설정된 기본 글꼴로 출력됩니다.</tooltip>
-          <il><input type="radio" name="glo-name" id="r1_1" value="default" checked="checked">
+          </li><tooltip>Roll20화면에서 보여지는 폰트를 사용합니다.<br>이 옵션을 해제하면, 사용자의 티스토리에 설정된 기본 글꼴로 출력됩니다.</tooltip>
+          <li><input type="radio" name="glo-name" id="r1_1" value="default" checked="checked">
             <label for="r1_1">캐릭터별 글자색 적용</label>
-          </il><tooltip>이 옵션을 선택하면 캐릭터별 색상 설정의 글씨 색상이 그 캐릭터의 전체 색상에 적용됩니다. (기본값)</tooltip>
-          <il><input type="radio" name="glo-name" id="r1_2" value="indi-name">
+          </li><tooltip>이 옵션을 선택하면 캐릭터별 색상 설정의 글씨 색상이 그 캐릭터의 전체 색상에 적용됩니다. (기본값)</tooltip>
+          <li><input type="radio" name="glo-name" id="r1_2" value="indi-name">
             <label for="r1_2">전역:글자색 캐릭터별:이름색</label>
-          </il><tooltip>이 옵션을 선택하면 캐릭터별 색상 설정의 글씨 색상이 개별 이름에만 적용됩니다.</tooltip>
+          </li><tooltip>이 옵션을 선택하면 캐릭터별 색상 설정의 글씨 색상이 개별 이름에만 적용됩니다.</tooltip>
           
         </div>
       </div>
@@ -251,7 +249,6 @@
         <h2>마무리</h2>
         <h3>커스터마이징을 완료했다면,</h3>
         <button class="btn btn-full" id="log-copy">이 버튼을 누른 후 Ctrl+C 를 눌러 복사하세요</button>
-        <!-- <div id="editable" contenteditable></div> -->
         <embed src="editor.html">
       </div>
       <div class="item">
