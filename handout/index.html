@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>핸드아웃 변환기</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="ho2image.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+
+  </head>
+  <body>
+    
+    <div class="menu">
+      <label for="편도용사">편도용사</br>퀘스트 카드</label>
+      <label for="룰2">룰2</label>
+    </div>
+    
+    <input type="radio" name="tabmenu" id="편도용사" num="1" value="편도용사_퀘스트 카드" checked >
+    <div class="tabCon">
+      <div class="content">
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+      </div>
+    </div>
+
+    <input type="radio" name="tabmenu" id="룰2" num="2" value="룰2">
+    <div class="tabCon">
+      <div class="content">
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+      </div>
+    </div>
+    
+
+
+    <div class="bottom"><button id="down">다운로드</button></div>
+    
+
+    
+    <script>
+      
+    document.getElementById("down").onclick = function(){
+      var target = document.querySelector('input[name="tabmenu"]:checked+.tabCon .content');
+      var fileName = document.querySelector('input[name="tabmenu"]:checked').value;
+      domtoimage.toBlob(target)
+      .then(function (blob) {
+          window.saveAs(blob, fileName+'.png');
+      });
+      }
+    </script>
+  </body>
+
+
+
+</html>

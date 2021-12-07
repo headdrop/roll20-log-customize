@@ -1,0 +1,185 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/headdrop/PublicBox/PretendardVariable.woff2") format("woff2");
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Pretendard';
+}
+
+*:focus {
+  outline: none;
+}
+
+input {
+  display: none;
+}
+
+.menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: str;
+      -ms-flex-align: str;
+          align-items: str;
+  gap: 10px;
+  background-color: #E9E9E8;
+  padding-top: 10px;
+}
+
+label {
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  -webkit-transition: .3s ease-in;
+  transition: .3s ease-in;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+}
+
+label:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+label:nth-of-type() {
+  background-color: white;
+}
+
+.tabCon {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  left: 0;
+  width: 100%;
+  padding-top: 20px;
+}
+
+input:checked + .tabCon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#편도용사 + .tabCon .content {
+  width: 600px;
+  height: 940px;
+  background-image: url("/quest_card.png");
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+#편도용사 + .tabCon .content .inputbox {
+  overflow-y: auto;
+  position: absolute;
+  padding: 5px;
+  font-size: 20px;
+  word-break: keep-all;
+}
+
+#편도용사 + .tabCon .content .inputbox:nth-of-type(1) {
+  left: 40px;
+  top: 65px;
+  width: 520px;
+  height: 78px;
+  font-weight: 800;
+  font-size: 30px;
+  text-align: center;
+}
+
+#편도용사 + .tabCon .content .inputbox:nth-of-type(2) {
+  top: 195px;
+  left: 128px;
+  width: 325px;
+  height: 80px;
+}
+
+#편도용사 + .tabCon .content .inputbox:nth-of-type(3) {
+  top: 195px;
+  left: 510px;
+  width: 50px;
+  height: 48px;
+  font-weight: 800;
+  font-size: 30px;
+  text-align: center;
+}
+
+#편도용사 + .tabCon .content .inputbox:nth-of-type(4) {
+  top: 328px;
+  left: 100px;
+  width: 458px;
+  height: 270px;
+}
+
+#편도용사 + .tabCon .content .inputbox:nth-of-type(5) {
+  top: 620px;
+  left: 180px;
+  width: 340px;
+  height: 80px;
+}
+
+#편도용사 + .tabCon .content .inputbox:nth-of-type(6) {
+  bottom: 80px;
+  left: 100px;
+  width: 458px;
+  height: 116px;
+}
+
+.bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px 0 50px 0;
+}
+
+button {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  display: inline-block;
+  margin: 5px;
+  border-radius: 4px;
+  font-size: large;
+  color: #fff;
+  padding: 8px 25px 8px 25px;
+  border: none;
+  letter-spacing: .02rem;
+  background-color: #3a9488;
+  cursor: pointer;
+  -webkit-transition: .3s ease-in;
+  transition: .3s ease-in;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+}
+
+button:focus {
+  -webkit-box-shadow: 0 0 0 3px rgba(58, 148, 136, 0.6), rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+          box-shadow: 0 0 0 3px rgba(58, 148, 136, 0.6), rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+button:hover, button:focus {
+  background-color: #2c695f;
+}
+/*# sourceMappingURL=ho2image.css.map */
