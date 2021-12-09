@@ -12,8 +12,9 @@
   <body>
     
     <div class="menu">
-      <label for="편도용사">편도용사</br>퀘스트 카드</label>
-      <label for="룰2">룰2</label>
+      <label for="편도용사"><p>편도용사</p>퀘스트카드</label>
+      <label for="amade-h"><p>아마데우스</p>본체카드</label>
+      <label for="amade-t"><p>아마데우스</p>위협카드</label>
     </div>
     
     <input type="radio" name="tabmenu" id="편도용사" num="1" value="편도용사_퀘스트 카드" checked >
@@ -28,7 +29,7 @@
       </div>
     </div>
 
-    <input type="radio" name="tabmenu" id="룰2" num="2" value="룰2">
+    <input type="radio" name="tabmenu" id="amade-h" num="2" value="아마데우스_본체카드">
     <div class="tabCon">
       <div class="content">
         <div class="inputbox" contenteditable></div>
@@ -37,6 +38,26 @@
         <div class="inputbox" contenteditable></div>
         <div class="inputbox" contenteditable></div>
         <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox desc" contenteditable></div>
+      </div>
+    </div>
+
+    <input type="radio" name="tabmenu" id="amade-t" num="3" value="아마데우스_위협카드">
+    <div class="tabCon">
+      <div class="content">
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable>공격</div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox" contenteditable></div>
+        <div class="inputbox desc" contenteditable></div>
       </div>
     </div>
     
@@ -47,6 +68,17 @@
 
     
     <script>
+      document.getElementsByClassName("desc")[1].addEventListener("blur",function(){
+        this.innerHTML = this.innerHTML.replace(/(【.+?】)(?!<)/gi,'<span class="bold">$1</span>');
+        this.querySelectorAll("span").forEach(element => {
+          var intxt = element.innerText;
+          if(intxt.includes("【") && intxt.includes("】")===false) {
+            element.after(intxt);
+            element.remove();
+          }
+
+          });
+        });
       
     document.getElementById("down").onclick = function(){
       var target = document.querySelector('input[name="tabmenu"]:checked+.tabCon .content');
