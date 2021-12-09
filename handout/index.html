@@ -82,7 +82,7 @@
       
     document.getElementById("down").onclick = function(){
       var target = document.querySelector('input[name="tabmenu"]:checked+.tabCon .content');
-      var fileName = document.querySelector('input[name="tabmenu"]:checked').value;
+      var fileName = document.querySelector('input[name="tabmenu"]:checked').value+"_"+document.querySelector('input[name="tabmenu"]:checked+.tabCon .inputbox:first-of-type').innerHTML;
       domtoimage.toBlob(target)
       .then(function (blob) {
           window.saveAs(blob, fileName+'.png');
