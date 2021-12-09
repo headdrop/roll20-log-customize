@@ -16,7 +16,8 @@
     <script>
       document.querySelector("#log-paste").addEventListener('click',()=>{
         var htmlContent = document.getElementById("editable").innerHTML;
-        htmlContent = htmlContent.replace(/( id=".+?")|( class="(?!sheet-rolltemplate).+?")/gi,''); // id, class 제거
+        htmlContent = htmlContent.replace(/( id=".+?")|( class="(?!sheet-rolltemplate).+?")|(box-sizing: border-box; )/gi,''); // id, class 제거
+        htmlContent = htmlContent.replace('<a style','<span style').replace('</a>','</span>');
         document.getElementById("logdata").value=htmlContent;
       });
       
