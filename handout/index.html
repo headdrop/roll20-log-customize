@@ -69,7 +69,7 @@
     
     <script>
       document.getElementsByClassName("desc")[1].addEventListener("blur",function(){
-        this.innerHTML = this.innerHTML.replace(/(【.+?】)(?!<)/gi,'<span class="bold">$1</span>');
+        this.innerHTML = this.innerText.replace(/(【.+?】)(?!<)/gi,'<span class="bold">$1</span>');
         this.querySelectorAll("span").forEach(element => {
           var intxt = element.innerText;
           if(intxt.includes("【") && intxt.includes("】")===false) {
