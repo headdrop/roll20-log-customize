@@ -74,6 +74,8 @@ $(function () {
   document.querySelector("#log-copy").addEventListener('click',()=>{
     var copyTest = document.getElementById("log-content");
     selectRange(copyTest);
+    document.execCommand("copy");
+        alert("복사가 완료되었습니다. roll20 핸드아웃 편집 창에 붙여넣기하세요.\n복사한 표는 이 페이지에 적용된 글꼴이 적용되지 않습니다.");
   });
   function selectRange(obj) {
     if (window.getSelection) {
