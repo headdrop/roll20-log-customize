@@ -112,7 +112,9 @@
         var cloneNode = document.querySelector("#insane+.tabCon tbody.cont tr").cloneNode(true);
         document.querySelector("#insane+.tabCon tbody.cont").append(cloneNode);
         var newNode = document.querySelector("#insane+.tabCon tbody.cont tr:last-of-type");
-        console.log(newNode);
+        newNode.querySelectorAll("td").forEach(function(value,index){
+          if (index>0) value.textContent="";
+        });
         var rowbtn = document.createElement("span");
         rowbtn.innerText = "X";
         newNode.querySelector("td").append(rowbtn);
