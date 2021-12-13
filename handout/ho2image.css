@@ -1,7 +1,23 @@
 @charset "UTF-8";
 @font-face {
   font-family: 'Pretendard';
-  src: url("https://cdn.jsdelivr.net/gh/headdrop/PublicBox/PretendardVariable.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
 }
 
 body {
@@ -46,7 +62,7 @@ input {
   margin: 0;
   padding: 0;
   font-size: smaller;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 label {
@@ -87,6 +103,10 @@ input:checked + .tabCon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.content + * {
+  margin-top: 20px;
 }
 
 #편도용사 + .tabCon .content {
@@ -453,8 +473,94 @@ input:checked + .tabCon {
   height: 260px;
 }
 
+#insane + .tabCon .content table {
+  border-collapse: collapse;
+  border: 2px solid #222;
+  text-indent: none;
+  font-size: 16px;
+  min-width: 400px;
+  max-width: 600px;
+}
+
+#insane + .tabCon .content table td {
+  border: 1px solid #444;
+  padding: 2px 5px;
+  vertical-align: middle;
+  line-height: 1.4em;
+}
+
+#insane + .tabCon .content table td:nth-of-type(1) {
+  width: 36px;
+}
+
+#insane + .tabCon .content table td:nth-of-type(2) {
+  min-width: 6em;
+}
+
+#insane + .tabCon .content table td:nth-of-type(3), #insane + .tabCon .content table td:nth-of-type(4) {
+  min-width: 5em;
+}
+
+#insane + .tabCon .content table td:nth-of-type(5) {
+  min-width: 4em;
+}
+
+#insane + .tabCon .content table .title tr:first-child {
+  font-size: 25px;
+  height: 1.8em;
+}
+
+#insane + .tabCon .content table .title tr:first-child td:first-of-type {
+  background-image: url("https://headdrop.github.io/roll20-log-customize/handout/siksin.svg");
+  background-size: 25px;
+  background-position: 6px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  border-right: 0px;
+  font-weight: 600;
+}
+
+#insane + .tabCon .content table .title tr:first-child td:nth-of-type(2) {
+  padding-left: 10px;
+  border-left: 0px;
+  font-weight: 800;
+}
+
+#insane + .tabCon .content table .title tr:nth-child(2) {
+  background-color: #CCC;
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+#insane + .tabCon .content table .title tr:nth-child(2) td:first-of-type {
+  font-size: 14px;
+}
+
+#insane + .tabCon .content tbody.cont tr {
+  position: relative;
+}
+
+#insane + .tabCon .content tbody.cont tr span {
+  position: absolute;
+  right: calc(100% + 10px);
+  cursor: pointer;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+}
+
+#insane + .tabCon .content tbody.cont td:first-of-type, #insane + .tabCon .content tbody.cont td:nth-of-type(3), #insane + .tabCon .content tbody.cont td:nth-of-type(4) {
+  text-align: center;
+}
+
+#insane + .tabCon .content tbody.cont td:nth-of-type(2) {
+  font-size: 18px;
+  font-weight: 800;
+}
+
 span.bold {
-  font-weight: bolder;
+  font-weight: 600;
 }
 
 .bottom {
@@ -464,7 +570,7 @@ span.bold {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 10px 0 50px 0;
+  padding: 20px 0 50px 0;
 }
 
 button {
