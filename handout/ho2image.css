@@ -39,6 +39,17 @@ input {
   display: none;
 }
 
+a {
+  color: #3a9488;
+  text-decoration: none;
+}
+
+a:hover, a:active, a:focus {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  color: #2c695f;
+}
+
 .menu {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -478,8 +489,7 @@ input:checked + .tabCon {
   border: 2px solid #222;
   text-indent: none;
   font-size: 16px;
-  min-width: 400px;
-  max-width: 600px;
+  width: 600px;
   background-color: white;
 }
 
