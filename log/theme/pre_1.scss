@@ -1,0 +1,64 @@
+.message {
+  box-sizing:border-box;
+  margin-left: 60px;
+  padding : 5px 5px 5px 10px;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: visible;
+  p {
+    margin:0;
+    line-height:1.5em;
+  }
+}
+
+.tstamp {
+  position:absolute;
+  left:unset;
+  right:5px;
+  bottom:1px;
+}
+.spacer {
+  display:none;
+}
+
+.by {
+  display:inline-block;
+  width:100%;
+  text-align:center;
+  left:0;
+  word-break: break-all;
+}
+.avatar {
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  left: -60px;
+  width: 50px;
+  height:fit-content;
+  >img {
+    height:50px;
+    width:50px;
+  }
+  &.noImage+.by{
+    top:10px;
+  }
+}
+.emote .avatar {
+  display:none;
+}
+
+.general {
+  border-radius: 10px;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+
+#공백 {
+  &.general {
+    min-height:50px;
+  }
+  .by {
+    display: none;
+  }
+}

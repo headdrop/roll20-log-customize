@@ -1,0 +1,337 @@
+@import 'import';
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css");
+
+@font-face {
+  font-family: 'NEXON Lv1 Gothic OTF';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NEXON Lv1 Gothic OTF Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  margin: 0;
+  font-size: 10px;
+}
+
+* {
+  font-family: 'Pretendard';
+  box-sizing: border-box;
+}
+
+$footerH : 90px;
+
+body {
+  margin: 0;
+  height: calc(100vh - 90px);
+}
+
+#wrapper {
+  height: auto;
+  min-height: 100%;
+  //padding-bottom: $footerH;
+}
+
+footer {
+  height: $footerH;
+  position: relative;
+  //transform : translateY(-100%);
+
+  display: flex;
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2rem;
+  background-color: $footerBg;
+  align-items: center;
+  justify-content: space-around;
+  color: rgba(255, 255, 255, 0.8);
+
+  p {
+    margin: 5px 0;
+  }
+
+  div:last-child {
+    text-align: right;
+  }
+
+  a {
+    margin-right: 4px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+
+    transition: all 0.3s ease-in-out;
+  }
+
+  svg {
+    fill: rgba(255, 255, 255, 0.8);
+
+    transition: all 0.3s ease-in-out;
+  }
+
+  a:hover svg,
+  a:active svg,
+  a:focus svg {
+    fill: #C0DEC7;
+  }
+
+  h4 {
+    margin: 0;
+    font-weight: bolder;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  footer div * {
+    text-align: left;
+  }
+}
+
+b {
+  font-weight: bolder;
+}
+
+/*버튼*/
+.btn-box {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  align-items: stretch;
+  justify-content: space-between;
+  bottom: 0;
+
+  .btn {
+    margin: 0;
+  }
+}
+
+.btn-box-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid: 1fr / 2fr 2fr;
+  .btn-sm {
+    grid-column: 1 / 3;
+    background-color: $btnReset;
+  }
+}
+
+.btn {
+  font-family: 'NEXON Lv1 Gothic OTF';
+  display: inline-block;
+  margin: 5px;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  color: #fff;
+  padding: 8px 25px 8px 25px;
+  border: none;
+  letter-spacing: .02rem;
+  background-color: $btnColor;
+  outline: 0;
+  cursor: pointer;
+  &:only-of-type(button) {
+    float: right;
+  }
+}
+
+.btn-disabled {
+  cursor: not-allowed;
+  filter: grayscale(100);
+}
+
+.btn {
+  transition: .3s ease-in;
+  transition-property: background-color;
+}
+
+.btn i {
+  transition: .5s ease-in-out;
+  transition-property: transform;
+}
+
+.btn-sm {
+  font-size: 1.2rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 3px rgba($btnColor, 0.6), $btnShadow;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: $btnHovColor;
+}
+
+textarea,
+input[type=text] {
+  outline: none;
+  resize: none;
+  border: 1px solid $btnReset;
+  border-radius: 2px;
+
+  &:active,
+  &:focus {
+    box-shadow: inset 0 0 0 3px rgba($accentLight, 0.6);
+  }
+}
+
+@import url('https://cdn.jsdelivr.net/gh/jonsuh/hamburgers/dist/hamburgers.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
+
+nav#float-menu {
+  $siz: 5rem;
+  position: fixed;
+  top: 4rem;
+  left: 1rem;
+
+
+  @include centerboth;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: $siz;
+  gap: 10px;
+
+  &>div,
+  &>a {
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+  }
+
+  .f-menu {
+    transform-origin: bottom;
+    transform: scale(0.8);
+    background: $footerBg;
+    padding: 12px 10px;
+    width: 50px;
+    border-radius: 50%;
+    z-index: 20;
+
+    &--1 {
+      --text-color: #260404;
+      --bg-color: rgb(243, 129, 129);
+      --text-color-light: #FCE0E0;
+    }
+
+    &--2 { 
+      --text-color: #2B2201;
+      --bg-color: rgb(252, 227, 138);
+      --text-color-light: #FEF8E2;
+    }
+    &--3 {
+      --text-color: #09201F;
+      --bg-color: rgb(149, 225, 211);
+      --text-color-light: #E4F7F4;
+    }
+
+    &.is-active ~ a {
+      @for $i from 0 through 5 {
+        &:nth-child(#{$i}) {
+          animation: bounce-in-top 1.5s both #{$i*0.5}s;
+        }
+      }
+    }
+  }
+
+  a {
+    position: relative;
+    background: $lightBg;
+    color: var(--text-color);
+    width: $siz;
+    height: $siz;
+    border-radius: 50%;
+    @include centerboth;
+    font-size: 2.6rem;
+    z-index: 1;
+    //opacity: 0;
+    //transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    @for $i from 0 through 5 {
+      &:nth-child(#{$i}) {
+        
+      }
+    }
+  }
+  
+
+  //
+
+  .hamburger-inner,
+  .hamburger-inner:after,
+  .hamburger-inner:before {
+    width: 30px;
+    height: 5px;
+  }
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2022-4-15 0:30:7
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+/**
+ * ----------------------------------------
+ * animation bounce-in-top
+ * ----------------------------------------
+ */
+@keyframes bounce-in-top {
+  0% {
+    transform: translateY(-500px);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  38% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+
+  55% {
+    transform: translateY(-65px);
+    animation-timing-function: ease-in;
+  }
+
+  72% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+
+  81% {
+    transform: translateY(-28px);
+    animation-timing-function: ease-in;
+  }
+
+  90% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+
+  95% {
+    transform: translateY(-8px);
+    animation-timing-function: ease-in;
+  }
+
+  100% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+}

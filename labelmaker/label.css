@@ -1,0 +1,178 @@
+@charset "UTF-8";
+div.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 15px;
+  font-size: 1.6rem;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 70px;
+}
+
+div.container > div {
+  width: 315px;
+}
+
+@media screen and (max-width: 980px) {
+  div.container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-line-pack: center;
+        align-content: center;
+  }
+}
+
+.btn {
+  margin: auto;
+  width: 50%;
+  display: block;
+  font-size: 1.6rem;
+}
+
+#preview {
+  resize: horizontal;
+  min-width: 315px;
+}
+
+#preview * {
+  font-family: unset;
+}
+
+#controler input[type=checkbox] ~ span {
+  font-size: 1.2rem;
+  color: #444;
+  margin: 5px 0;
+}
+
+#controler input[type=checkbox] ~ textarea {
+  resize: none;
+}
+
+#controler input[type=checkbox] ~ * {
+  display: none;
+  width: 100%;
+}
+
+#controler input[type=checkbox]:checked ~ * {
+  display: block !important;
+}
+
+#controler *:not(i) {
+  font-family: 'NEXON Lv1 Gothic OTF';
+}
+
+.con-item {
+  display: -ms-grid;
+  display: grid;
+  grid: 1fr / 1fr 1fr 1fr;
+  gap: 5px;
+  background: #D2D7DF;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.con-item::before {
+  display: block;
+  text-align: center;
+  width: 100%;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1 / 4;
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 5px;
+}
+
+.con-item#sc-title::before {
+  content: "~번째 ~의 장면";
+}
+
+.con-item#sc-bottom::before {
+  content: "등장인물";
+}
+
+.item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.item i {
+  font-size: 2rem;
+  vertical-align: middle;
+}
+
+.colspan {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1/4;
+}
+
+div.sp-replacer {
+  position: relative;
+  height: 3rem;
+  margin: 0;
+  margin-left: 5px;
+  width: 60%;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.sp-preview-inner {
+  color: #fff;
+  padding: 2px;
+}
+
+.sp-replacer .sp-dd {
+  display: none !important;
+}
+
+#sc-scene {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 5px;
+}
+
+#sc-scene::before {
+  content: "장면표";
+}
+
+#sc-scene div span {
+  margin-right: 5px;
+}
+
+#sc-scene input[type=text] {
+  width: 30%;
+  font-size: 1.5rem;
+}
+
+#sc-scene #emo {
+  width: 50px;
+}
+
+#outputbox #output {
+  width: 100%;
+  margin-bottom: 5px;
+}
+/*# sourceMappingURL=label.css.map */

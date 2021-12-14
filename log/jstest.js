@@ -25,47 +25,21 @@ $(function () {
   $("[name='glo-name']").on("change", radioOpt);
   document.querySelector(".example").addEventListener("click",hideMessageCP);
   tableColor('rgba(112, 32, 130, 1)');
-
-
-  // modal 버튼
-  $(".modal-content .reset, #modal-submit, .modal-close, #download-modal .reset, .modal-layer").on("click",()=>{
-    modaltog(); //닫기
-  });
+  
+  // modal css 창
+  $(".modal-content .modal-close, #modal-submit, #modal-reset,.modal-layer,#preview-modal").on("click",()=>modaltog());
   document.getElementById("css-modal-openbtn").addEventListener("click",()=>modaltog("#css-modal"));
-  document.getElementById("css-download").addEventListener("click",()=>modaltog("#download-modal"));
-  new ClipboardJS('#copy');
+  
 
-  // line 값 출력
-  $("[name='line']").change(()=>{ // line 값 출력
-    var numm = $("[name='line']:checked").val();
-    $(".line-number").text(numm);
+
+  //에디터로 복사
+  document.querySelector("#log-copy").addEventListener('click',()=>{
+    var copyTest = document.getElementById("log-content");
+    selectRange(copyTest);
+    document.execCommand("copy");
+        alert("복사가 완료되었습니다. roll20 핸드아웃 편집 창에 붙여넣기하세요.\n복사한 표는 이 페이지에 적용된 글꼴이 적용되지 않습니다.");
   });
-
-  // 1. html 입력 (확인 버튼)
-  function inputHTML () {
-    var events = $._data($("#log-input"), inputHTML);
-    console.log("실행");
-    reset();
-    var log = document.getElementById("log-input").value.replace(/(src="\/)/g, `src="https://app.roll20.net//`);
-    log = log.replace(/\r|\n/gi,''); // 개행 제거
-    log = log.replace(/(<span class="by">)\s+?/gi,'<span class="by">');
-    log = log.replace(/<span class=&quot;basicdiceroll&quot;>(.+?)<\/span>/gi,'$1');
-    log = log.replace(/(data-messageid=").+?"/gi,''); // data-messageid 삭제
-    log = log.replace(/(?<=\<a )href.+?"(?=>)/gi,''); // a 안의 href삭제
-    log = log.replace(/(<img class="sheet-brdright").+?\>/gi,''); // 인세인 엑박 삭제
-    log = log.replace('roll20-colourised',''); // roll20-colourised 삭제
-    log = log.replace(/(\([^\)]+?\#.+?)(<|")/gi,'$1)$2'); // 롤꾸 안깨지게 정리
-    log = log.replace(/\[(.+?)\]\(#" (style.+?\))/gi,'<a $2">$1</a>'); // 잘린 a 붙이기
-    for (key of Object.keys(diceinput)) {
-      log = log.replace(diceinput[key],'$1'+key);
-    }
-    //dice
-    document.getElementById("log-content").innerHTML = log;
-    addID();
-    nameExColor();
-    imgInput();
-    errCatch();
-  }
+  
   document.getElementById("log_submit").addEventListener('click', inputHTML);
   document.querySelector(".custom .reset").addEventListener('click',resetCustom);
   // html 리셋
@@ -73,93 +47,141 @@ $(function () {
     document.querySelector("#log-input").innerText='';
     $("#log-content").empty();
   });
+  //global color picker 만들기
+  makeFullGlobalCp();
 
-  // 리셋함수
-  function reset () {
-    console.log("reset");
-    if( document.getElementById("profileImg")!=null){$("#profileImg").remove()}
-    
-    $(".name-select>h2").nextAll().remove();
-    const charColorSet = `<select id="Name" style="visibility:hidden">
-    <option disabled selected>캐릭터를 선택하세요</option>
-  </select>`;
-    $(".name-select>h2")[0].insertAdjacentHTML('afterend', charColorSet);
-    $(".example .general").not(".global").remove();
+
+});
+
+// 1. html 입력  > 다음 버튼
+function inputHTML () {
+  var events = $._data($("#log-input"), inputHTML);
+  console.log("실행");
+  reset();
+  var log = document.getElementById("log-input").value.replace(/(src="\/)/g, `src="https://app.roll20.net//`);
+  log = log.replace(/\r|\n/gi,''); // 개행 제거
+  log = log.replace(/(<span class="by">)\s+?/gi,'<span class="by">');
+  log = log.replace(/<span class=&quot;basicdiceroll&quot;>(.+?)<\/span>/gi,'$1');
+  log = log.replace(/(data-messageid=").+?"/gi,''); // data-messageid 삭제
+  log = log.replace(/(?<=\<a )href.+?"(?=>)/gi,''); // a 안의 href삭제
+  log = log.replace(/(<img class="sheet-brdright").+?\>/gi,''); // 인세인 엑박 삭제
+  if (document.getElementById("ck-colourised").checked===true) {
+    log = log.replace(/( style="background-color:).+?;"/gi,''); // roll20-colourised 삭제
   }
-  //커스텀시트 리셋함수
-  function resetCustom () {
-    pond.removeFiles(); 
-    document.getElementById("editing").value = '';
-    document.querySelector("#highlighting code").textContent='';
+  log = log.replace('roll20-colourised','');
+  log = log.replace(/(\([^\)]+?\#.+?)(<|")/gi,'$1)$2'); // 롤꾸 안깨지게 정리
+  log = log.replace(/\[(.+?)\]\(#" (style.+?\))/gi,'<a $2">$1</a>'); // 잘린 a 붙이기
+  for (key of Object.keys(diceinput)) {
+    log = log.replace(diceinput[key],'$1'+key);
   }
+  //dice
+  document.getElementById("log-content").innerHTML = log;
+  addID();
+  nameExColor();
+  setTimeout(function() {
+    // url 달기
+    let list1 = document.querySelectorAll("#log-content .avatar>img");
+    for (var x of list1) {
+      x.parentNode.parentNode.setAttribute("data-avatarurl",x.currentSrc);
+    }
+    imgInput(); //로 연결
+  }, 2000);
+}
 
-  function radioOpt() {
-    let checkedValue = document.querySelector("input[name='glo-name']:checked").value;
-    let exc = document.querySelectorAll(".example .general:not(.global)");
 
-    exc.forEach(element => {
-      var len = styleNew.length; //중복확인
-      let arrSel = [];
-      byId = element.id;
-      if (byId.index==''|/\s/g) {} else { // id가 공백일때는 패스
-      for (i of styleNew) arrSel = arrSel.concat([i.selectorText]);
-      console.log(byId);
-      if (arrSel.indexOf("#" + byId) == -1) {
-        document.styleSheets[3].insertRule(`#${byId} {}`, len);
-        arrSel.push(byId);
-      }
-      len = styleNew.length;
-      if (checkedValue === "default") {
-        if (arrSel.indexOf(`#${byId} .by`) != -1) {
-          let normalColor = styleNew[5].style.color;
-          for (l of styleNew) {
-            if (l.selectorText === `#${byId} .by`) {
-              normalColor = l.style.color;
-              l.style.color = '';
-            }
-          }
-          for (m of styleNew) {
-            if (m.selectorText === `#${byId}`) {
-              m.style.color = normalColor;
-            }
-          }
-        }
-      }
-      }
+function selectRange(obj) {
+  if (window.getSelection) {
+      var selected = window.getSelection();
+          selected.selectAllChildren(obj);
+  } else if (document.body.createTextRange) {
+      var range = document.body.createTextRange();
+          range.moveToElementText(obj);
+          range.select();
+  }
+};
 
-      if (checkedValue === "indi-name") {
-        if (arrSel.indexOf(`#${byId} .by`) == -1) {
-          document.styleSheets[4].insertRule(`#${byId} .by {}`, len);
-          arrSel.push(`#${byId} .by`);
-        }
-        let indiColor = styleNew[5].style.color;
+// 리셋함수
+function reset () {
+  console.log("reset");
+  if( document.getElementById("profileImg")!=null){$("#profileImg").remove()}
+  
+  $(".name-select>h2").nextAll().remove();
+  const charColorSet = `<select id="Name" style="visibility:hidden">
+  <option disabled selected>캐릭터를 선택하세요</option>
+</select>`;
+  $(".name-select>h2")[0].insertAdjacentHTML('afterend', charColorSet);
+  $(".example .general").not(".global").remove();
+}
+//커스텀시트 리셋함수
+function resetCustom () {
+  pond.removeFiles(); 
+  document.getElementById("editing").value = '';
+  document.querySelector("#highlighting code").textContent='';
+}
+
+function radioOpt() {
+  let checkedValue = document.querySelector("input[name='glo-name']:checked").value;
+  let exc = document.querySelectorAll(".example .general:not(.global)");
+
+  exc.forEach(element => {
+    var len = styleNew.length; //중복확인
+    let arrSel = [];
+    byId = element.id;
+    if (byId.index==''|/\s/g) {} else { // id가 공백일때는 패스
+    for (i of styleNew) arrSel = arrSel.concat([i.selectorText]);
+    if (arrSel.indexOf("#" + byId) == -1) {
+      document.styleSheets[3].insertRule(`#${byId} {}`, len);
+      arrSel.push(byId);
+    }
+    len = styleNew.length;
+    if (checkedValue === "default") {
+      if (arrSel.indexOf(`#${byId} .by`) != -1) {
+        let normalColor = styleNew[5].style.color;
         for (l of styleNew) {
-          if (l.selectorText === "#" + byId) {
-            indiColor = l.style.color;
+          if (l.selectorText === `#${byId} .by`) {
+            normalColor = l.style.color;
             l.style.color = '';
           }
         }
         for (m of styleNew) {
-          if (m.selectorText === `#${byId} .by`) {
-            if (indiColor != '') {
-              m.style.color = indiColor;
-            }
+          if (m.selectorText === `#${byId}`) {
+            m.style.color = normalColor;
           }
         }
       }
-      // CP 업데이트
-      makeCP(byId);
-    });
-    selectorText = [];
-  } 
+    }
+    }
 
-  //global color picker 만들기
-  makeFullGlobalCp();
+    if (checkedValue === "indi-name") {
+      if (arrSel.indexOf(`#${byId} .by`) == -1) {
+        document.styleSheets[4].insertRule(`#${byId} .by {}`, len);
+        arrSel.push(`#${byId} .by`);
+      }
+      let indiColor = styleNew[5].style.color;
+      for (l of styleNew) {
+        if (l.selectorText === "#" + byId) {
+          indiColor = l.style.color;
+          l.style.color = '';
+        }
+      }
+      for (m of styleNew) {
+        if (m.selectorText === `#${byId} .by`) {
+          if (indiColor != '') {
+            m.style.color = indiColor;
+          }
+        }
+      }
+    }
+    // CP 업데이트
+    makeCP(byId);
+  });
+  selectorText = [];
+} 
+
 
   //Color picker 만들기
   function makeCP(byId) {
     document.styleSheets[4].insertRule(`#${byId} {}`, styleNew.length); // 스타일 추가
-    console.log(byId + "에 대한 color picker 실행 + CSS 생성");
     let checkedValue = document.querySelector("input[name='glo-name']:checked").value;
     let defaultColorText = $(`.example #${byId} .by`).css('color');
     let defaultColorBg = $(`.example #${byId}`).css('background-color');
@@ -211,7 +233,6 @@ $(function () {
     //message color picker close 닫기    
     $(".example").on("click", ".cp-close", function () {
       const nv = this.parentElement.parentElement.id;
-      console.log(nv);
       for (var index in styleNew) { //스타일 삭제
         if (styleNew[index].selectorText == `#${nv}`) {
           document.styleSheets[4].deleteRule(index);
@@ -227,83 +248,6 @@ $(function () {
       $("#Name").niceSelect();
   }
 
-  // 캐릭터별 색상 설정의 select 를 noImg 로 가져옴
-  function imgInput() { 
-    const node1 = $(".item:last")[0];
-    const changeImgBox = `<div class="item" id="profileImg"><h2>프로필 이미지 수정</h2><p>음영 표시된 캐릭터는 깨진 아바타 이미지가 1개 이상 있는 캐릭터입니다. 캐릭터를 선택하고 <b>외부 이미지 주소</b>를 입력하면 일괄 변경됩니다.</p><p>변경하지 않고 그대로 두면 <b>백업시 깨진 이미지는 모두 삭제</b>됩니다.</p><div id="imgList" class="inner-box"></div>
-    <div class="btn-box">
-    <button class="btn reset"><i class="material-icons-round">replay</i></button>
-    <button class="btn apply">적용</button>
-    </div>
-    </div>`
-    node1.insertAdjacentHTML('afterend', changeImgBox); //.item 삽입
-
-    const node2 = $("#profileImg>p")[1]
-    const nodeList = $(".name-select>h2").nextAll();
-    var copy1 = nodeList[0].cloneNode(true);
-    var copy2 = nodeList[1].cloneNode(true);
-    copy1.id="changeImg";
-    node2.insertAdjacentElement('afterend',copy2);
-    node2.insertAdjacentElement('afterend',copy1);
-    
-    document.querySelector("#profileImg .apply").addEventListener("click",imgChange); //이벤트 연결
-
-    $("#log-content .avatar>img").on("error", function(){
-      //console.log("로드에러");
-      this.parentElement.classList.add("noImage");
-      let noImgID = this.parentElement.parentElement.id;
-      //console.log(noImgID);
-      document.querySelectorAll(".nice-select .option").forEach(function(value) {
-        if(value.textContent.split(' ')[0]===noImgID) {
-          value.classList.add("noImgChar");
-        }
-      })
-    });
-  }
-  
-
-  // dropdown 클릭하면 error image input
-  function errCatch() {
-    $("#changeImg").change(function () {
-      let imgid = this.value.split(" ")[0];
-      var profileimgurl;
-      if (document.querySelector(`#${imgid} .avatar img`)==null|undefined) {
-        profileimgurl = '';
-      } else {profileimgurl=document.querySelector(`#${imgid} .avatar img`).src ;}
-      var changeImgInput =
-        `<div class="changeImg-box"><div><span>${$(this).val()}의 프로필 이미지</span><i class="material-icons-round close">close</i></div><input class="input-area" type="url" placeholder="외부 이미지 링크를 입력해주세요." onfocus="this.placeholder=''" onblur="this.placeholder='외부 이미지 링크를 입력해주세요.'"><img class="beforeimg" src="${profileimgurl}"/><div class="preview-icon"><label class="material-icons-round">photo_size_select_actual<input type="checkbox"></label><img src=""></div></div>`;
-      document.getElementById("imgList").insertAdjacentHTML('beforeend',changeImgInput);
-      $("#changeImg").next().find(`[data-value='${$(this).val()}']`).addClass("disabled");
-    });
-    $("#imgList").on("mouseleave blur", ".input-area", function () {
-      $(this).next().next().children("img").attr("src", $(this).val());
-    });
-    $("#imgList").on("change", ".preview-icon input", function() {
-      console.log(this);
-      this.parentElement.nextElementSibling.classList.toggle("visible");
-    });
-    //noImg close
-    $("#profileImg").on("click", ".close", function () {
-      const nv = $(this).prev("span").text();
-      const nameValue = /^.+(?=(의 프로필))/.exec(nv);
-      $(this).closest(".changeImg-box").remove();
-      $("#noImg").next().find(`[data-value='${nameValue[0]}']`).removeClass("disabled");
-    });
-    // 초기화
-    $("#profileImg .reset").on("click", function() {
-      document.querySelectorAll("#imgList .changeImg-box span").forEach(function(sp){
-        const nameV = /^.+(?=(의 프로필))/.exec(sp.innerText);
-        var target = document.querySelectorAll(`#log-content #${nameV[0]} .avatar img`);
-        target.forEach(function(item){
-          item.src = "noimg";
-        })
-      })
-    })
-    $("#log-content .avatar>img").on("error", function(){
-      //console.log("로드에러");
-      this.parentElement.classList.add("noImage")});
-  }
-});
 function makeFullGlobalCp () {
   // color picker 만듦
   let tgArr = ["desc","emote","general","you","whisper"];
@@ -482,8 +426,12 @@ function hideMessageCP(e) {
 
 function checkOpt() { // 체크박스
   if ($("#ck-nospacer").is(":checked")) { // nospacer
-    styleNew[1].style.setProperty('background-color', 'transparent', 'important');
-  } else { styleNew[1].style.setProperty('background-color', ''); }
+    styleNew[1].style.setProperty('background-color', 'transparent', "important");
+    // styleNew[3].style.setProperty('background-color', 'transparent', 'important');
+    // styleNew[5].style.setProperty('background-color', 'transparent', 'important');
+  } else {
+    styleNew[1].style.setProperty('background-color', '');
+  }
   if ($("#ck-circle").is(":checked")) { // circle
     styleNew[10].style.borderRadius = "100%"; // img
     styleNew[11].style.alignItems = "center"; // .avatar
@@ -538,18 +486,18 @@ function checkOpt() { // 체크박스
   }
 }
 
-// 전체에 id 달기
+
 function addID() {
+  // id달기
   let list = document.querySelectorAll("#log-content .by");
   for (var x of list) {
-    var byRaw = x.innerText.slice(0, -1);
+    var byRaw = x.innerText.slice(0, -1).replace(/\?|\#/gi,"");
     var byId;
     let byCut = /\S+?(?=\s)/.exec(byRaw);
     if (/PC\d+?\s/gi.test(byRaw)) { // PC
       byId = byRaw.replace(/PC\d+?\s+?/gi,'').match(/\S+?(?=\s|$)/gi,'')[0];
     } else if (byRaw=='') {
       byId = '공백';
-      console.log(byId);
     }else if (byCut==null) {
       byId = byRaw;
     } else {
@@ -566,22 +514,116 @@ function addID() {
       y.id=z.id; 
     }
   } catch(err) {console.log(err)};
-    
-  
 }
 
+
+// 캐릭터 아바타 이미지 수정
+function imgInput() { 
+  const node1 = $(".container .item:last")[0];
+  const changeImgBox = `<div class="item" id="profileImg"><h2>프로필 이미지 수정</h2><p>음영 표시된 캐릭터는 깨진 아바타 이미지가 1개 이상 있는 캐릭터입니다. 캐릭터를 선택하고 <b>외부 이미지 주소</b>를 입력하면 일괄 변경됩니다.</p><p>변경하지 않고 그대로 두면 <b>백업시 깨진 이미지는 모두 삭제</b>됩니다.</p><select id="dropdownUrl"></select><div id="imgList" class="inner-box"></div>
+  <div class="btn-box">
+  <button class="btn reset"><i class="material-icons-round">replay</i></button>
+  <button class="btn apply">적용</button>
+  </div>
+  </div>`
+  node1.insertAdjacentHTML('afterend', changeImgBox); //.item 삽입
+
+  let listUrl = [];
+  for (var y of document.querySelectorAll("[data-avatarurl]")) {
+    listUrl.push(y.getAttribute("data-avatarurl"));
+  }
+  const set = new Set(listUrl); //set 객체로 만들어 중복 제거
+  const resultArr = [...set];
+  try {
+    $.each(resultArr, function (index, el) {
+      let output = '';
+      output = `<option value=${el}>${document.querySelector(`[data-avatarurl='${el}'] .by`).textContent.slice(0,-1)}</option>`
+      $("#dropdownUrl").append(output);
+    });
+  } catch {}
+  
+  $("#dropdownUrl").niceSelect();
+  
+
+  document.querySelector("#profileImg .apply").addEventListener("click",imgChange); //이벤트 연결
+  errCatch();
+  //이미지 로딩 에러에 noImage 추가
+  let listNoImg = [];
+  document.querySelectorAll("#log-content .avatar img").forEach((pic)=>{
+    if(pic.naturalWidth==0) {
+      pic.naturalWidth;
+      pic.classList.add("noImage");
+      listNoImg.push(pic.parentNode.parentNode.getAttribute("data-avatarurl"));
+    }
+  });
+  //
+  const set2 = new Set(listNoImg);
+  const resultNoImg = [...set2];
+  document.querySelectorAll("#dropdownUrl+.nice-select .option").forEach((optionSel)=>{
+    resultNoImg.forEach((noimg)=>{
+      if(optionSel.getAttribute("data-value")==noimg) {
+        optionSel.classList.add("noImgChar");
+      }
+    })
+  });
+}
+
+
+// dropdown 클릭하면 error image input
+function errCatch() {
+  $("#dropdownUrl").change(function () {
+    console.log(this.value);
+    var asName = this[this.selectedIndex].text;
+    var changeImgInput =
+      `<div class="changeImg-box"><div><span>${asName}의 프로필 이미지</span><i class="material-icons-round close">close</i></div><input class="input-area" type="url" placeholder="외부 이미지 링크를 입력해주세요." onfocus="this.placeholder=''" onblur="this.placeholder='외부 이미지 링크를 입력해주세요.'"><img class="beforeimg" src="${this[this.selectedIndex].value}"/><div class="preview-icon"><label class="material-icons-round">photo_size_select_actual<input type="checkbox"></label><img src=""></div></div>`;
+    document.getElementById("imgList").insertAdjacentHTML('beforeend',changeImgInput);
+    $("#dropdownUrl").next().find(`[data-value='${$(this).val()}']`).addClass("disabled");
+  });
+  //
+  $("#imgList").on("mouseleave blur", ".input-area", function () {
+    $(this).next().next().children("img").attr("src", $(this).val());
+  });
+  $("#imgList").on("change", ".preview-icon input", function() {
+    this.parentElement.nextElementSibling.classList.toggle("visible");
+  });
+  //noImg close
+  $("#profileImg").on("click", ".close", function () {
+    const beforeUrl = $(this).closest(".changeImg-box")[0].children[2].src;
+    $("#dropdownUrl").next().children("ul").children(`[data-value='${beforeUrl}']`).removeClass("disabled");
+    $(this).closest(".changeImg-box").remove();
+  });
+  // 리셋함수
+  $("#profileImg .reset").on("click", function() {
+    document.querySelectorAll('[data-avatarurl]').forEach((item,key)=>{
+      item.querySelector(".avatar>img").src = item.getAttribute('data-avatarurl'); // 주소 원래대로
+    });
+    $("#dropdownUrl").next().children("ul").children().removeClass("disabled");
+    $(".changeImg-box").remove();
+  });
+  //
+  document.querySelectorAll("#profileImg.nice-select .option").forEach(function(item) {
+    var imgcheck = $("#log-content .noImage img").src.indexOf(item.getAttribute("data-value"));
+    if(imgcheck!= -1) {
+      item.classList.add("noImgChar");
+    }
+  });
+}
+
+
 // 이미지 바꾸는 함수
-function imgChange () { // 이미지 바꾸는 함수
+function imgChange () {
   var targetImgList = document.querySelectorAll("#imgList>.changeImg-box");
   targetImgList.forEach(function(value,index,arr){
-    let changeUrl = value.childNodes[1].value;
-    let changeId = value.firstChild.firstChild.innerText.replace("의 프로필 이미지",'').split(/\s/gi)[0];
-    document.querySelectorAll(`#${changeId} .avatar`).forEach(function(item){ // document.querySelectorAll(`#${changeId} .avatar>img`)
-      if (item.firstElementChild==null) {
-        item.insertAdjacentHTML('beforeend',`<img src="${changeUrl}">`);
-      } else {item.firstElementChild.src=changeUrl;}
-      item.parentElement.classList.remove("noImage");
-    });
+    let changeUrl = value.querySelector("input").value;
+    let beforeUrl = value.querySelector(".beforeimg").currentSrc;
+    //
+    if (changeUrl.search(/^http/gi)=== -1) { // http 로 시작하지 않으면 동작X
+    } else {
+      document.querySelectorAll(`[data-avatarurl='${beforeUrl}']`).forEach((item,key)=>{
+        item.querySelector(".avatar").classList.remove("noImage"); // noImage class 삭제
+        item.querySelector(".avatar>img").src = changeUrl;
+      });
+    }
   });
 }
 
@@ -596,7 +638,6 @@ function makeGlobalCP(type, target, option) {
     tp = tp + " .spacer";
   }
   let defaultColor =$(tp).css(tg);
-  // target == "spacer" ? $(tp).css(tg) : $(`${tp}`).css(tg);
 
   if (target == "bg") {
     $(`.cp-area>[id^=${type}][id$=${target}]`).spectrum({

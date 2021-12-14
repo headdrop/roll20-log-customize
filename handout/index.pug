@@ -1,0 +1,116 @@
+doctype html
+html(lang='ko')
+  head
+    title 핸드아웃 변환기
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width,initial-scale=1')
+    link(rel='stylesheet' href='ho2image.css')
+    link(rel='stylesheet' href='../default.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js')
+    script(src="ho2image.js")
+
+  body
+    #wrapper
+      nav#float-menu 
+        label.f-menu.hamburger.hamburger--spin(onclick="this.classList.toggle('is-active')")
+          span.hamburger-box
+            span.hamburger-inner
+        a.f-menu--1(href='../log')
+          i.fas.fa-dice-d20(title="Roll20 로그변환")
+          //- span ROLL20 로그변환
+        a.f-menu--2(href='../handout')
+          i.far.fa-file-alt
+          //- span 핸드아웃 생성기
+        a.f-menu--3(href='../labelmaker')
+          i.fas.fa-film
+          //- span 커스텀 장면표
+      .menu
+        label(for='insane')
+          p 인세인
+          | 의식시트
+        label(for='insaneHO')
+          p 인세인
+          | 핸드아웃
+      input#insane(type='radio' name='tabmenu' value='인세인_의식시트')
+      .tabCon
+        .content
+          table
+            tbody.title
+              tr
+                td(colspan='2') 의식 시트
+                td.inputbox(colspan='3' contenteditable='') 의식명
+              tr
+                td 단계
+                td 절차의 이름
+                td 지정특기
+                td 참가조건
+                td 패널티
+            tbody.cont
+              tr
+                td 1
+                td(contenteditable='')
+                td(contenteditable='')
+                td(contenteditable='')
+                td(contenteditable='')
+              tr
+                td 2
+                td(contenteditable='')
+                td(contenteditable='')
+                td(contenteditable='')
+                td(contenteditable='')
+        p 표 안에 의식시트의 내용을 붙여넣기 할 때는 Ctrl+Shift+V (서식 없이 붙여넣기) 를 이용하세요.
+        button#addRow 의식 단계 추가
+        button#copy 표 복사하기
+      input#insaneHO(type='radio' name='tabmenu' value='인세인_핸드아웃' checked='')
+      .tabCon
+        .content
+          style #insaneHO + .tabCon .ho-output > div {width:;}
+          .setting
+            span 핸드아웃 가로를 
+            input(type="radio" value="250px" name="hoWidth" checked)
+            | 250px  
+            input(type="radio" value="unset" name="hoWidth")
+            | 100%
+          .item
+            input.front-1(type='text' placeholder='이름')
+            textarea.front-2 앞면내용
+            input.back-1(type='text' placeholder='쇼크 대상')
+            textarea.back-2 뒷면내용
+            .controls
+              button.btn.copy.c-front 앞면 복사
+              button.btn.copy.c-back 뒷면 복사
+              button.remove X
+            .ho-output.front &nbsp;
+              .ho-front
+                div Handout 
+                .ho-border
+                  .ho-box
+                    span 이름
+                    span (이름들어갈곳)
+                    div 사명
+                    .ho-box-content
+                      | 가나다라
+                      br
+                      | ㄱㄱㄱ 
+                      br
+                      | ㄱㄱㄱ 
+            .ho-output.back &nbsp;
+              .ho-back
+                div Handout 
+                .ho-border
+                  div 비밀
+                  .ho-box
+                    span 쇼크
+                    span (쇼크들어갈곳)
+                    .ho-box-content
+                      | 가나다라
+                      br
+                      | ㄱㄱㄱ 
+                      br
+                      | ㄱㄱㄱ   
+        button#addHo 핸드아웃 추가
+      .bottom
+        button#down 이미지 다운로드
+    footer#footer
+    script(src="../module.js")

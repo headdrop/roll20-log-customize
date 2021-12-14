@@ -1,0 +1,135 @@
+@import '../import';
+
+$boxBg:#D2D7DF;
+
+div.container {
+  display:flex;
+  flex-wrap: wrap;
+  gap:15px;
+  font-size:1.6rem;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 70px;
+  &>div {
+    width:315px;
+  }
+  @media screen and (max-width: 980px) {
+    flex-direction:column;
+    align-content: center;
+  }
+}
+.btn {
+  margin: auto;
+  width: 50%;
+  display: block;
+  font-size:1.6rem;
+}
+#preview {
+  * {
+    font-family:unset;
+  }
+  resize:horizontal;
+  min-width:315px;
+}
+#controler {
+  input[type=checkbox] {
+    ~ span {
+      font-size: 1.2rem;
+      color: #444;
+      margin: 5px 0;
+    }
+    ~ textarea {
+      resize:none;
+    }
+    ~ * {
+      display:none;
+      width:100%;
+    }
+    &:checked ~ * {
+      display:block!important;
+    }
+  }
+  
+  *:not(i) {
+    font-family:'NEXON Lv1 Gothic OTF';
+  }
+}
+.con-item {
+  display: grid;
+  grid: 1fr / 1fr 1fr 1fr ;
+  gap: 5px;
+  background: $boxBg;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 10px;
+  &::before {
+    display:block;
+    text-align:center;
+    width: 100%;
+    grid-column:1 / 4;
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 5px;
+  }
+  &#sc-title {
+    &::before {
+      content:"~번째 ~의 장면";
+    }
+  }
+  &#sc-bottom::before {
+    content:"등장인물";
+  }
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  i {
+  font-size: 2rem;
+  vertical-align:middle;
+}
+}
+.colspan {
+  grid-column: 1/4;
+}
+div.sp-replacer {
+  position:relative;
+  height: 3rem;
+  margin : 0;
+  margin-left:5px;
+  width: 60%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+.sp-preview-inner {
+  color: #fff;
+  padding: 2px;
+}
+.sp-replacer .sp-dd{
+  display: none!important;
+}
+
+#sc-scene {
+  &::before {
+    content:"장면표";
+  }
+  div span {
+    margin-right:5px;
+  }
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  input[type=text] {
+    width: 30%;
+    font-size: 1.5rem;
+  }
+  #emo {
+    width:50px;
+  }
+}
+
+#outputbox{
+  #output {
+    width:100%;
+    margin-bottom:5px;
+  }
+}

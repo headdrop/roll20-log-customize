@@ -2,18 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 @import url(https://cdn.jsdelivr.net/gh/loadingio/loading.css@v2.0.0/dist/loading.min.css);
 @font-face {
-  font-family: 'NEXON Lv1 Gothic OTF';
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Pretendard';
-  src: url("https://cdn.jsdelivr.net/gh/headdrop/PublicBox/PretendardVariable.woff2") format("woff2");
-}
-
-@font-face {
   font-family: 'Diceicon';
   src: url("https://cdn.jsdelivr.net/gh/headdrop/roll20-log-customize/source/Diceicon.woff") format("woff");
 }
@@ -24,13 +12,7 @@
 }
 
 html {
-  padding: 0;
-  font-size: 10px;
   background-color: #E9E9E9;
-}
-
-body {
-  margin: 0;
 }
 
 h2 {
@@ -44,19 +26,11 @@ h3 {
   color: #2c695f;
 }
 
-* {
-  font-family: 'Pretendard';
+h1, h2, h3, h4 {
   font-weight: 400;
 }
 
-p {
-  -webkit-margin-before: 0.5em;
-          margin-block-start: 0.5em;
-  -webkit-margin-after: 0.5em;
-          margin-block-end: 0.5em;
-}
-
-h2, h3, .btn, .name-select {
+h2, h3, .name-select {
   font-style: normal;
   font-family: 'NEXON Lv1 Gothic OTF';
   -webkit-font-smoothing: antialiased;
@@ -66,87 +40,6 @@ h2, h3, .btn, .name-select {
 /* keep-all */
 h2, h3, .item, .text {
   word-break: keep-all;
-}
-
-input[type="text"], textarea {
-  border: 1px solid #99A89E;
-  border-radius: 2px;
-  outline: none;
-}
-
-input[type="text"]:active, input[type="text"]:focus, textarea:active, textarea:focus {
-  -webkit-box-shadow: inset 0 0 0 3px rgba(249, 213, 211, 0.5);
-          box-shadow: inset 0 0 0 3px rgba(249, 213, 211, 0.5);
-}
-
-footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100vw;
-  height: auto;
-  position: relative;
-  padding: 15px;
-  font-size: 1.2rem;
-  background-color: #4b4b4b;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-footer div:last-child {
-  text-align: right;
-}
-
-footer a {
-  margin-right: 4px;
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.7);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-footer svg {
-  fill: rgba(255, 255, 255, 0.8);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-footer a:hover, footer a:active, footer a:focus {
-  color: #C0DEC7;
-}
-
-footer a:hover svg, footer a:active svg, footer a:focus svg {
-  fill: #C0DEC7;
-}
-
-footer h4 {
-  margin: 0;
-  font-weight: bolder;
-  font-size: 1.5rem;
-}
-
-@media screen and (max-width: 350px) {
-  footer {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: stretch;
-        -ms-flex-align: stretch;
-            align-items: stretch;
-    gap: 10px;
-  }
-  footer div * {
-    text-align: left;
-  }
-}
-
-b {
-  font-weight: bolder;
 }
 
 .container {
@@ -164,20 +57,7 @@ b {
   }
 }
 
-#datatextarea {
-  position: absolute;
-  top: -1000vh;
-  opacity: 0;
-  cursor: default;
-  border: none;
-  padding: 0 !important;
-}
-
-#datatextarea * {
-  resize: none;
-}
-
-#textchat {
+.example, #log-content {
   /*폰트 사이즈 결정 참조: https://webclub.tistory.com/122 */
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -190,7 +70,6 @@ b {
   margin: 0 2px;
 }
 
-/*공통기본*/
 .clear {
   clear: both;
   height: 0px;
@@ -239,6 +118,14 @@ input[type=checkbox].ckbx, input[type=radio] {
     padding-left: 20px;
     padding-right: 20px;
   }
+}
+
+.bottom hr {
+  margin: 50px;
+}
+
+.bottom h3 ~ p {
+  margin-left: 5px;
 }
 
 @font-face {
@@ -336,11 +223,6 @@ i {
   font-size: 1.1rem;
   color: #999;
   padding: 5px;
-}
-
-.top p > button {
-  width: calc(50% - 15px);
-  margin-top: 10px;
 }
 
 .shape-blob {
@@ -612,6 +494,12 @@ h3 {
   gap: 15px;
 }
 
+.bottom .setting {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
 .name-select {
   min-height: 6em;
   margin-left: 90px;
@@ -623,6 +511,11 @@ h3 {
 }
 
 /*flex items*/
+.bottom .item:first-of-type {
+  height: auto;
+  overflow: hidden;
+}
+
 .item {
   background-color: #FEFEFE;
   -ms-flex-preferred-size: 240px;
@@ -673,6 +566,10 @@ h3 {
 
 .item p {
   line-height: 1.8rem;
+  -webkit-margin-before: 0.5em;
+          margin-block-start: 0.5em;
+  -webkit-margin-after: 0.5em;
+          margin-block-end: 0.5em;
 }
 
 .item p:last-of-type {
@@ -696,11 +593,6 @@ h3 {
 
 .item a:hover, .item a:focus {
   color: #ECA4A6;
-}
-
-.item-full {
-  -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
 }
 
 .labeldiv {
@@ -740,6 +632,36 @@ h3 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+#preset-preview {
+  width: 100%;
+  min-width: 300px;
+  margin-bottom: 20px;
+  border: 1px solid #a3afb8;
+  padding: 5px;
+}
+
+#preset-preview img {
+  width: 100%;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+#preset-preview span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100px;
+  text-align: center;
+  word-break: keep-all;
+  padding: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .cp-area {
@@ -820,108 +742,48 @@ h3 {
 }
 
 #log-content {
-  display: none;
+  max-height: 200px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 50px;
 }
 
-/*버튼*/
-.btn-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 10px;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin-top: 20px;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  bottom: 0;
+#log-content::before {
+  content: "미리보기";
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  font-weight: bold;
+  color: #2c695f;
+  font-family: 'NEXON Lv1 Gothic OTF';
 }
 
-.btn-box .btn {
-  margin: 0;
+#log-content + p {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  color: #9c9c9c;
+  font-family: 'NEXON Lv1 Gothic OTF';
 }
 
-.btn {
-  display: inline-block;
-  margin: 5px;
-  border-radius: 4px;
-  font-size: 1.3rem;
-  color: #fff;
-  padding: 8px 25px 8px 25px;
-  border: none;
-  letter-spacing: .02rem;
-  background-color: #3a9488;
-  outline: 0;
-  cursor: pointer;
-}
-
-.btn:only-of-type(button) {
-  float: right;
-}
-
-.btn-disabled {
-  cursor: not-allowed;
-  -webkit-filter: grayscale(100);
-          filter: grayscale(100);
-}
-
-.btn {
-  -webkit-transition: .3s ease-in;
-  transition: .3s ease-in;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-}
-
-.btn i {
-  -webkit-transition: .5s ease-in-out;
-  transition: .5s ease-in-out;
-  -webkit-transition-property: -webkit-transform;
-  transition-property: -webkit-transform;
-  transition-property: transform;
-  transition-property: transform, -webkit-transform;
-}
-
-.btn-sm {
-  font-size: 1.2rem;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.btn:focus {
-  -webkit-box-shadow: 0 0 0 3px rgba(58, 148, 136, 0.6), rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-          box-shadow: 0 0 0 3px rgba(58, 148, 136, 0.6), rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-}
-
-.btn:hover, .btn:focus {
-  background-color: #2c695f;
-}
-
-.reset {
+button.reset {
   padding: 0 8px;
   height: 3.1rem;
   background-color: #a3afb8;
 }
 
-.reset i {
+button.reset i {
   margin-top: 4px;
 }
 
-.reset:hover, .reset:focus {
+button.reset:hover, button.reset:focus {
   background-color: #9c9c9c;
 }
 
-.reset:hover i, .reset:focus i {
+button.reset:hover i, button.reset:focus i {
   -webkit-transform: rotate(720deg);
           transform: rotate(720deg);
 }
 
-.reset:focus {
+button.reset:focus {
   -webkit-box-shadow: 0 0 0 3px rgba(163, 175, 184, 0.6), rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
           box-shadow: 0 0 0 3px rgba(163, 175, 184, 0.6), rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
@@ -939,7 +801,7 @@ hr {
   margin-top: 2rem;
 }
 
-.item il {
+.item li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -950,7 +812,7 @@ hr {
           align-items: center;
 }
 
-.item il :first-child {
+.item li :first-child {
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
@@ -964,7 +826,7 @@ hr {
   position: relative;
 }
 
-input + label {
+li input + label {
   padding: 0.1em 0.5em 0.1em 0.5em;
   display: -webkit-box !important;
   display: -ms-flexbox !important;
@@ -981,13 +843,13 @@ input + label {
   background-image: linear-gradient(90deg, #F9D5D3, #ECA4A6);
 }
 
-input:checked + label {
+li input:checked + label {
   color: #000;
   font-weight: bold;
   background-size: 100% 100%;
 }
 
-input:disabled + label {
+li input:disabled + label {
   text-decoration: line-through;
   color: #999;
 }
@@ -1012,7 +874,7 @@ tooltip {
           animation: slide-down 0.2s ease-in-out;
 }
 
-il:hover + tooltip {
+li:hover + tooltip {
   display: inline-block;
 }
 
@@ -1245,7 +1107,16 @@ il:hover + tooltip {
 
 [id$='modal'] {
   visibility: hidden;
-  position: fixed;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: var(--width);
   height: var(--height);
   top: calc(50vh - var(--height)/2);
@@ -1253,28 +1124,28 @@ il:hover + tooltip {
   z-index: 1;
 }
 
+#preview-modal {
+  width: 100%;
+  height: 100%;
+  top: unset;
+  left: unset;
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
+}
+
+#preview-modal .modal-content {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 100%;
+}
+
 #css-modal {
   --width: 80vw;
   --height: 80vh;
-}
-
-#download-modal, #convert-modal, #error-modal, #copy-modal {
-  --width: 400px;
-  --height: 270px;
-}
-
-@media screen and (max-width: 400px) {
-  #download-modal, #convert-modal, #error-modal, #copy-modal {
-    width: calc(100vw - 20px);
-    height: auto;
-    top: 10vh;
-    left: 10px;
-  }
-  #download-modal .btn-box, #convert-modal .btn-box, #error-modal .btn-box, #copy-modal .btn-box {
-    position: relative;
-    bottom: 0;
-    left: 0;
-  }
 }
 
 .modal-content {
@@ -1322,43 +1193,6 @@ il:hover + tooltip {
 .modal-content li {
   color: #C0DEC7;
   line-height: 2.5rem;
-}
-
-#error-modal > .modal-content {
-  background-color: #444;
-  color: #fff;
-}
-
-#error-modal p {
-  text-align: center;
-}
-
-#error-modal h3 {
-  color: red;
-}
-
-#error-modal .btn {
-  color: #000;
-}
-
-#copy-modal {
-  visibility: hidden;
-}
-
-#copy-modal .btn-box > button[id] {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-#copy-modal textarea {
-  width: 100%;
-  resize: none;
-}
-
-#page {
-  width: 100%;
-  text-align: right;
 }
 
 #modal-reset {
@@ -1561,6 +1395,41 @@ il:hover + tooltip {
   resize: none;
 }
 
+embed {
+  width: 100% !important;
+  height: 350px;
+  padding: 5px;
+}
+
+.item-full {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+.item-full .btn-box {
+  margin-top: 5px;
+}
+
+.item-full input {
+  height: 15px !important;
+  width: 15px !important;
+  border-radius: 5px !important;
+}
+
+.item-full input:after {
+  left: 4px !important;
+  top: 1px !important;
+}
+
+.item-full label {
+  line-height: 15px !important;
+  font-size: 1.2rem !important;
+}
+
+.item-full textarea {
+  margin-bottom: 10px;
+}
+
 @media screen and (min-width: 768px) {
   .btn-box {
     -webkit-box-pack: start;
@@ -1572,5 +1441,10 @@ il:hover + tooltip {
         -ms-flex: auto;
             flex: auto;
   }
+  .btn-box-half button {
+    -webkit-box-flex: 1;
+        -ms-flex: auto;
+            flex: auto;
+  }
 }
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=log.css.map */

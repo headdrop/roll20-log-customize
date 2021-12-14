@@ -1,0 +1,12 @@
+#preview .ap-title {
+  background: linear-gradient(to right, rgb(255, 94, 98), rgb(255, 153, 102));
+  color: white;
+}
+#preview .ap-title-font {
+  color:rgba(255,255,255,0.8);
+}
+#preview .ap-player {
+  background: rgba(255, 255, 255, 0.5);
+  color: rgb(255, 94, 98);
+  border-bottom:1px dashed rgb(255, 94, 98)
+}
