@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica&display=swap");
 @font-face {
   font-family: 'Pretendard';
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff") format("woff");
@@ -20,14 +20,7 @@
   font-style: normal;
 }
 
-body {
-  height: 100%;
-  margin: 0;
-}
-
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   font-family: 'Pretendard';
 }
 
@@ -37,6 +30,17 @@ body {
 
 input {
   display: none;
+}
+
+a {
+  color: #3a9488;
+  text-decoration: none;
+}
+
+a:hover, a:active, a:focus {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  color: #2c695f;
 }
 
 .menu {
@@ -54,7 +58,7 @@ input {
   gap: 10px;
   background-color: #E9E9E8;
   padding-top: 10px;
-  font-size: 1.1em;
+  font-size: 1.7rem;
   font-weight: 800;
 }
 
@@ -65,7 +69,7 @@ input {
   font-weight: 300;
 }
 
-label {
+.menu label {
   padding: 10px;
   text-align: center;
   cursor: pointer;
@@ -77,11 +81,11 @@ label {
   transition-property: background-color;
 }
 
-label:hover {
+.menu label:hover, .menu label:focus, .menu label:active {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-label:nth-of-type() {
+.menu label:nth-of-type() {
   background-color: white;
 }
 
@@ -97,6 +101,7 @@ label:nth-of-type() {
   left: 0;
   width: 100%;
   padding-top: 20px;
+  font-size: 1.4rem;
 }
 
 input:checked + .tabCon {
@@ -109,368 +114,8 @@ input:checked + .tabCon {
   margin-top: 20px;
 }
 
-#편도용사 + .tabCon .content {
-  width: 600px;
-  height: 940px;
-  background-image: url("quest_card.png");
-  background-repeat: no-repeat;
-  position: relative;
-  overflow: hidden;
-}
-
-#편도용사 + .tabCon .content .inputbox {
-  overflow-y: auto;
-  position: absolute;
-  padding: 5px;
-  font-size: 20px;
-  word-break: keep-all;
-}
-
-#편도용사 + .tabCon .content .inputbox:nth-of-type(1) {
-  left: 40px;
-  top: 65px;
-  width: 520px;
-  height: 78px;
-  font-weight: 800;
-  font-size: 30px;
-  text-align: center;
-}
-
-#편도용사 + .tabCon .content .inputbox:nth-of-type(2) {
-  top: 195px;
-  left: 128px;
-  width: 325px;
-  height: 80px;
-}
-
-#편도용사 + .tabCon .content .inputbox:nth-of-type(3) {
-  top: 195px;
-  left: 510px;
-  width: 50px;
-  height: 48px;
-  font-weight: 800;
-  font-size: 30px;
-  text-align: center;
-}
-
-#편도용사 + .tabCon .content .inputbox:nth-of-type(4) {
-  top: 328px;
-  left: 100px;
-  width: 458px;
-  height: 270px;
-}
-
-#편도용사 + .tabCon .content .inputbox:nth-of-type(5) {
-  top: 620px;
-  left: 180px;
-  width: 340px;
-  height: 80px;
-}
-
-#편도용사 + .tabCon .content .inputbox:nth-of-type(6) {
-  bottom: 80px;
-  left: 100px;
-  width: 458px;
-  height: 116px;
-}
-
-#amade-h + .tabCon .content {
-  width: 600px;
-  height: 940px;
-  background-image: url("amadeus_hontai.png");
-  background-repeat: no-repeat;
-  position: relative;
-  overflow: hidden;
-}
-
-#amade-h + .tabCon .content .inputbox {
-  overflow-y: hidden;
-  position: absolute;
-  padding: 5px;
-  font-size: 20px;
-  word-break: keep-all;
-}
-
-#amade-h + .tabCon .content .inputbox:nth-of-type(1) {
-  left: 160px;
-  top: 65px;
-  width: 320px;
-  height: 85px;
-  font-weight: 800;
-  font-size: 35px;
-  text-align: center;
-}
-
-#amade-h + .tabCon .content .inputbox:nth-of-type(2) {
-  top: 60px;
-  left: 34px;
-  width: 88px;
-  height: 88px;
-  font-size: 55px;
-  font-weight: 800;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-transform: rotate(-10deg);
-          transform: rotate(-10deg);
-}
-
-#amade-h + .tabCon .content .inputbox:nth-of-type(3) {
-  top: 60px;
-  left: 530px;
-  width: 64px;
-  height: 54px;
-  font-size: 40px;
-  font-weight: 800;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-#amade-h + .tabCon .content .inputbox:nth-of-type(4) {
-  top: 160px;
-  left: 190px;
-  width: 330px;
-  height: 30px;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-#amade-h + .tabCon .content .inputbox:nth-of-type(5) {
-  top: 210px;
-  left: 120px;
-  width: 440px;
-  height: 160px;
-}
-
-#amade-h + .tabCon .content .inputbox:nth-of-type(6) {
-  top: 400px;
-  left: 152px;
-  width: 78px;
-  height: 76px;
-  font-size: 45px;
-  font-weight: 800;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-#amade-h + .tabCon .content .inputbox:nth-of-type(7) {
-  top: 400px;
-  left: 426px;
-  width: 78px;
-  height: 76px;
-  font-size: 45px;
-  font-weight: 800;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-#amade-h + .tabCon .content .inputbox:nth-of-type(8) {
-  top: 410px;
-  left: 510px;
-  width: 49px;
-  height: 60px;
-  font-size: 30px;
-  font-weight: 800;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-#amade-h + .tabCon .content .inputbox:nth-of-type(9) {
-  top: 560px;
-  left: 80px;
-  width: 480px;
-  height: 260px;
-}
-
-#amade-t + .tabCon .content {
-  width: 600px;
-  height: 940px;
-  background-image: url("amadeus_threat.png");
-  background-repeat: no-repeat;
-  position: relative;
-  overflow: hidden;
-}
-
-#amade-t + .tabCon .content .inputbox {
-  overflow-y: hidden;
-  position: absolute;
-  padding: 5px;
-  font-size: 20px;
-  word-break: keep-all;
-}
-
-#amade-t + .tabCon .content .inputbox:nth-of-type(1) {
-  left: 160px;
-  top: 65px;
-  width: 320px;
-  height: 85px;
-  font-weight: 800;
-  font-size: 35px;
-  text-align: center;
-}
-
-#amade-t + .tabCon .content .inputbox:nth-of-type(2) {
-  overflow: hidden;
-  top: 28px;
-  left: 48px;
-  width: 80px;
-  height: 140px;
-  font-size: 50px;
-  font-weight: 800;
-  -webkit-transform: rotate(-10deg);
-          transform: rotate(-10deg);
-  text-indent: -12px;
-  padding-left: 12px;
-  line-height: 60px;
-}
-
-#amade-t + .tabCon .content .inputbox:nth-of-type(3) {
-  top: 60px;
-  left: 530px;
-  width: 64px;
-  height: 54px;
-  font-size: 40px;
-  font-weight: 800;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-#amade-t + .tabCon .content .inputbox:nth-of-type(4) {
-  top: 160px;
-  left: 190px;
-  width: 330px;
-  height: 30px;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-#amade-t + .tabCon .content .inputbox:nth-of-type(5) {
-  top: 210px;
-  left: 164px;
-  width: 390px;
-  height: 160px;
-}
-
-#amade-t + .tabCon .content .inputbox:nth-of-type(6) {
-  top: 262px;
-  left: 42px;
-  width: 84px;
-  height: 34px;
-  text-align: center;
-  font-weight: 600;
-}
-
-#amade-t + .tabCon .content .inputbox:nth-of-type(7) {
-  top: 418px;
-  left: 42px;
-  width: 100px;
-  height: 34px;
-  text-align: center;
-  font-weight: 600;
-}
-
-#amade-t + .tabCon .content .inputbox:nth-of-type(8) {
-  top: 400px;
-  left: 152px;
-  width: 78px;
-  height: 76px;
-  font-size: 45px;
-  font-weight: 800;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-#amade-t + .tabCon .content .inputbox:nth-of-type(9) {
-  top: 400px;
-  left: 426px;
-  width: 78px;
-  height: 76px;
-  font-size: 45px;
-  font-weight: 800;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-#amade-t + .tabCon .content .inputbox:nth-of-type(10) {
-  top: 410px;
-  left: 510px;
-  width: 49px;
-  height: 60px;
-  font-size: 30px;
-  font-weight: 800;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-#amade-t + .tabCon .content .inputbox:nth-of-type(11) {
-  top: 560px;
-  left: 80px;
-  width: 480px;
-  height: 260px;
+.setting input {
+  display: inline-block;
 }
 
 #insane + .tabCon .content table {
@@ -486,7 +131,7 @@ input:checked + .tabCon {
   border: 1px solid #444;
   padding: 2px 5px;
   vertical-align: middle;
-  line-height: 1.4em;
+  line-height: 2.2rem;
 }
 
 #insane + .tabCon .content table td:nth-of-type(1) {
@@ -494,20 +139,20 @@ input:checked + .tabCon {
 }
 
 #insane + .tabCon .content table td:nth-of-type(2) {
-  min-width: 6em;
+  min-width: 9.6rem;
 }
 
 #insane + .tabCon .content table td:nth-of-type(3), #insane + .tabCon .content table td:nth-of-type(4) {
-  min-width: 5em;
+  min-width: 8rem;
 }
 
 #insane + .tabCon .content table td:nth-of-type(5) {
-  min-width: 4em;
+  min-width: 6.4rem;
 }
 
 #insane + .tabCon .content table .title tr:first-child {
   font-size: 25px;
-  height: 1.8em;
+  height: 4rem;
 }
 
 #insane + .tabCon .content table .title tr:first-child td:first-of-type {
@@ -557,6 +202,211 @@ input:checked + .tabCon {
 #insane + .tabCon .content tbody.cont td:nth-of-type(2) {
   font-size: 18px;
   font-weight: 800;
+}
+
+#insaneHO:checked ~ .bottom > #down {
+  display: none;
+}
+
+#insaneHO + .tabCon {
+  font-size: 16px;
+}
+
+#insaneHO + .tabCon .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+
+#insaneHO + .tabCon .item {
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 30px 90px;
+  -ms-grid-columns: 250px 250px 100px;
+      grid-template: 30px 90px / 250px 250px 100px;
+  grid-auto-flow: column;
+  gap: 5px;
+}
+
+#insaneHO + .tabCon .item > textarea, #insaneHO + .tabCon .item > input {
+  font-size: 1.6rem;
+  overflow-y: auto;
+}
+
+#insaneHO + .tabCon .item button {
+  font-size: 1.6rem;
+  padding: 5px;
+}
+
+#insaneHO + .tabCon .item button.remove {
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  right: 100%;
+  width: 30px;
+  padding: 5px;
+  margin: 0 10px 0 0;
+}
+
+#insaneHO + .tabCon input[type="text"] {
+  display: inline-block;
+}
+
+#insaneHO + .tabCon textarea {
+  resize: none;
+}
+
+#insaneHO + .tabCon .controls {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 / span 2;
+}
+
+#insaneHO + .tabCon .ho-output {
+  position: absolute;
+  top: -4000000px;
+  width: 100%;
+}
+
+#insaneHO + .tabCon .ho-output > div {
+  width: 250px;
+}
+
+#insaneHO + .tabCon .ho-output * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#insaneHO + .tabCon .ho-front, #insaneHO + .tabCon .ho-back {
+  display: inline-block;
+}
+
+#insaneHO + .tabCon .ho-front {
+  border: 1px solid black;
+  padding: 4px;
+  background-color: white;
+  color: black;
+}
+
+#insaneHO + .tabCon .ho-front * {
+  line-height: normal;
+}
+
+#insaneHO + .tabCon .ho-front > div:first-child {
+  text-align: center;
+  font-family: 'IM Fell DW Pica';
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#insaneHO + .tabCon .ho-front .ho-border {
+  border: solid 3px black;
+  padding: 2px;
+  text-align: initial;
+}
+
+#insaneHO + .tabCon .ho-front .ho-box {
+  padding-bottom: 1px;
+  border: 1px solid black;
+}
+
+#insaneHO + .tabCon .ho-front .ho-box * {
+  padding: 3px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#insaneHO + .tabCon .ho-front .ho-box span:first-child {
+  border-right: 1px solid black;
+  display: inline-block;
+  padding: 3px 6px;
+}
+
+#insaneHO + .tabCon .ho-front .ho-box div:first-of-type {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+#insaneHO + .tabCon .ho-front .ho-box-content {
+  padding: 1px 3px 0 3px;
+  margin-bottom: -1px;
+  background-image: linear-gradient(to right, transparent 0, transparent 8px, white 8px, white 12px), linear-gradient(to bottom, white 0, white 44px, #888 44px, #888 44px);
+  background-size: 12px 45px;
+  background-repeat: repeat;
+  line-height: 22.5px;
+}
+
+#insaneHO + .tabCon .ho-back {
+  background-color: black;
+  border: 1px solid black;
+  padding: 4px;
+}
+
+#insaneHO + .tabCon .ho-back * {
+  line-height: normal;
+}
+
+#insaneHO + .tabCon .ho-back > div:first-child {
+  text-align: center;
+  color: white;
+  font-family: 'IM Fell DW Pica';
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#insaneHO + .tabCon .ho-back .ho-border {
+  border: solid 3px white;
+  padding: 2px;
+  text-align: initial;
+}
+
+#insaneHO + .tabCon .ho-back .ho-border * {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#insaneHO + .tabCon .ho-back .ho-border > div:first-child {
+  text-align: center;
+  color: white;
+  border-bottom: 3px solid black;
+}
+
+#insaneHO + .tabCon .ho-back .ho-box {
+  padding-bottom: 1px;
+  background-color: white;
+  color: black;
+}
+
+#insaneHO + .tabCon .ho-back .ho-box * {
+  padding: 3px;
+}
+
+#insaneHO + .tabCon .ho-back .ho-box span:first-child {
+  border-right: 1px solid black;
+  display: inline-block;
+  padding: 3px 6px;
+}
+
+#insaneHO + .tabCon .ho-back .ho-box div:first-of-type {
+  border-top: 1px solid black;
+}
+
+#insaneHO + .tabCon .ho-back .ho-box-content {
+  padding: 1px 3px 0 3px;
+  margin-bottom: -1px;
+  background-image: linear-gradient(to right, transparent 0, transparent 8px, white 8px, white 12px), linear-gradient(to bottom, white 0, white 44px, #888 44px, #888 44px);
+  background-size: 12px 45px;
+  background-repeat: repeat;
+  line-height: 22.5px;
+}
+
+#insaneHO + .tabCon .ho-box-content {
+  text-align: justify;
 }
 
 span.bold {

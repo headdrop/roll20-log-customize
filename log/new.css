@@ -1,5 +1,5 @@
 .message {background-color:#F1F1F1; color:#404040}
-.message .spacer {background-color: #e1e1e1;} /*#ck-nospacer*/
+#log-content .message .spacer {background-color: #e1e1e1;} /*#ck-nospacer*/
 .message.desc {background-color:#F1F1F1; color:#404040}
 .message.desc .spacer {background-color: #e1e1e1;}
 .message.emote {color: #653e10;background-color: #f5e4d3;}

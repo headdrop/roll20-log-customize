@@ -15,6 +15,11 @@ $(function () {
     customCss();
     setTimeout(function() {checkOpt() }, 800);
   });
+  document.querySelector(".preset .apply").addEventListener("click",()=>{
+    var num =presetStyle();
+    setTimeout(()=>preset(num),1);
+  });
+  $("[name='presetSelect']").on("change",previewImage);
 });
 
 // 2-1. rule select
@@ -50,11 +55,11 @@ function selectRule () {
   $("#theme input").on("change",theme);
 }
 // 2-2. theme select
-let link = document.createElement("link");
 function theme () {
+  let link = document.createElement("link");
   try {document.getElementById("rule-css").remove()} catch {}
   let checkId = document.querySelector("#theme :checked").id;
-  console.log(checkId);
+
   link.rel = "stylesheet";
   link.type = "text/css";
   link.href = `./theme/${checkId}.css`;
@@ -191,6 +196,99 @@ function saveToFile_Chrome(fileName, content) {
   a.download = fileName;
   a.href = objURL;
   a.click();
+}
+
+
+// other preset
+function presetStyle () {
+  var checkId = document.querySelector(".preset :checked").id;
+  try {document.getElementById("preset-css").remove();} catch {}
+  if (checkId==="pre_0") return 0;    //기본일때 아무것도 하지 않음
+
+  let link = document.createElement("link");
+  var num = /\d/gi.exec(checkId)[0];
+  link.rel = "stylesheet";
+  link.type = "text/css";
+  link.href = `./theme/${checkId}.css`;
+  link.id = "preset-css"
+  document.body.appendChild(link);
+  return num;
+}
+
+
+function preset (num) {
+  var setting = document.querySelectorAll(".glo-option input");
+  setting.forEach((it)=>it.disabled=false);
+  switch(num) {
+    case 0 :
+      inputHTML();
+    break;
+    case "1" :
+      setting[0].disabled = true;
+      setting[2].disabled = true;
+
+      $("#log-content  .spacer").remove();
+      
+      $("#log-content .by").each((ind,obj)=>{
+        obj.textContent = obj.textContent.slice(0,-1);
+        obj.previousSibling.previousSibling.appendChild(obj);
+      });
+      
+      document.querySelectorAll("#log-content .general[id]").forEach(function(obj){
+        var p = document.createElement("p");
+        var place = obj.appendChild(p);
+        var nodeArr = Array.prototype.slice.call(obj.childNodes);
+        var item = obj.lastChild;
+        try {
+          for (var val of nodeArr) {
+            if(val.className!=="avatar" && val.className!=="tstamp" && val.localName!='p') place.append(val)}
+          if (obj.id===obj.previousSibling.id && obj.getAttribute('data-avatarurl')==null) {
+            if (obj.previousSibling.getAttribute('data-avatarurl')==null) {
+              $(obj).prevUntil('[data-avatarurl]').last().prev().append(item);
+              obj.remove();
+            } else if (obj.previousSibling.classList.contains('emote')||obj.previousSibling.classList.contains('desc')) {
+              //$(obj).append(item);
+            } else {
+              $(obj).prev().append(item);
+              obj.remove();
+            }
+          }
+        } catch {}
+        
+      });
+      
+      $(".example .avatar").css("display","none");
+      setTimeout(()=>{
+        $("#log-content .general .avatar").each((ind,elm)=>{
+          var avtHeight = $(elm).css("height");
+          $(elm).parent().css("min-height",avtHeight)})
+      },1)
+    break;
+  }
+}
+//
+function previewImage () {
+  let checkId = document.querySelector(".preset :checked").id;
+  let img = new Image();
+  let box = document.getElementById("preset-preview");
+  box.childNodes[0].remove();
+  box.removeEventListener("click",zoomModal);
+  if (checkId==="pre_0") {
+    let span = '<span>테마를 선택하면 해당 테마의 미리보기가 이 창에 나타납니다.</span>'
+    box.innerHTML=span;
+    return 0;
+  } else {
+    img.src=`./theme/${checkId}.png`;
+    box.appendChild(img);
+    box.addEventListener("click",zoomModal);
+  }
+}
+function zoomModal () {
+  let preImg = new Image();
+  let imgSrc = this.querySelector("img").src;
+  preImg.src = imgSrc;
+  $(".modal #preview-modal .modal-content").html(preImg);
+  modaltog("#preview-modal");
 }
 
 function modaltog (divsel) {

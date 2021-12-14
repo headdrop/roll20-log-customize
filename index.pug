@@ -1,0 +1,39 @@
+doctype html
+html(lang='ko')
+  head
+    meta(charset='utf-8')
+    meta(property="og:type" content="website")
+    meta(property="og:locale" content="ko_KR")
+    meta(name='viewport' content='width=device-width,initial-scale=1')
+    meta(property="og:url" content="https://headdrop.github.io/roll20-log-customize/")
+    meta(property="og:image" content="https://raw.githubusercontent.com/headdrop/roll20-log-customize/main/source/ogimg.png")
+    meta(property="og:description" content="Roll20 +a")
+    meta(property="og:title" content="Rolling Mint MAIN")
+    meta(property="og:site_name" content="Rolling Mint")
+    title Rolling Mint
+    link(rel='stylesheet' href='default.css')
+    link(rel='stylesheet' href='main.css')
+  body
+    #wrapper
+      .top
+        h1.bounce-top R
+        h1 olling Mint
+      section
+        nav 
+          a.card.card--1(href='/log')
+            .overlay     
+            .circle
+              <i class="fas fa-dice-d20"></i>
+            h3 ROLL20 로그변환
+          a.card.card--2(href='/handout')
+            .overlay     
+            .circle
+              <i class="far fa-file-alt"></i>
+            h3 핸드아웃 생성기
+          a.card.card--3(href='/labelmaker')
+            .overlay     
+            .circle
+              <i class="fas fa-film"></i>
+            h3 커스텀 장면표
+    footer#footer
+    script(src="../module.js")

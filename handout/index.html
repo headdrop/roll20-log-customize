@@ -5,168 +5,112 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="ho2image.css">
+    <link rel="stylesheet" href="../default.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
+    <script src="ho2image.js"></script>
   </head>
   <body>
-    
-    <div class="menu">
-      <label for="편도용사"><p>편도용사</p>퀘스트카드</label>
-      <label for="amade-h"><p>아마데우스</p>본체카드</label>
-      <label for="amade-t"><p>아마데우스</p>위협카드</label>
-      <label for="insane"><p>인세인</p>의식시트</label>
-    </div>
-    
-    <input type="radio" name="tabmenu" id="편도용사" num="1" value="편도용사_퀘스트 카드" checked >
-    <div class="tabCon">
-      <div class="content">
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
+    <div id="wrapper">
+      <nav id="float-menu"> 
+        <label class="f-menu hamburger hamburger--spin" onclick="this.classList.toggle('is-active')"><span class="hamburger-box"><span class="hamburger-inner"></span></span></label><a class="f-menu--1" href="../log"><i class="fas fa-dice-d20" title="Roll20 로그변환"></i></a><a class="f-menu--2" href="../handout"><i class="far fa-file-alt"></i></a><a class="f-menu--3" href="../labelmaker"><i class="fas fa-film"></i></a>
+      </nav>
+      <div class="menu">
+        <label for="insane">
+          <p>인세인</p>의식시트
+        </label>
+        <label for="insaneHO">
+          <p>인세인</p>핸드아웃
+        </label>
+      </div>
+      <input id="insane" type="radio" name="tabmenu" value="인세인_의식시트">
+      <div class="tabCon">
+        <div class="content">
+          <table>
+            <tbody class="title">
+              <tr>
+                <td colspan="2">의식 시트</td>
+                <td class="inputbox" colspan="3" contenteditable="">의식명</td>
+              </tr>
+              <tr>
+                <td>단계</td>
+                <td>절차의 이름</td>
+                <td>지정특기</td>
+                <td>참가조건</td>
+                <td>패널티</td>
+              </tr>
+            </tbody>
+            <tbody class="cont">
+              <tr>
+                <td>1</td>
+                <td contenteditable=""></td>
+                <td contenteditable=""></td>
+                <td contenteditable=""></td>
+                <td contenteditable=""></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td contenteditable=""></td>
+                <td contenteditable=""></td>
+                <td contenteditable=""></td>
+                <td contenteditable=""></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>표 안에 의식시트의 내용을 붙여넣기 할 때는 Ctrl+Shift+V (서식 없이 붙여넣기) 를 이용하세요.</p>
+        <button id="addRow">의식 단계 추가</button>
+        <button id="copy">표 복사하기</button>
+      </div>
+      <input id="insaneHO" type="radio" name="tabmenu" value="인세인_핸드아웃" checked="">
+      <div class="tabCon">
+        <div class="content">
+          <style>#insaneHO + .tabCon .ho-output > div {width:;}</style>
+          <div class="setting"><span>핸드아웃 가로를 </span>
+            <input type="radio" value="250px" name="hoWidth" checked>250px  
+            <input type="radio" value="unset" name="hoWidth">100%
+          </div>
+          <div class="item">
+            <input class="front-1" type="text" placeholder="이름">
+            <textarea class="front-2">앞면내용</textarea>
+            <input class="back-1" type="text" placeholder="쇼크 대상">
+            <textarea class="back-2">뒷면내용</textarea>
+            <div class="controls">
+              <button class="btn copy c-front">앞면 복사</button>
+              <button class="btn copy c-back">뒷면 복사</button>
+              <button class="remove">X</button>
+            </div>
+            <div class="ho-output front">&nbsp;
+              <div class="ho-front">
+                <div>Handout </div>
+                <div class="ho-border">
+                  <div class="ho-box"><span>이름</span><span>(이름들어갈곳)</span>
+                    <div>사명</div>
+                    <div class="ho-box-content">가나다라<br>ㄱㄱㄱ <br>ㄱㄱㄱ </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ho-output back">&nbsp;
+              <div class="ho-back">
+                <div>Handout </div>
+                <div class="ho-border">
+                  <div>비밀</div>
+                  <div class="ho-box"><span>쇼크</span><span>(쇼크들어갈곳)</span>
+                    <div class="ho-box-content">가나다라<br>ㄱㄱㄱ <br>ㄱㄱㄱ   </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button id="addHo">핸드아웃 추가</button>
+      </div>
+      <div class="bottom">
+        <button id="down">이미지 다운로드</button>
       </div>
     </div>
-
-    <input type="radio" name="tabmenu" id="amade-h" num="2" value="아마데우스_본체카드">
-    <div class="tabCon">
-      <div class="content">
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox desc" contenteditable></div>
-      </div>
-    </div>
-
-    <input type="radio" name="tabmenu" id="amade-t" num="3" value="아마데우스_위협카드">
-    <div class="tabCon">
-      <div class="content">
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable>공격</div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox" contenteditable></div>
-        <div class="inputbox desc" contenteditable></div>
-      </div>
-    </div>
-    
-
-
-    <input type="radio" name="tabmenu" id="insane" num="4" value="인세인_의식시트" checked>
-    <div class="tabCon">
-      <div class="content">
-        <table>
-          <tbody class="title">
-            <tr>
-              <td Colspan="2">의식 시트</td><td class="inputbox" Colspan="3" contenteditable>의식명</td>
-            </tr>
-            <tr>
-              <td>단계</td><td>절차의 이름</td><td>지정특기</td><td>참가조건</td><td>패널티</td>
-            </tr>
-          </tbody>
-          <tbody class="cont">
-            <tr>
-              <td>1</td><td contenteditable></td><td contenteditable></td><td contenteditable></td><td contenteditable></td>
-            </tr>
-            <tr>
-              <td>2</td><td contenteditable></td><td contenteditable></td><td contenteditable></td><td contenteditable></td>
-            </tr>
-          </tbody>
-        </table>
-        
-
-
-      </div>
-      <p>표 안에 의식시트의 내용을 붙여넣기 할 때는 Ctrl+Shift+V (서식 없이 붙여넣기) 를 이용하세요.</p>
-      <button id="addRow">의식 단계 추가</button>
-      <button id="copy">표 복사하기</button>
-    </div>
-
-    <div class="bottom"><button id="down">이미지 다운로드</button></div>
-    <script>
-      for (let i=0; i++; i<2) {
-        document.getElementsByClassName("desc")[i].addEventListener("blur",function(){
-        this.innerHTML = this.innerText.replace(/(【.+?】)(?!<)/gi,'<span class="bold">$1</span>');
-        this.querySelectorAll("span").forEach(element => {
-          var intxt = element.innerText;
-          if(intxt.includes("【") && intxt.includes("】")===false) {
-            element.after(intxt);
-            element.remove();
-          }
-          });
-        });
-      }
-
-      document.getElementById("addRow").addEventListener("click",function(){
-        var cloneNode = document.querySelector("#insane+.tabCon tbody.cont tr").cloneNode(true);
-        document.querySelector("#insane+.tabCon tbody.cont").append(cloneNode);
-        var newNode = document.querySelector("#insane+.tabCon tbody.cont tr:last-of-type");
-        newNode.querySelectorAll("td").forEach(function(value,index){
-          if (index>0) value.textContent="";
-        });
-        var rowbtn = document.createElement("span");
-        rowbtn.innerText = "X";
-        newNode.querySelector("td").append(rowbtn);
-        newNode.querySelector("td span").addEventListener("click",function(){
-          this.parentNode.parentNode.remove();
-          step();
-        },{ once: true });
-        step();
-      });
-      //function
-      function step () {
-        var stepRows = document.querySelectorAll("#insane+.tabCon tbody.cont tr");
-        stepRows.forEach(function(value,index,arr) {
-          if (index+1 > 2) {
-            value.querySelector("td").childNodes[0].textContent=index+1;// = index+1;
-          
-          }
-        });
-      }
-      
-      document.getElementById("down").onclick = function(){
-        var target = document.querySelector('input[name="tabmenu"]:checked+.tabCon .content');
-        var fileName = document.querySelector('input[name="tabmenu"]:checked').value+"_"+document.querySelector('input[name="tabmenu"]:checked+.tabCon .inputbox').innerHTML;
-        domtoimage.toBlob(target)
-        .then(function (blob) {
-            window.saveAs(blob, fileName+'.png');
-        });
-        }
-
-        //에디터로 복사
-      document.querySelector("#copy").addEventListener('click',()=>{
-        document.querySelectorAll("td>span").forEach(function(val){
-          val.display="none";
-        })
-        var target = document.querySelector('input[name="tabmenu"]:checked+.tabCon .content');
-        selectRange(target);
-        document.execCommand("copy");
-        alert("복사가 완료되었습니다. roll20 핸드아웃 편집 창에 붙여넣기하세요.\n복사한 표는 이 페이지에 적용된 글꼴이 적용되지 않습니다.")
-      });
-      function selectRange(obj) {
-        if (window.getSelection) {
-            var selected = window.getSelection();
-                selected.selectAllChildren(obj);
-        } else if (document.body.createTextRange) {
-            var range = document.body.createTextRange();
-                range.moveToElementText(obj);
-                range.select();
-        }
-      };
-    </script>
+    <footer id="footer"></footer>
+    <script src="../module.js"></script>
   </body>
-
-
-
 </html>
