@@ -1,6 +1,8 @@
 <html>
   <head>
     <link rel="stylesheet" href="editor.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
+
   </head>
   <body>
     <input id="logdata">
@@ -16,7 +18,7 @@
     <script>
       document.querySelector("#log-paste").addEventListener('click',()=>{
         var htmlContent = document.getElementById("editable").innerHTML;
-        htmlContent = htmlContent.replace(/( id=".+?")|( class="(?!sheet-rolltemplate).+?")|(box-sizing: border-box; )/gi,''); // id, class 제거
+        htmlContent = htmlContent.replace(/( id=".+?")|( class="(?!sheet-rolltemplate).+?")|(box-sizing: border-box; )|(data-.+?(" ))/gi,''); // id, class 제거
         htmlContent = htmlContent.replace(/<a style/gi,'<span style').replace(/<\/a>/gi,'</span>');
         document.getElementById("logdata").value=htmlContent;
       });
