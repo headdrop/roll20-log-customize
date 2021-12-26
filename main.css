@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css");
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 @import url(https://cdn.jsdelivr.net/gh/loadingio/loading.css@v2.0.0/dist/loading.min.css);
 @font-face {
@@ -6,11 +7,6 @@
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-}
-
-@font-face {
-  font-family: 'Pretendard';
-  src: url("https://cdn.jsdelivr.net/gh/headdrop/PublicBox/PretendardVariable.woff2") format("woff2");
 }
 
 @font-face {
@@ -46,6 +42,9 @@ h3 {
 
 * {
   font-family: 'Pretendard';
+}
+
+h1, h2, h3, h4 {
   font-weight: 400;
 }
 

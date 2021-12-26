@@ -19,10 +19,7 @@ $gradient : linear-gradient(to bottom, #325745 0%, #004225 100%);
   font-weight: normal;
   font-style: normal;
 }
-@font-face {
-  font-family: 'Pretendard';
-  src: url("https://cdn.jsdelivr.net/gh/headdrop/PublicBox/PretendardVariable.woff2") format("woff2");
-}
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css');
 @font-face {
   font-family: 'Diceicon';
   src: url("https://cdn.jsdelivr.net/gh/headdrop/roll20-log-customize/source/Diceicon.woff") format("woff");
@@ -68,6 +65,8 @@ h3 {
 }
 * {
   font-family: 'Pretendard';
+}
+h1, h2, h3, h4 {
   font-weight: 400;
 }
 p {
@@ -232,7 +231,6 @@ i {
   h1 {
     font-family: 'Fredoka One', cursive;
     font-size:5rem;
-    //margin-bottom:10px;
     color:#011a0f;
     text-shadow:
     1px 1px 0 $lightColor,
@@ -240,7 +238,6 @@ i {
     5px 5px 0 $lightColor,
     7px 7px 0 $lightColor,
     9px 9px 0 $lightColor;
-    
   }
   .text {
     max-width: 500px;
