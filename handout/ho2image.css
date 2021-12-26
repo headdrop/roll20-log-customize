@@ -39,6 +39,17 @@ input {
   display: none;
 }
 
+a {
+  color: #3a9488;
+  text-decoration: none;
+}
+
+a:hover, a:active, a:focus {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  color: #2c695f;
+}
+
 .menu {
   display: -webkit-box;
   display: -ms-flexbox;
