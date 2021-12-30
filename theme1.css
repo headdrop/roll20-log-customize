@@ -18,32 +18,22 @@
   border-bottom-right-radius: 10px;
 }
 
-[data-avatarurl] {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  margin-top: 5px;
-}
-
-[data-avatarurl] ~ :not([data-avatarurl]) {
-  background: mediumorchid;
-}
-
 .spacer {
   display: none;
 }
 
 .by {
   display: inline-block;
-  position: relative;
+  position: absolute;
   left: -60px;
-  top: 0;
+  top: 55px;
   text-align: center;
   width: 50px;
   word-break: break-all;
 }
 
 .avatar {
-  position: relative;
+  position: absolute;
   display: inline-block;
   top: 0;
   left: -65px;
@@ -64,5 +54,15 @@
 
 .emote .avatar {
   display: none;
+}
+
+.general[data-avatarurl] {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-top: 5px;
+}
+
+.general[data-avatarurl] ~ :not([data-avatarurl]) {
+  background: mediumorchid;
 }
 /*# sourceMappingURL=theme1.css.map */
