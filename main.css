@@ -815,10 +815,19 @@ h3 {
 }
 
 #log-content {
-  height: 1px;
+  max-height: 200px;
   overflow: hidden;
   position: relative;
-  top: -10px;
+  margin-top: 50px;
+}
+
+#log-content::before {
+  content: "미리보기";
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  font-weight: bold;
+  color: #2c695f;
+  font-family: 'NEXON Lv1 Gothic OTF';
 }
 
 /*버튼*/
@@ -1028,7 +1037,7 @@ tooltip {
           animation: slide-down 0.2s ease-in-out;
 }
 
-il:hover + tooltip {
+li:hover + tooltip {
   display: inline-block;
 }
 

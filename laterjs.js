@@ -15,6 +15,16 @@ $(function () {
     customCss();
     setTimeout(function() {checkOpt() }, 800);
   });
+  $("[name='presetSelect']").on("change",preset);
+  document.getElementById("pre_1").addEventListener("change",()=>{
+    Preset1();
+    setTimeout(()=>{
+      $("#log-content .general .avatar").each((ind,elm)=>{
+        var avtHeight = $(elm).css("height");
+        $(elm).parent().css("min-height",avtHeight);
+    });
+    },1)
+  })
 });
 
 // 2-1. rule select
@@ -50,11 +60,11 @@ function selectRule () {
   $("#theme input").on("change",theme);
 }
 // 2-2. theme select
-let link = document.createElement("link");
 function theme () {
+  let link = document.createElement("link");
   try {document.getElementById("rule-css").remove()} catch {}
   let checkId = document.querySelector("#theme :checked").id;
-  console.log(checkId);
+
   link.rel = "stylesheet";
   link.type = "text/css";
   link.href = `./theme/${checkId}.css`;
@@ -192,6 +202,52 @@ function saveToFile_Chrome(fileName, content) {
   a.href = objURL;
   a.click();
 }
+
+
+// other preset
+function preset () {
+  let link = document.createElement("link");
+  try {document.getElementById("preset-css").remove();} catch {}
+  
+  var checkId = document.querySelector(".preset :checked").id;
+  link.rel = "stylesheet";
+  link.type = "text/css";
+  link.href = `./theme/${checkId}.css`;
+  link.id = "preset-css"
+  document.body.appendChild(link);
+
+}
+
+
+  function Preset1 () {
+    $(".spacer").remove();
+    $("#log-content .by").each((ind,obj)=>{
+      obj.textContent = obj.textContent.slice(0,-1);
+      obj.previousSibling.previousSibling.appendChild(obj);
+    });
+    
+    document.querySelectorAll("#log-content .general[id]").forEach(function(obj,ind){
+      var p = document.createElement("p");
+      var place = obj.appendChild(p);
+      var nodeArr = Array.prototype.slice.call(obj.childNodes);
+      var item = obj.lastChild;
+      for (var val of nodeArr) {
+        if(val.className!=="avatar" && val.className!=="tstamp" && val.localName!='p') place.append(val)}
+      if (obj.getAttribute('data-avatarurl')==null) {
+        var p2;
+        if (obj.previousSibling.getAttribute('data-avatarurl')==null) {
+          p2 = $(obj).prevUntil('[data-avatarurl]').last().prev().append(item);
+        } else {
+          p2 = $(obj).prev().append(item);
+        }
+        p2;
+        obj.remove();
+      }
+    });
+    
+  $(".example .avatar").css("display","none");
+  }
+
 
 function modaltog (divsel) {
   if (divsel==undefined) { // 인수 없으면 modal 창 close

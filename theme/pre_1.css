@@ -1,21 +1,20 @@
+@charset "UTF-8";
 .message {
-  background-color: #F1F1F1;
-  color: #404040;
-}
-
-.message {
+  box-sizing: border-box;
   margin-left: 60px;
-  padding-left: 10px;
-  padding-right: 5px;
-  padding-bottom: 5px;
-  padding-top: 5px;
+  padding: 5px 5px 5px 10px;
   position: relative;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   line-height: 1.25em;
   overflow: visible;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+}
+
+.tstamp {
+  position: absolute;
+  left: unset;
+  right: 5px;
+  bottom: 1px;
 }
 
 .spacer {
@@ -24,11 +23,9 @@
 
 .by {
   display: inline-block;
-  position: absolute;
-  left: -60px;
-  top: 55px;
+  width: 100%;
   text-align: center;
-  width: 50px;
+  left: 0;
   word-break: break-all;
 }
 
@@ -36,10 +33,11 @@
   position: absolute;
   display: inline-block;
   top: 0;
-  left: -65px;
+  left: -60px;
   width: 50px;
-  height: 50px;
-  text-align: left;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .avatar > img {
@@ -57,12 +55,16 @@
 }
 
 .general[data-avatarurl] {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-radius: 10px;
   margin-top: 5px;
+  margin-bottom: 5px;
 }
 
-.general[data-avatarurl] ~ :not([data-avatarurl]) {
-  background: mediumorchid;
+#공백.general {
+  min-height: 50px;
 }
-/*# sourceMappingURL=theme1.css.map */
+
+#공백 .by {
+  display: none;
+}
+/*# sourceMappingURL=pre_1.css.map */
