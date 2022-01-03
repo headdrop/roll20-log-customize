@@ -129,7 +129,6 @@ function radioOpt() {
     byId = element.id;
     if (byId.index==''|/\s/g) {} else { // id가 공백일때는 패스
     for (i of styleNew) arrSel = arrSel.concat([i.selectorText]);
-    console.log(byId);
     if (arrSel.indexOf("#" + byId) == -1) {
       document.styleSheets[3].insertRule(`#${byId} {}`, len);
       arrSel.push(byId);
@@ -495,7 +494,6 @@ function addID() {
       byId = byRaw.replace(/PC\d+?\s+?/gi,'').match(/\S+?(?=\s|$)/gi,'')[0];
     } else if (byRaw=='') {
       byId = '공백';
-      console.log(byId);
     }else if (byCut==null) {
       byId = byRaw;
     } else {
@@ -532,12 +530,14 @@ function imgInput() {
   }
   const set = new Set(listUrl); //set 객체로 만들어 중복 제거
   const resultArr = [...set];
-
-  $.each(resultArr, function (index, el) {
-    let output = '';
-    output = `<option value=${el}>${document.querySelector(`[data-avatarurl='${el}'] .by`).textContent.slice(0,-1)}</option>`
-    $("#dropdownUrl").append(output);
-  });
+  try {
+    $.each(resultArr, function (index, el) {
+      let output = '';
+      output = `<option value=${el}>${document.querySelector(`[data-avatarurl='${el}'] .by`).textContent.slice(0,-1)}</option>`
+      $("#dropdownUrl").append(output);
+    });
+  } catch {}
+  
   $("#dropdownUrl").niceSelect();
   
 
@@ -579,7 +579,6 @@ function errCatch() {
     $(this).next().next().children("img").attr("src", $(this).val());
   });
   $("#imgList").on("change", ".preview-icon input", function() {
-    console.log(this);
     this.parentElement.nextElementSibling.classList.toggle("visible");
   });
   //noImg close
@@ -598,7 +597,6 @@ function errCatch() {
   });
   //
   document.querySelectorAll("#profileImg.nice-select .option").forEach(function(item) {
-    console.log(item);
     var imgcheck = $("#log-content .noImage img").src.indexOf(item.getAttribute("data-value"));
     if(imgcheck!= -1) {
       item.classList.add("noImgChar");

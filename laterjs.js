@@ -67,8 +67,6 @@ function theme () {
   document.body.appendChild(link);
 }
 
-
-
 // 3. file uploader & custom sheet
 const inputElement = document.querySelector('input[type="file"]');
 const pond = FilePond.create( inputElement );
@@ -214,17 +212,21 @@ function presetStyle () {
   link.href = `./theme/${checkId}.css`;
   link.id = "preset-css"
   document.body.appendChild(link);
-  
   return num;
 }
 
 
 function preset (num) {
+  var setting = document.querySelectorAll(".glo-option input");
+  setting.forEach((it)=>it.disabled=false);
   switch(num) {
     case 0 :
       inputHTML();
     break;
     case "1" :
+      setting[0].disabled = true;
+      setting[2].disabled = true;
+
       $("#log-content  .spacer").remove();
       
       $("#log-content .by").each((ind,obj)=>{
@@ -232,7 +234,7 @@ function preset (num) {
         obj.previousSibling.previousSibling.appendChild(obj);
       });
       
-      document.querySelectorAll("#log-content .general[id]").forEach(function(obj,ind){
+      document.querySelectorAll("#log-content .general[id]").forEach(function(obj){
         var p = document.createElement("p");
         var place = obj.appendChild(p);
         var nodeArr = Array.prototype.slice.call(obj.childNodes);
@@ -240,14 +242,15 @@ function preset (num) {
         for (var val of nodeArr) {
           if(val.className!=="avatar" && val.className!=="tstamp" && val.localName!='p') place.append(val)}
         if (obj.getAttribute('data-avatarurl')==null) {
-          var p2;
           if (obj.previousSibling.getAttribute('data-avatarurl')==null) {
-            p2 = $(obj).prevUntil('[data-avatarurl]').last().prev().append(item);
+            $(obj).prevUntil('[data-avatarurl]').last().prev().append(item);
+            obj.remove();
+          } else if (obj.previousSibling.classList.contains('emote')||obj.previousSibling.classList.contains('desc')) {
+            //$(obj).append(item);
           } else {
-            p2 = $(obj).prev().append(item);
+            $(obj).prev().append(item);
+            obj.remove();
           }
-          p2;
-          obj.remove();
         }
       });
       
@@ -258,8 +261,6 @@ function preset (num) {
           $(elm).parent().css("min-height",avtHeight)})
       },1)
     break;
-
-    
   }
 }
 //
@@ -283,11 +284,9 @@ function zoomModal () {
   let preImg = new Image();
   let imgSrc = this.querySelector("img").src;
   preImg.src = imgSrc;
-  console.log(preImg.src);
   $(".modal #preview-modal .modal-content").html(preImg);
   modaltog("#preview-modal");
 }
-
 
 function modaltog (divsel) {
   if (divsel==undefined) { // 인수 없으면 modal 창 close
