@@ -37,9 +37,8 @@
     height:50px;
     width:50px;
   }
-  &:empty ~ .by, &.noImage ~ .by{
-    background-color: aqua;
-    top:0;
+  &.noImage+.by{
+    top:10px;
   }
 }
 .emote .avatar {

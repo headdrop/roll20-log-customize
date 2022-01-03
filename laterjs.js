@@ -15,16 +15,11 @@ $(function () {
     customCss();
     setTimeout(function() {checkOpt() }, 800);
   });
-  $("[name='presetSelect']").on("change",preset);
-  document.getElementById("pre_1").addEventListener("change",()=>{
-    Preset1();
-    setTimeout(()=>{
-      $("#log-content .general .avatar").each((ind,elm)=>{
-        var avtHeight = $(elm).css("height");
-        $(elm).parent().css("min-height",avtHeight);
-    });
-    },1)
-  })
+  document.querySelector(".preset .apply").addEventListener("click",()=>{
+    var num =presetStyle();
+    setTimeout(()=>preset(num),1);
+  });
+  $("[name='presetSelect']").on("change",previewImage);
 });
 
 // 2-1. rule select
@@ -71,6 +66,8 @@ function theme () {
   link.id = "rule-css"
   document.body.appendChild(link);
 }
+
+
 
 // 3. file uploader & custom sheet
 const inputElement = document.querySelector('input[type="file"]');
@@ -205,48 +202,91 @@ function saveToFile_Chrome(fileName, content) {
 
 
 // other preset
-function preset () {
-  let link = document.createElement("link");
-  try {document.getElementById("preset-css").remove();} catch {}
-  
+function presetStyle () {
   var checkId = document.querySelector(".preset :checked").id;
+  try {document.getElementById("preset-css").remove();} catch {}
+  if (checkId==="pre_0") return 0;    //기본일때 아무것도 하지 않음
+
+  let link = document.createElement("link");
+  var num = /\d/gi.exec(checkId)[0];
   link.rel = "stylesheet";
   link.type = "text/css";
   link.href = `./theme/${checkId}.css`;
   link.id = "preset-css"
   document.body.appendChild(link);
-
+  
+  return num;
 }
 
 
-  function Preset1 () {
-    $(".spacer").remove();
-    $("#log-content .by").each((ind,obj)=>{
-      obj.textContent = obj.textContent.slice(0,-1);
-      obj.previousSibling.previousSibling.appendChild(obj);
-    });
-    
-    document.querySelectorAll("#log-content .general[id]").forEach(function(obj,ind){
-      var p = document.createElement("p");
-      var place = obj.appendChild(p);
-      var nodeArr = Array.prototype.slice.call(obj.childNodes);
-      var item = obj.lastChild;
-      for (var val of nodeArr) {
-        if(val.className!=="avatar" && val.className!=="tstamp" && val.localName!='p') place.append(val)}
-      if (obj.getAttribute('data-avatarurl')==null) {
-        var p2;
-        if (obj.previousSibling.getAttribute('data-avatarurl')==null) {
-          p2 = $(obj).prevUntil('[data-avatarurl]').last().prev().append(item);
-        } else {
-          p2 = $(obj).prev().append(item);
+function preset (num) {
+  switch(num) {
+    case 0 :
+      inputHTML();
+    break;
+    case "1" :
+      $("#log-content  .spacer").remove();
+      
+      $("#log-content .by").each((ind,obj)=>{
+        obj.textContent = obj.textContent.slice(0,-1);
+        obj.previousSibling.previousSibling.appendChild(obj);
+      });
+      
+      document.querySelectorAll("#log-content .general[id]").forEach(function(obj,ind){
+        var p = document.createElement("p");
+        var place = obj.appendChild(p);
+        var nodeArr = Array.prototype.slice.call(obj.childNodes);
+        var item = obj.lastChild;
+        for (var val of nodeArr) {
+          if(val.className!=="avatar" && val.className!=="tstamp" && val.localName!='p') place.append(val)}
+        if (obj.getAttribute('data-avatarurl')==null) {
+          var p2;
+          if (obj.previousSibling.getAttribute('data-avatarurl')==null) {
+            p2 = $(obj).prevUntil('[data-avatarurl]').last().prev().append(item);
+          } else {
+            p2 = $(obj).prev().append(item);
+          }
+          p2;
+          obj.remove();
         }
-        p2;
-        obj.remove();
-      }
-    });
+      });
+      
+      $(".example .avatar").css("display","none");
+      setTimeout(()=>{
+        $("#log-content .general .avatar").each((ind,elm)=>{
+          var avtHeight = $(elm).css("height");
+          $(elm).parent().css("min-height",avtHeight)})
+      },1)
+    break;
+
     
-  $(".example .avatar").css("display","none");
   }
+}
+//
+function previewImage () {
+  let checkId = document.querySelector(".preset :checked").id;
+  let img = new Image();
+  let box = document.getElementById("preset-preview");
+  box.childNodes[0].remove();
+  box.removeEventListener("click",zoomModal);
+  if (checkId==="pre_0") {
+    let span = '<span>테마를 선택하면 해당 테마의 미리보기가 이 창에 나타납니다.</span>'
+    box.innerHTML=span;
+    return 0;
+  } else {
+    img.src=`./theme/${checkId}.png`;
+    box.appendChild(img);
+    box.addEventListener("click",zoomModal);
+  }
+}
+function zoomModal () {
+  let preImg = new Image();
+  let imgSrc = this.querySelector("img").src;
+  preImg.src = imgSrc;
+  console.log(preImg.src);
+  $(".modal #preview-modal .modal-content").html(preImg);
+  modaltog("#preview-modal");
+}
 
 
 function modaltog (divsel) {

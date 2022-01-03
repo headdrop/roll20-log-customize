@@ -45,9 +45,8 @@
   width: 50px;
 }
 
-.avatar:empty ~ .by, .avatar.noImage ~ .by {
-  background-color: aqua;
-  top: 0;
+.avatar.noImage + .by {
+  top: 10px;
 }
 
 .emote .avatar {
