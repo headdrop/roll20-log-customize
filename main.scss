@@ -546,6 +546,26 @@ h3 {
     @include centerboth;
   }
 }
+#preset-preview {
+  width:100%;
+  min-width:300px;
+  margin-bottom: 20px;
+  border : 1px solid $btnReset;
+  padding:5px;
+  img {
+    width: 100%;
+    cursor:zoom-in;
+  }
+  span {
+    display:flex;
+    height:100px;
+    text-align:center;
+    word-break:keep-all;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+}
 
 
 .cp-area {
@@ -599,10 +619,18 @@ h3 {
 
 #log-content {
   //display: none;
-  height: 1px;
+  max-height: 200px;
   overflow:hidden;
   position:relative;
-  top: -10px;
+  margin-top:50px;
+  &::before {
+    content:"미리보기";
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    font-weight: bold;
+    color:$btnHovColor;
+    font-family:'NEXON Lv1 Gothic OTF';
+  }
 }
 
 
@@ -758,7 +786,7 @@ tooltip {
   animation: slide-down 0.2s ease-in-out;
 
 }
-il:hover+tooltip {
+li:hover + tooltip {
   display:inline-block;
 }
 @keyframes slide-down {
@@ -960,31 +988,31 @@ il:hover+tooltip {
 }
 [id$='modal'] {
   visibility: hidden;
-  position: fixed;
+  position:absolute;
+  display:flex;
+  align-items: center;
+  justify-content: center;
   width: var(--width);
   height: var(--height);
   top:calc(50vh - var(--height)/2);
   left: calc(50vw - var(--width)/2);
   z-index:1;
 }
+#preview-modal {
+  width: 100%;
+  height: 100%;
+  top:unset;
+  left:unset;
+  cursor:zoom-out;
+  .modal-content {
+    height:fit-content;
+    width:fit-content;
+    max-width:100%;
+  }
+}
 #css-modal {
   --width: 80vw;
   --height: 80vh; 
-}
-#download-modal, #convert-modal, #error-modal, #copy-modal {
-  --width: 400px;
-  --height: 270px;
-  @media screen and (max-width : 400px) {
-    width: calc(100vw - 20px);
-    height: auto;
-    top: 10vh;
-    left:10px;
-    .btn-box {
-      position:relative;
-      bottom:0;
-      left:0;
-    }
-  }
 }
 
 .modal-content {
