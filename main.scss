@@ -130,7 +130,7 @@ b {font-weight:bolder;}
   @include container;
   padding-top:20px;
 }
-#textchat { /*폰트 사이즈 결정 참조: https://webclub.tistory.com/122 */
+.example, #log-content { /*폰트 사이즈 결정 참조: https://webclub.tistory.com/122 */
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   font-size: 1.3em;

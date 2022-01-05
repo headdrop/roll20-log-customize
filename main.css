@@ -163,7 +163,7 @@ b {
   }
 }
 
-#textchat {
+.example, #log-content {
   /*폰트 사이즈 결정 참조: https://webclub.tistory.com/122 */
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
