@@ -201,10 +201,6 @@ span.inlinerollresult {
   font-size: inherit;
 }
 
-.message > .inlinerollresult {
-  line-height: 1.8em;
-}
-
 /* 기본 표 */
 .sheet-rolltemplate-default table {
   width: 400px;

@@ -48,13 +48,6 @@ h1, h2, h3, h4 {
   font-weight: 400;
 }
 
-p {
-  -webkit-margin-before: 0.5em;
-          margin-block-start: 0.5em;
-  -webkit-margin-after: 0.5em;
-          margin-block-end: 0.5em;
-}
-
 h2, h3, .btn, .name-select {
   font-style: normal;
   font-family: 'NEXON Lv1 Gothic OTF';
@@ -673,6 +666,10 @@ h3 {
 
 .item p {
   line-height: 1.8rem;
+  -webkit-margin-before: 0.5em;
+          margin-block-start: 0.5em;
+  -webkit-margin-after: 0.5em;
+          margin-block-end: 0.5em;
 }
 
 .item p:last-of-type {
