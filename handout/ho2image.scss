@@ -496,9 +496,15 @@ input:checked+.tabCon {
   
 }
 
-#insaneHO+.tabCon .content {
+#insaneHO+.tabCon {
   font-size:16px;
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+  }
   .item {
+    position: relative;
     display:grid;
     grid-template: 30px 90px / 250px 250px 100px;
     grid-auto-flow: column;
@@ -506,6 +512,19 @@ input:checked+.tabCon {
     >textarea, >input {
       font-size:1.6rem;
       overflow-y:auto;
+    }
+    button {
+      font-size:1.6rem;
+      padding: 5px;
+    }
+    button.remove {
+      position:absolute;
+      display:inline-block;
+      top:0;
+      right:100%;
+      width:30px;
+      padding: 5px;
+      margin:0 10px 0 0;
     }
   }
   input[type="text"] {
@@ -520,13 +539,15 @@ input:checked+.tabCon {
   }
   .ho-output {
     position: absolute;
-    top:400px;
+    top:-4000000px;
+    >div {
+      width:250px;
+    }
     * {
       box-sizing: border-box;
     }
   }
   .ho-front {
-    width:200px;
     border:1px solid black;
     padding:4px;
     * {
@@ -567,12 +588,63 @@ input:checked+.tabCon {
       padding: 1px 3px 0 3px;
       margin-bottom:-1px;
       $size : 44px;
-      background: 
-      linear-gradient(to right, transparent 0, transparent 8px, white 8px, white 12px), linear-gradient(to bottom, white 0,white $size, #888 $size, #888 $size);
+      background-image: linear-gradient(to right, transparent 0, transparent 8px, white 8px, white 12px), linear-gradient(to bottom, white 0,white $size, #888 $size, #888 $size);
       background-size:12px $size+1;
       background-repeat:repeat;
       line-height:22.5px;
-
+    }
+  }
+  .ho-back {
+    background-color:black;
+    border:1px solid black;
+    padding:4px;
+    &::before {
+      after::" &nbsp;";
+    }
+    * {
+      line-height:normal;
+    }
+    >div:first-child {
+      text-align:center;
+      color: white;
+      font-family:'IM Fell DW Pica';
+      font-size:2rem;
+      font-weight:bold;
+    }
+    .ho-border {
+      border: solid 3px white;
+      padding:2px;
+      text-align:initial;
+      *{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+      > div:first-child {
+        text-align:center;
+        color:white;
+        border-bottom:3px solid black;
+      }
+    }
+    .ho-box {
+      padding-bottom:1px;
+      background-color:white;
+      * {
+        padding:3px;
+      }
+      span:first-child {
+        border-right: 1px solid black;
+        display: inline-block;
+        padding: 3px 6px;
+      }
+      div:first-of-type {
+        border-top: 1px solid black;
+      }
+    }
+    .ho-box-content {
+      padding: 1px 3px 0 3px;
+      margin-bottom:-1px;
+      $size : 44px;
+      background-image: linear-gradient(to right, transparent 0, transparent 8px, white 8px, white 12px), linear-gradient(to bottom, white 0,white $size, #888 $size, #888 $size);
+      background-size:12px $size+1;
+      background-repeat:repeat;
+      line-height:22.5px;
     }
   }
 

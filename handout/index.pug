@@ -7,6 +7,7 @@ html(lang='ko')
     link(rel='stylesheet' href='ho2image.css')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js')
+    script(src="ho2image.js")
   body
     .menu
       label(for='편도용사')
@@ -105,15 +106,16 @@ html(lang='ko')
     .tabCon
       .content
         .item
-          input(type='text' placeholder='이름')
-          textarea 앞면내용
-          input(type='text' placeholder='쇼크 대상')
-          textarea 뒷면내용
+          input.front-1(type='text' placeholder='이름')
+          textarea.front-2 앞면내용
+          input.back-1(type='text' placeholder='쇼크 대상')
+          textarea.back-2 뒷면내용
           .controls
-            button.btn 앞면 복사
-            button.btn 뒷면 복사
-          .ho-output
-            .ho-front 
+            button.btn.copy.c-front 앞면 복사
+            button.btn.copy.c-back 뒷면 복사
+            button.remove X
+          .ho-output.front &nbsp;
+            .ho-front
               div Handout 
               .ho-border
                 .ho-box
@@ -126,105 +128,20 @@ html(lang='ko')
                     | ㄱㄱㄱ 
                     br
                     | ㄱㄱㄱ 
+          .ho-output.back &nbsp;
+            .ho-back
+              div Handout 
+              .ho-border
+                div 비밀
+                .ho-box
+                  span 쇼크
+                  span (쇼크들어갈곳)
+                  .ho-box-content
+                    | 가나다라
                     br
                     | ㄱㄱㄱ 
                     br
                     | ㄱㄱㄱ 
-                    br
-                    | ㄱㄱㄱ 
-                    br
-                    | ㄱㄱㄱ 
-                    br
-                    | ㄱㄱㄱ 
-                    br
-                    | ㄱㄱㄱ 
-                    br
-                    | ㄱㄱㄱ 
-                    br
-                    | ㄱㄱㄱ 
-                    br
-                    | ㄱㄱㄱ 
-                    br
-                    | ㄱㄱㄱ 
-                    br
-                    | ㄱㄱㄱ 
-                    br
-                    | ㄱㄱㄱ 
-                    br
-                    | ㄱㄱㄱ 
-                    br
-                    | ㄱㄱㄱ 
-                    br
-                    | ㄱㄱㄱ 
-                    br
-                    | ㄱㄱㄱ 
-                    br
-                    | ㄱㄱㄱ 
+      button#addHo 핸드아웃 추가
     .bottom
       button#down 이미지 다운로드
-    script.
-      for (let i=0; i++; i<2) {
-      document.getElementsByClassName("desc")[i].addEventListener("blur",function(){
-      this.innerHTML = this.innerText.replace(/(【.+?】)(?!<)/gi,'<span class="bold">$1</span>');
-      this.querySelectorAll("span").forEach(element => {
-      var intxt = element.innerText;
-      if(intxt.includes("【") && intxt.includes("】")===false) {
-      element.after(intxt);
-      element.remove();
-      }
-      });
-      });
-      }
-      document.getElementById("addRow").addEventListener("click",function(){
-      var cloneNode = document.querySelector("#insane+.tabCon tbody.cont tr").cloneNode(true);
-      document.querySelector("#insane+.tabCon tbody.cont").append(cloneNode);
-      var newNode = document.querySelector("#insane+.tabCon tbody.cont tr:last-of-type");
-      newNode.querySelectorAll("td").forEach(function(value,index){
-      if (index>0) value.textContent="";
-      });
-      var rowbtn = document.createElement("span");
-      rowbtn.innerText = "X";
-      newNode.querySelector("td").append(rowbtn);
-      newNode.querySelector("td span").addEventListener("click",function(){
-      this.parentNode.parentNode.remove();
-      step();
-      },{ once: true });
-      step();
-      });
-      //function
-      function step () {
-      var stepRows = document.querySelectorAll("#insane+.tabCon tbody.cont tr");
-      stepRows.forEach(function(value,index,arr) {
-      if (index+1 > 2) {
-      value.querySelector("td").childNodes[0].textContent=index+1;// = index+1;
-      }
-      });
-      }
-      document.getElementById("down").onclick = function(){
-      var target = document.querySelector('input[name="tabmenu"]:checked+.tabCon .content');
-      var fileName = document.querySelector('input[name="tabmenu"]:checked').value+"_"+document.querySelector('input[name="tabmenu"]:checked+.tabCon .inputbox').innerHTML;
-      domtoimage.toBlob(target)
-      .then(function (blob) {
-      window.saveAs(blob, fileName+'.png');
-      });
-      }
-      //에디터로 복사
-      document.querySelector("#copy").addEventListener('click',()=>{
-      document.querySelectorAll("td>span").forEach(function(val){
-      val.display="none";
-      })
-      var target = document.querySelector('input[name="tabmenu"]:checked+.tabCon .content');
-      selectRange(target);
-      document.execCommand("copy");
-      alert("복사가 완료되었습니다. roll20 핸드아웃 편집 창에 붙여넣기하세요.\\n복사한 표는 이 페이지에 적용된 글꼴이 적용되지 않습니다.")
-      });
-      function selectRange(obj) {
-      if (window.getSelection) {
-      var selected = window.getSelection();
-      selected.selectAllChildren(obj);
-      } else if (document.body.createTextRange) {
-      var range = document.body.createTextRange();
-      range.moveToElementText(obj);
-      range.select();
-      }
-      };
