@@ -105,6 +105,13 @@ html(lang='ko')
     input#insaneHO(type='radio' name='tabmenu' num='5' value='인세인_핸드아웃' checked='')
     .tabCon
       .content
+        style #insaneHO + .tabCon .ho-output > div {width:;}
+        .setting
+          span 핸드아웃 가로를 
+          input(type="radio" value="250px" name="hoWidth" checked)
+          | 250px  
+          input(type="radio" value="unset" name="hoWidth")
+          | 100%
         .item
           input.front-1(type='text' placeholder='이름')
           textarea.front-2 앞면내용

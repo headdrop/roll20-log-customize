@@ -489,6 +489,10 @@ input:checked + .tabCon {
   height: 260px;
 }
 
+.setting input {
+  display: inline-block;
+}
+
 #insane + .tabCon .content table {
   border-collapse: collapse;
   border: 2px solid #222;
@@ -638,6 +642,7 @@ input:checked + .tabCon {
 #insaneHO + .tabCon .ho-output {
   position: absolute;
   top: -4000000px;
+  width: 100%;
 }
 
 #insaneHO + .tabCon .ho-output > div {
@@ -706,10 +711,6 @@ input:checked + .tabCon {
   background-color: black;
   border: 1px solid black;
   padding: 4px;
-}
-
-#insaneHO + .tabCon .ho-back::before {
-  after: " &nbsp;";
 }
 
 #insaneHO + .tabCon .ho-back * {

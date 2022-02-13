@@ -408,8 +408,13 @@ input:checked+.tabCon {
     }
   }
 }
-
+.setting {
+  input {
+    display:inline-block;
+  }
+}
 #insane+.tabCon .content {
+  
   table {
     border-collapse: collapse;
     border:2px solid #222;
@@ -540,6 +545,7 @@ input:checked+.tabCon {
   .ho-output {
     position: absolute;
     top:-4000000px;
+    width:100%;
     >div {
       width:250px;
     }
@@ -598,9 +604,6 @@ input:checked+.tabCon {
     background-color:black;
     border:1px solid black;
     padding:4px;
-    &::before {
-      after::" &nbsp;";
-    }
     * {
       line-height:normal;
     }
