@@ -55,15 +55,21 @@ window.onload = function () {
   alert("복사가 완료되었습니다. roll20 핸드아웃 편집 창에 붙여넣기하세요.\\n복사한 표는 이 페이지에 적용된 글꼴이 적용되지 않습니다.")
   });
   // 복사 (2)
-  document.querySelector(".copy").addEventListener('click',(e)=>{
-    var page = e.target.classList[2].replace("c-",'');
-    var tg = e.target.parentNode.parentNode.getElementsByClassName(page);
-    selectRange(tg[0]);
-    document.execCommand("copy");
-    alert("복사가 완료되었습니다. roll20 핸드아웃 편집 창에 붙여넣기하세요.\\n복사한 표는 이 페이지에 적용된 글꼴이 적용되지 않습니다.")
-  });
-  document.querySelectorAll("input, textarea").forEach((val,ind)=>{
+  document.querySelectorAll(".copy").forEach(val=>{
+    val.addEventListener('click',(e)=>{
+      var page = e.target.classList[2].replace("c-",'');
+      var tg = e.target.parentNode.parentNode.getElementsByClassName(page);
+      selectRange(tg[0]);
+      document.execCommand("copy");
+      alert("복사가 완료되었습니다. roll20 핸드아웃 편집 창에 붙여넣기하세요.\\n복사한 표는 이 페이지에 적용된 글꼴이 적용되지 않습니다.")
+    });
+  })
+  document.querySelectorAll("#insaneHO+.tabCon .item input, #insaneHO+.tabCon .item textarea").forEach((val,ind)=>{
     val.addEventListener('change',(e)=>{
+      var cont=val.value;
+      if (ind==0) {
+
+      }
     })
   })
   document.getElementsByName('hoWidth').forEach((val,ind)=>{
