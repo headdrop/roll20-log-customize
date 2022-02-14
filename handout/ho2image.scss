@@ -500,7 +500,9 @@ input:checked+.tabCon {
   }
   
 }
-
+#insaneHO:checked ~.bottom>#down {
+  display:none;
+}
 #insaneHO+.tabCon {
   font-size:16px;
   .content {

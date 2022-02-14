@@ -55,23 +55,40 @@ window.onload = function () {
   alert("복사가 완료되었습니다. roll20 핸드아웃 편집 창에 붙여넣기하세요.\\n복사한 표는 이 페이지에 적용된 글꼴이 적용되지 않습니다.")
   });
   // 복사 (2)
-  document.querySelectorAll(".copy").forEach(val=>{
-    val.addEventListener('click',(e)=>{
-      var page = e.target.classList[2].replace("c-",'');
-      var tg = e.target.parentNode.parentNode.getElementsByClassName(page);
-      selectRange(tg[0]);
-      document.execCommand("copy");
-      alert("복사가 완료되었습니다. roll20 핸드아웃 편집 창에 붙여넣기하세요.\\n복사한 표는 이 페이지에 적용된 글꼴이 적용되지 않습니다.")
-    });
-  })
-  document.querySelectorAll("#insaneHO+.tabCon .item input, #insaneHO+.tabCon .item textarea").forEach((val,ind)=>{
-    val.addEventListener('change',(e)=>{
-      var cont=val.value;
-      if (ind==0) {
-
-      }
+  
+  function sync (newNode) { // 내용 입력 싱크
+    if (newNode==undefined) {newNode=document}
+    newNode.querySelectorAll("#insaneHO+.tabCon .item input, #insaneHO+.tabCon .item textarea").forEach((val,ind)=>{
+      val.addEventListener('change',(e)=>{
+        switch(val.className) {
+          case 'front-1' :
+            val.parentNode.children[5].querySelector(".ho-box>span:nth-child(2)").textContent = val.value;
+            break;
+          case 'front-2' :
+            val.parentNode.children[5].querySelector(".ho-box-content").innerText = val.value;
+            break;
+          case 'back-1' :
+            console.log(val.parentNode.children)
+            val.parentNode.children[6].querySelector(".ho-box>span:nth-child(2)").textContent = val.value;
+            break;
+          case 'back-2' :
+            val.parentNode.children[6].querySelector(".ho-box-content").innerText = val.value;
+            break;
+        }
+      })
     })
-  })
+    newNode.querySelectorAll(".copy").forEach(val=>{
+      val.addEventListener('click',(e)=>{
+        var page = e.target.classList[2].replace("c-",'');
+        var tg = e.target.parentNode.parentNode.getElementsByClassName(page);
+        selectRange(tg[0]);
+        document.execCommand("copy");
+        alert("복사가 완료되었습니다. roll20 핸드아웃 편집 창에 붙여넣기하세요.")
+      });
+    })
+  }
+  
+  
   document.getElementsByName('hoWidth').forEach((val,ind)=>{
     val.addEventListener('change',(e)=>{
       var a = val.value;
@@ -99,22 +116,7 @@ window.onload = function () {
     newNode.querySelector(".remove").addEventListener("click",function(){
       this.parentNode.parentNode.remove();
     },{ once: true });
-    newNode.querySelectorAll("input, textarea").forEach(function(val,index){
-      val.addEventListener("change",function(){
-        if (index===0) {
-          newNode.querySelector(".ho-output.front .ho-box>span:nth-child(2)").textContent=val.value;
-        } else if (index===1) {
-          newNode.querySelector(".ho-output.front .ho-box>.ho-box-content").textContent=val.value;
-        } else if (index===2) {
-          newNode.querySelector(".ho-output.back .ho-box>span:nth-child(2)").textContent=val.value;
-        } else if (index===3) {
-          newNode.querySelector(".ho-output.back .ho-box>.ho-box-content").textContent=val.value;
-        }
-      });
-    });
+    sync(newNode);
   });
-
-}
-function changeHo (e) {
-  console.log(e);
+  sync();
 }
