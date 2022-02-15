@@ -10,69 +10,13 @@ html(lang='ko')
     script(src="ho2image.js")
   body
     .menu
-      label(for='편도용사')
-        p 편도용사
-        | 퀘스트카드
-      label(for='amade-h')
-        p 아마데우스
-        | 본체카드
-      label(for='amade-t')
-        p 아마데우스
-        | 위협카드
       label(for='insane')
         p 인세인
         | 의식시트
       label(for='insaneHO')
         p 인세인
         | 핸드아웃
-    input(type='radio' name='tabmenu' id='편도용사' num='1' value='편도용사_퀘스트 카드' checked='')
-    .tabCon
-      .content
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-      p
-        | 해당 틀은 죽화
-        a(href='https://twitter.com/zughwa_TRPG') (@zughwa_TRPG)
-        | 님의 아이디어입니다.
-    input#amade-h(type='radio' name='tabmenu' num='2' value='아마데우스_본체카드')
-    .tabCon
-      .content
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox.desc(contenteditable='')
-      p
-        | 해당 틀은 죽화
-        a(href='https://twitter.com/zughwa_TRPG') (@zughwa_TRPG)
-        | 님의 아이디어입니다.
-    input#amade-t(type='radio' name='tabmenu' num='3' value='아마데우스_위협카드')
-    .tabCon
-      .content
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='') 공격
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox(contenteditable='')
-        .inputbox.desc(contenteditable='')
-      p
-        | 해당 틀은 죽화
-        a(href='https://twitter.com/zughwa_TRPG') (@zughwa_TRPG)
-        | 님의 아이디어입니다.
-    input#insane(type='radio' name='tabmenu' num='4' value='인세인_의식시트')
+    input#insane(type='radio' name='tabmenu' value='인세인_의식시트')
     .tabCon
       .content
         table
@@ -102,7 +46,7 @@ html(lang='ko')
       p 표 안에 의식시트의 내용을 붙여넣기 할 때는 Ctrl+Shift+V (서식 없이 붙여넣기) 를 이용하세요.
       button#addRow 의식 단계 추가
       button#copy 표 복사하기
-    input#insaneHO(type='radio' name='tabmenu' num='5' value='인세인_핸드아웃' checked='')
+    input#insaneHO(type='radio' name='tabmenu' value='인세인_핸드아웃' checked='')
     .tabCon
       .content
         style #insaneHO + .tabCon .ho-output > div {width:;}

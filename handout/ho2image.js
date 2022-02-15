@@ -1,16 +1,4 @@
 window.onload = function () { 
-  for (let i=0; i++; i<2) {
-    document.getElementsByClassName("desc")[i].addEventListener("blur",function(){
-    this.innerHTML = this.innerText.replace(/(【.+?】)(?!<)/gi,'<span class="bold">$1</span>');
-    this.querySelectorAll("span").forEach(element => {
-    var intxt = element.innerText;
-    if(intxt.includes("【") && intxt.includes("】")===false) {
-    element.after(intxt);
-    element.remove();
-    }
-    });
-    });
-  }
   document.getElementById("addRow").addEventListener("click",function(){
   var cloneNode = document.querySelector("#insane+.tabCon tbody.cont tr").cloneNode(true);
   document.querySelector("#insane+.tabCon tbody.cont").append(cloneNode);
@@ -55,7 +43,6 @@ window.onload = function () {
   alert("복사가 완료되었습니다. roll20 핸드아웃 편집 창에 붙여넣기하세요.\\n복사한 표는 이 페이지에 적용된 글꼴이 적용되지 않습니다.")
   });
   // 복사 (2)
-  
   function sync (newNode) { // 내용 입력 싱크
     if (newNode==undefined) {newNode=document}
     newNode.querySelectorAll("#insaneHO+.tabCon .item input, #insaneHO+.tabCon .item textarea").forEach((val,ind)=>{
@@ -87,7 +74,6 @@ window.onload = function () {
       });
     })
   }
-  
   
   document.getElementsByName('hoWidth').forEach((val,ind)=>{
     val.addEventListener('change',(e)=>{
