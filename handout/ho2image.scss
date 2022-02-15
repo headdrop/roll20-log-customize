@@ -87,6 +87,7 @@ label {
   left: 0;
   width:100%;
   padding-top: 20px;
+  font-size:1.4rem;
 }
 input:checked+.tabCon {
   display:flex;
@@ -130,7 +131,7 @@ input:checked+.tabCon {
     .title {
     tr:first-child {
     font-size:25px;
-    height: 2.8rem;
+    height: 4rem;
       
       td:first-of-type {
         background-image: url("https://headdrop.github.io/roll20-log-customize/handout/siksin.svg");
@@ -140,7 +141,6 @@ input:checked+.tabCon {
         padding-left:40px;
         border-right:0px;
         font-weight:600;
-        
       }
       td:nth-of-type(2){
         padding-left: 10px;

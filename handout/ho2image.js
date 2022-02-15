@@ -55,7 +55,6 @@ window.onload = function () {
             val.parentNode.children[5].querySelector(".ho-box-content").innerText = val.value;
             break;
           case 'back-1' :
-            console.log(val.parentNode.children)
             val.parentNode.children[6].querySelector(".ho-box>span:nth-child(2)").textContent = val.value;
             break;
           case 'back-2' :
@@ -79,8 +78,6 @@ window.onload = function () {
     val.addEventListener('change',(e)=>{
       var a = val.value;
       document.styleSheets[1].cssRules[0].style.width=a;
-      console.log(document.styleSheets[1].cssRules[0].style)
-      console.log(a)
     })
   })
   

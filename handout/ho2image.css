@@ -112,6 +112,7 @@ label:nth-of-type() {
   left: 0;
   width: 100%;
   padding-top: 20px;
+  font-size: 1.4rem;
 }
 
 input:checked + .tabCon {
@@ -162,7 +163,7 @@ input:checked + .tabCon {
 
 #insane + .tabCon .content table .title tr:first-child {
   font-size: 25px;
-  height: 2.8rem;
+  height: 4rem;
 }
 
 #insane + .tabCon .content table .title tr:first-child td:first-of-type {
