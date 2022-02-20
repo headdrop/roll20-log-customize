@@ -85,7 +85,7 @@ function inputHTML () {
       x.parentNode.parentNode.setAttribute("data-avatarurl",x.currentSrc);
     }
     imgInput(); //로 연결
-  }, 800);
+  }, 1000);
 }
 
 
@@ -547,6 +547,7 @@ function imgInput() {
   let listNoImg = [];
   document.querySelectorAll("#log-content .avatar img").forEach((pic)=>{
     if(pic.naturalWidth==0) {
+      pic.naturalWidth;
       pic.classList.add("noImage");
       listNoImg.push(pic.parentNode.parentNode.getAttribute("data-avatarurl"));
     }
