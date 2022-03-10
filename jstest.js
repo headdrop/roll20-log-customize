@@ -426,10 +426,12 @@ function hideMessageCP(e) {
 
 function checkOpt() { // 체크박스
   if ($("#ck-nospacer").is(":checked")) { // nospacer
-    styleNew[1].style.setProperty('background-color', 'transparent', 'important');
-    styleNew[3].style.setProperty('background-color', 'transparent', 'important');
-    styleNew[5].style.setProperty('background-color', 'transparent', 'important');
-  } else { styleNew[1].style.setProperty('background-color', ''); }
+    styleNew[1].style.setProperty('background-color', 'transparent', "important");
+    // styleNew[3].style.setProperty('background-color', 'transparent', 'important');
+    // styleNew[5].style.setProperty('background-color', 'transparent', 'important');
+  } else {
+    styleNew[1].style.setProperty('background-color', '');
+  }
   if ($("#ck-circle").is(":checked")) { // circle
     styleNew[10].style.borderRadius = "100%"; // img
     styleNew[11].style.alignItems = "center"; // .avatar
