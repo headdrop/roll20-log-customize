@@ -85,7 +85,7 @@ function inputHTML () {
       x.parentNode.parentNode.setAttribute("data-avatarurl",x.currentSrc);
     }
     imgInput(); //로 연결
-  }, 1000);
+  }, 2000);
 }
 
 
