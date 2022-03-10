@@ -491,7 +491,7 @@ function addID() {
   // id달기
   let list = document.querySelectorAll("#log-content .by");
   for (var x of list) {
-    var byRaw = x.innerText.slice(0, -1);
+    var byRaw = x.innerText.slice(0, -1).replace(/\?|\#/gi,"");
     var byId;
     let byCut = /\S+?(?=\s)/.exec(byRaw);
     if (/PC\d+?\s/gi.test(byRaw)) { // PC
