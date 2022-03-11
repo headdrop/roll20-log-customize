@@ -96,6 +96,10 @@ window.onload = function () {
     var cloneNode = document.querySelector("#insaneHO+.tabCon .item").cloneNode(true);
     document.querySelector("#insaneHO+.tabCon .content").append(cloneNode);
     var newNode = document.querySelector("#insaneHO+.tabCon .item:last-child");
+    newNode.children[0].value="";
+    newNode.children[1].value="앞면내용";
+    newNode.children[2].value="";
+    newNode.children[3].value="뒷면내용";
     newNode.querySelector(".remove").addEventListener("click",function(){
       this.parentNode.parentNode.remove();
     },{ once: true });
