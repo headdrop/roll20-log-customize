@@ -386,6 +386,7 @@ input:checked + .tabCon {
 #insaneHO + .tabCon .ho-back .ho-box {
   padding-bottom: 1px;
   background-color: white;
+  color: black;
 }
 
 #insaneHO + .tabCon .ho-back .ho-box * {
