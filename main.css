@@ -612,7 +612,7 @@ h3 {
 
 /*flex items*/
 .bottom .item:first-of-type {
-  height: 40rem;
+  height: auto;
   overflow: hidden;
 }
 
@@ -1587,7 +1587,7 @@ li:hover + tooltip {
 
 embed {
   width: 100% !important;
-  height: 200%;
+  height: 350px;
   padding: 5px;
 }
 

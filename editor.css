@@ -15,6 +15,49 @@ body {
   margin:0;
   font-size:1.4rem;
 }
+div.font {
+  height:2.5rem;
+  padding-right: 5px;
+  display:inline-flex;
+  align-items:center;
+  margin-bottom: 0.5em;
+  border-radius: 4px;
+  border-bottom:#F9D5D3 solid 1px;
+  box-sizing:border-box;
+  overflow:hidden;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+div.font>span {
+  display:inline-block;
+  font-family: 'NEXON Lv1 Gothic OTF';
+  font-size:1.3rem;
+  padding: 4px 6px;
+  margin-right:5px;
+  background:#ECA4A6;
+  font-weight:bold;
+}
+p.font {
+  margin-top:2em;
+  margin-bottom: 0.5em;
+}
+.font input[type="checkbox"] {
+  margin-right: 2rem;
+}
+.font input[type="number"] {
+  outline: 0;
+  border:none;
+  border-bottom:1px solid #2c695f;
+  width: 3rem;
+  height: 2rem;
+}
+.font input[type="number"]:active,.font input[type="number"]:hover,.font input[type="number"]:focus {
+  outline:none;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 #editable {
   font-family: unset;
   width: 100%;
@@ -59,7 +102,9 @@ button {
 button:hover, button:focus {
   background-color: #2c695f;
 }
-
+p {
+  line-height:1.5em;
+}
 #logdata {
   position: absolute;
   top: -1000vh;
