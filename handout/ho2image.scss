@@ -240,6 +240,9 @@ input:checked+.tabCon {
       box-sizing: border-box;
     }
   }
+  .ho.front, .ho-back {
+    display:inline-block;
+  }
   .ho-front {
     border:1px solid black;
     padding:4px;

@@ -294,6 +294,10 @@ input:checked + .tabCon {
           box-sizing: border-box;
 }
 
+#insaneHO + .tabCon .ho.front, #insaneHO + .tabCon .ho-back {
+  display: inline-block;
+}
+
 #insaneHO + .tabCon .ho-front {
   border: 1px solid black;
   padding: 4px;
