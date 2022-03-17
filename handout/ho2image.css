@@ -416,6 +416,10 @@ input:checked + .tabCon {
   line-height: 22.5px;
 }
 
+#insaneHO + .tabCon .ho-box-content {
+  text-align: justify;
+}
+
 span.bold {
   font-weight: 600;
 }
