@@ -294,7 +294,7 @@ input:checked + .tabCon {
           box-sizing: border-box;
 }
 
-#insaneHO + .tabCon .ho.front, #insaneHO + .tabCon .ho-back {
+#insaneHO + .tabCon .ho-front, #insaneHO + .tabCon .ho-back {
   display: inline-block;
 }
 
