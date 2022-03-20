@@ -239,19 +239,25 @@ function preset (num) {
         var place = obj.appendChild(p);
         var nodeArr = Array.prototype.slice.call(obj.childNodes);
         var item = obj.lastChild;
-        for (var val of nodeArr) {
-          if(val.className!=="avatar" && val.className!=="tstamp" && val.localName!='p') place.append(val)}
-        if (obj.getAttribute('data-avatarurl')==null) {
-          if (obj.previousSibling.getAttribute('data-avatarurl')==null) {
-            $(obj).prevUntil('[data-avatarurl]').last().prev().append(item);
-            obj.remove();
-          } else if (obj.previousSibling.classList.contains('emote')||obj.previousSibling.classList.contains('desc')) {
-            //$(obj).append(item);
-          } else {
-            $(obj).prev().append(item);
-            obj.remove();
+        try {
+          for (var val of nodeArr) {
+            if(val.className!=="avatar" && val.className!=="tstamp" && val.localName!='p') place.append(val)}
+          console.log(obj);
+          
+          if (obj.id===obj.previousSibling.id && obj.getAttribute('data-avatarurl')==null) {
+            if (obj.previousSibling.getAttribute('data-avatarurl')==null) {
+              $(obj).prevUntil('[data-avatarurl]').last().prev().append(item);
+              obj.remove();
+            } else if (obj.previousSibling.classList.contains('emote')||obj.previousSibling.classList.contains('desc')) {
+              //$(obj).append(item);
+            } else {
+              $(obj).prev().append(item);
+              obj.remove();
+            }
           }
-        }
+
+        } catch {}
+        
       });
       
       $(".example .avatar").css("display","none");
