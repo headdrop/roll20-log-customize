@@ -629,7 +629,14 @@ h3 {
     color:$btnHovColor;
     font-family:'NEXON Lv1 Gothic OTF';
   }
+  +p {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    color:$btnHovReset;
+    font-family:'NEXON Lv1 Gothic OTF';
+  }
 }
+
 
 
 /*버튼*/

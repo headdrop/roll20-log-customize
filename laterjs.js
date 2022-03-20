@@ -242,8 +242,6 @@ function preset (num) {
         try {
           for (var val of nodeArr) {
             if(val.className!=="avatar" && val.className!=="tstamp" && val.localName!='p') place.append(val)}
-          console.log(obj);
-          
           if (obj.id===obj.previousSibling.id && obj.getAttribute('data-avatarurl')==null) {
             if (obj.previousSibling.getAttribute('data-avatarurl')==null) {
               $(obj).prevUntil('[data-avatarurl]').last().prev().append(item);
@@ -255,7 +253,6 @@ function preset (num) {
               obj.remove();
             }
           }
-
         } catch {}
         
       });
