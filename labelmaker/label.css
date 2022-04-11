@@ -1,0 +1,35 @@
+div.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+
+#controler input[type=checkbox]:checked + input[type=text] {
+  display: block !important;
+}
+
+div.sp-replacer {
+  margin: 0 2px;
+}
+
+.sp-replacer {
+  height: 2em;
+  margin: 0;
+  width: 80px;
+}
+
+.sp-preview-inner {
+  color: #fff;
+  padding: 2px;
+}
+
+.sp-replacer .sp-dd {
+  display: none !important;
+}
+
+.sp-replacer {
+  position: relative;
+  margin: 2px;
+}
+/*# sourceMappingURL=label.css.map */
