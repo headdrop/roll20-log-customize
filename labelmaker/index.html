@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
+    <link rel="stylesheet" href="css.css">
     <link rel="stylesheet" href="../plugin.css">
     <link rel="stylesheet" href="label.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -10,33 +11,59 @@
     
   </head>
 <body>
-<div class="container" >
+<div class="container">
   <div id="preview" style="box-sizing: content-box; border: 0px solid rgb(170, 170, 170); color: rgb(64, 64, 64); border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; padding: 0px; overflow: hidden auto; height: 816px; max-width: 100%; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 13px; width:315px;">
     <div style="box-sizing: content-box; line-height: 1.25em; font-size: 1.05em; overflow-wrap: break-word; padding-top: 0px !important;">
       <div style="box-sizing: content-box; padding-left: 45px; padding-right: 10px; padding-bottom: 7px; background: rgb(211, 229, 245); position: relative;">
         <div style="box-sizing: content-box; background: rgb(177, 217, 250); height: 2px; margin-bottom: 7px; margin-left: -45px;"></div>
         <div style="box-sizing: content-box; position: absolute; top: 4px; left: 5px; width: 28px;"><img src="https://app.roll20.net/users/avatar/1188201/30" style="box-sizing: content-box; border: 0px; vertical-align: middle; max-width: 28px; height: auto; max-height: 28px;"></div>
-        <span style="box-sizing: content-box; font-weight: bold; position: relative; left: -5px;">Test:</span><a style="box-sizing: content-box; background: transparent; color: white; display: block; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 5px 5px 2px; text-align: center; font-size: 11px; background: linear-gradient(to right, rgb(255, 94, 98), rgb(255, 153, 102));">1사이클 2번째</a><a style="box-sizing: content-box; background: transparent; color: white; display: block; padding: 5px; text-align: center; font-weight: bold; font-size: 14px; background: linear-gradient(to right, rgb(255, 94, 98), rgb(255, 153, 102));">⋆⁺ player의 장면 ₊⋆</a><a style="box-sizing: content-box; background: rgba(255, 255, 255, 0.5); color: rgb(255, 94, 98); font-size: 12px; display: block; padding: 5px;">등장: 등장</a><div style="box-sizing: content-box; font-size: 12px; padding: 5px; border-top: 1px dashed rgb(255, 94, 98); background: rgba(255, 255, 255, 0.5);">📽️<em style="box-sizing: content-box;"><span original-title="Rolling 1t[장면표] = (<span class=&quot;basicdiceroll&quot;>장면표 내용</span>)" style="box-sizing: content-box; background: rgb(254, 246, 142); border: 2px solid rgb(254, 246, 142); padding: 0px 3px; font-weight: bold; cursor: help; font-size: 1.1em;">장면표 내용</span></em></div></div></div>
+        <span style="box-sizing: content-box; font-weight: bold; position: relative; left: -5px;">Test:</span>
+        <a class="ap-title ap-title-font" style="box-sizing: content-box; display: block; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 5px 5px 2px; text-align: center; font-size: 11px;">1사이클 2번째</a>
+        <a class="ap-title" style="box-sizing: content-box; display: block; padding: 5px; text-align: center; font-weight: bold; font-size: 14px;">⋆⁺ player의 장면 ₊⋆</a>
+        <a class="ap-player" style="box-sizing: content-box; font-size: 12px; display: block; padding: 5px;">등장: 등장</a>
+        <div class="ap-player" style="box-sizing: content-box; font-size: 12px; padding: 5px; border-bottom:none;">📽️<em style="box-sizing: content-box;"><span original-title="Rolling 1t[장면표] = (<span class=&quot;basicdiceroll&quot;>장면표 내용</span>)" style="box-sizing: content-box; background: rgb(254, 246, 142); border: 2px solid rgb(254, 246, 142); color: rgb(64, 64, 64); padding: 0px 3px; font-weight: bold; cursor: help; font-size: 1.1em;">장면표 내용</span></em></div></div></div>
   </div>
   <div id="controler">
-    <div class="con-item">
-      <div class="col">
-        <input type="checkbox" name="gradient">그래디언트
-        <input type="text" style="display:none" value="linear-gradient(to right, rgb(255, 94, 98), rgb(255, 153, 102))">
+    <div id="sc-title" class="con-item">
+      <div class="colspan">
+        <input type="checkbox" id="gradient">그래디언트
+        <textarea rows="2">linear-gradient(to right,  #ff5e62, #ff9966)</textarea>
+        <span>그래디언트는 rgb가 아닌 hex(ex. #000000)형식으로 입력하세요.</span>
       </div>
-      <div class="col">
-        <i class="fa-solid fa-fill-drip"></i><input type="text" class="color-bg">
+      <div class="item">
+        <i class="fa-solid fa-fill-drip" title="배경색"></i><input type="text" class="color">
       </div>
-      <div class="col">
-        <i class="fa-solid fa-font"></i><input type="text" class="color">
+      <div class="item">
+        <i class="fa-solid fa-list-ol" title="~사이클 ~번째 글씨색"></i><input type="text" class="color">
       </div>
-      
-      
+      <div class="item">
+        <i class="fa-solid fa-font" title="~의 장면 글씨색"></i><input type="text" class="color">
+      </div>
+    </div>
+    <div id="sc-bottom" class="con-item">
+      <div class="item">
+        <i class="fa-solid fa-fill-drip" title="배경색"></i><input type="text" class="color">
+      </div>
+      <div class="item">
+        <i class="fa-solid fa-font" title="등장인물 글씨색"></i><input type="text" class="color">
+      </div>
+      <div class="item">
+        <i class="fa-solid fa-border-all" title="등장인물 아래 외곽선 색"></i><input type="text" class="color">
+      </div>
+    </div>
+    <div id="sc-scene" class="con-item">
+      <div>
+        <span>장면표 앞</span><input type="text" id="emo" value="📽️">
+      </div>
+      <div>
+        <span>rollable table 이름</span><input type="text" id="rolltable" value="장면표">
+      </div>
     </div>
 
   </div>
   <div id="outputbox">
-
+    <textarea id="output"></textarea>
+    <button id="btn-apply">적용하기</button>
   </div>
 
 </div>

@@ -1,20 +1,87 @@
+$boxBg:#D2D7DF;
+
+@font-face {
+  font-family: 'NEXON Lv1 Gothic OTF';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+}
 div.container {
   display:flex;
   gap:10px;
 }
 #controler {
-  input[type=checkbox]:checked + input[type=text] {
-    display:block!important;
+  max-width:215px;
+  input[type=checkbox] {
+    ~ span {
+      font-size: 0.8rem;
+      color: #444;
+      margin: 5px 0;
+    }
+    ~ textarea {
+      resize:none;
+    }
+    ~ * {
+      display:none;
+      width:100%;
+    }
+    &:checked ~ * {
+      display:block!important;
+    }
+  }
+  
+  *:not(i) {
+    font-family:'NEXON Lv1 Gothic OTF';
   }
 }
-
+.con-item {
+  display: grid;
+  grid: 1fr / 1fr 1fr 1fr ;
+  gap: 5px;
+  background: $boxBg;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 10px;
+  &::before {
+    display:block;
+    text-align:center;
+    width: 100%;
+    grid-column:1 / 4;
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin-bottom: 5px;
+  }
+  &#sc-title {
+    &::before {
+      content:"~번째 ~의 장면";
+    }
+  }
+  &#sc-bottom::before {
+    content:"등장인물";
+  }
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  i {
+  font-size: 1.5rem;
+  vertical-align:middle;
+}
+}
+.colspan {
+  grid-column: 1/4;
+}
 div.sp-replacer {
   margin : 0 2px;
 }
 .sp-replacer {
-  height: 2em;
+  height: 2rem;
   margin:0;
-  width: 80px;
+  width: 2rem;
   // box-shadow:$btnShadow,0 0 1px rgba(0,0,0,0.5);
 }
 .sp-preview-inner {
@@ -27,4 +94,20 @@ div.sp-replacer {
 .sp-replacer {
   position:relative;
   margin: 2px;
+}
+
+#sc-scene {
+  &::before {
+    content:"장면표";
+  }
+  div span {
+    margin-right:10px;
+  }
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+#emo {
+  width: 50px;
+  font-size:1rem;
 }

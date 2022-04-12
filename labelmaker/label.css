@@ -1,3 +1,16 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'NEXON Lv1 Gothic OTF';
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 div.container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5,8 +18,85 @@ div.container {
   gap: 10px;
 }
 
-#controler input[type=checkbox]:checked + input[type=text] {
+#controler {
+  max-width: 215px;
+}
+
+#controler input[type=checkbox] ~ span {
+  font-size: 0.8rem;
+  color: #444;
+  margin: 5px 0;
+}
+
+#controler input[type=checkbox] ~ textarea {
+  resize: none;
+}
+
+#controler input[type=checkbox] ~ * {
+  display: none;
+  width: 100%;
+}
+
+#controler input[type=checkbox]:checked ~ * {
   display: block !important;
+}
+
+#controler *:not(i) {
+  font-family: 'NEXON Lv1 Gothic OTF';
+}
+
+.con-item {
+  display: -ms-grid;
+  display: grid;
+  grid: 1fr / 1fr 1fr 1fr;
+  gap: 5px;
+  background: #D2D7DF;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.con-item::before {
+  display: block;
+  text-align: center;
+  width: 100%;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1 / 4;
+  font-size: 1.4rem;
+  font-weight: 900;
+  margin-bottom: 5px;
+}
+
+.con-item#sc-title::before {
+  content: "~번째 ~의 장면";
+}
+
+.con-item#sc-bottom::before {
+  content: "등장인물";
+}
+
+.item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.item i {
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+
+.colspan {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1/4;
 }
 
 div.sp-replacer {
@@ -14,9 +104,9 @@ div.sp-replacer {
 }
 
 .sp-replacer {
-  height: 2em;
+  height: 2rem;
   margin: 0;
-  width: 80px;
+  width: 2rem;
 }
 
 .sp-preview-inner {
@@ -31,5 +121,29 @@ div.sp-replacer {
 .sp-replacer {
   position: relative;
   margin: 2px;
+}
+
+#sc-scene {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 5px;
+}
+
+#sc-scene::before {
+  content: "장면표";
+}
+
+#sc-scene div span {
+  margin-right: 10px;
+}
+
+#emo {
+  width: 50px;
+  font-size: 1rem;
 }
 /*# sourceMappingURL=label.css.map */
