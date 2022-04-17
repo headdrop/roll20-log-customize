@@ -1,7 +1,12 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 body {
   background: #f2f4f8;
+}
+@font-face {
+  font-family: 'Cafe24Ohsquareair';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/Cafe24Ohsquareair.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .top {
@@ -24,153 +29,16 @@ body {
 }
 
 .top h1 {
-  font-family: 'Fredoka One', cursive;
   font-size: 5rem;
-  font-weight: 400;
+  font-weight: 900;
   color: #011a0f;
   text-shadow: 1px 1px 0 #C0DEC7, 3px 3px 0 #C0DEC7, 5px 5px 0 #C0DEC7, 7px 7px 0 #C0DEC7, 9px 9px 0 #C0DEC7;
   display: inline-block;
+  font-family: 'Cafe24Ohsquareair';
 }
 
-.top h1:first-child {
-  -webkit-animation: bounce-top 0.9s both;
-          animation: bounce-top 0.9s both;
-  z-index: -1;
-}
 
-@-webkit-keyframes bounce-top {
-  0% {
-    -webkit-transform: translateY(-45px);
-            transform: translateY(-45px);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-    opacity: 1;
-  }
-  24% {
-    opacity: 1;
-  }
-  40% {
-    -webkit-transform: translateY(-24px);
-            transform: translateY(-24px);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  65% {
-    -webkit-transform: translateY(-12px);
-            transform: translateY(-12px);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  82% {
-    -webkit-transform: translateY(-6px);
-            transform: translateY(-6px);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  93% {
-    -webkit-transform: translateY(-4px);
-            transform: translateY(-4px);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  25%,
-  55%,
-  75%,
-  87% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-  }
-  100% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-    opacity: 1;
-  }
-}
-
-@keyframes bounce-top {
-  0% {
-    -webkit-transform: translateY(-45px);
-            transform: translateY(-45px);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-    opacity: 1;
-  }
-  24% {
-    opacity: 1;
-  }
-  40% {
-    -webkit-transform: translateY(-24px);
-            transform: translateY(-24px);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  65% {
-    -webkit-transform: translateY(-12px);
-            transform: translateY(-12px);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  82% {
-    -webkit-transform: translateY(-6px);
-            transform: translateY(-6px);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  93% {
-    -webkit-transform: translateY(-4px);
-            transform: translateY(-4px);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  25%,
-  55%,
-  75%,
-  87% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-  }
-  100% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-    opacity: 1;
-  }
-}
-
-.top .text {
-  max-width: 500px;
-  color: #444;
-  font-size: 1.4rem;
-  line-height: 1.5em;
-}
-
-.top h2 {
-  margin-top: 12px;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #2c695f;
-}
-
-.top p:last-of-type {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  font-size: 1.1rem;
-  color: #999;
-  padding: 5px;
-}
-
-nav {
+section {
   padding: 50px 0 80px 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -183,11 +51,11 @@ nav {
   gap: 15px;
 }
 
-nav .card {
+section .card {
   --text-color-hover: #4C5656;
-  width: 220px;
-  height: 321px;
-  background: #fff;
+  width: 350px;
+  height: 200px;
+  background: rgb(61, 143, 132);
   border-top-right-radius: 10px;
   overflow: hidden;
   display: -webkit-box;
@@ -211,81 +79,44 @@ nav .card {
   text-decoration: none;
 }
 
-nav .card--1 {
-  --bg-color: rgb(243, 129, 129);
+section .card--1 {
+  --bg-color: rgb(61, 143, 132);
   --bg-color-light: #FCE0E0;
-  --box-shadow-color: rgba(243, 129, 129,0.58);
+  --box-shadow-color: rgba(61, 143, 132,0.58);
 }
 
-nav .card--2 {
-  --bg-color: rgb(252, 227, 138);
-  --bg-color-light: #FEF8E2;
-  --box-shadow-color: rgba(252, 227, 138,0.58);
-}
-
-nav .card--3 {
-  --bg-color: rgb(149, 225, 211);
-  --bg-color-light: #E4F7F4;
-  --box-shadow-color: rgba(149, 225, 211,0.58);
-}
-
-nav .card:hover {
+section .card:hover {
   -webkit-transform: translateY(-5px) scale(1.005) translateZ(0);
           transform: translateY(-5px) scale(1.005) translateZ(0);
   -webkit-box-shadow: 0 24px 36px rgba(0, 0, 0, 0.11), 0 24px 46px var(--box-shadow-color);
           box-shadow: 0 24px 36px rgba(0, 0, 0, 0.11), 0 24px 46px var(--box-shadow-color);
 }
 
-nav .card:hover .overlay {
+section .card:hover .overlay {
   -webkit-transform: scale(4) translateZ(0);
           transform: scale(4) translateZ(0);
 }
 
-nav .card:hover .circle {
-  border-color: var(--bg-color-light);
-  background: var(--bg-color);
-}
 
-nav .card:hover .circle::after {
-  background: var(--bg-color-light);
-}
 
-nav .card:hover h3 {
-  color: var(--text-color-hover);
-}
-
-nav .card:hover p {
-  opacity: 100%;
-  -webkit-transition-delay: 0.3s;
-          transition-delay: 0.3s;
-}
-
-nav .card:active {
+section .card:active {
   -webkit-transform: scale(1) translateZ(0);
           transform: scale(1) translateZ(0);
   -webkit-box-shadow: 0 15px 24px rgba(0, 0, 0, 0.11), 0 15px 24px var(--box-shadow-color);
           box-shadow: 0 15px 24px rgba(0, 0, 0, 0.11), 0 15px 24px var(--box-shadow-color);
 }
 
-nav .card h3, nav .card p {
+section .card p {
   color: #4C5656;
   z-index: 1000;
+  text-align:center;
+  font-family: 'Cafe24Ohsquareair';
 }
 
-nav .card h3 {
-  -webkit-transition: color 0.3s ease-out;
-  transition: color 0.3s ease-out;
-  font-family: 'NEXON Lv1 Gothic OTF Bold';
-  margin-top: 30px;
-  font-size: 1.7rem;
-}
 
-nav .card p {
-  -webkit-transition: opacity 0.2s ease-out;
-  transition: opacity 0.2s ease-out;
-  position: absolute;
+section .card p {
+  color: #FCE0E0;
   font-size: 1.5rem;
-  opacity: 0;
   display: block;
   width: calc(100% - 3rem);
   height: 8rem;
@@ -293,52 +124,8 @@ nav .card p {
   padding: 5px;
 }
 
-nav .circle {
-  width: 131px;
-  height: 131px;
-  border-radius: 50%;
-  background: #fff;
-  border: 2px solid var(--bg-color);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
-  z-index: 1;
-  -webkit-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-}
 
-nav .circle:after {
-  content: "";
-  width: 118px;
-  height: 118px;
-  display: block;
-  position: absolute;
-  background: var(--bg-color);
-  border-radius: 50%;
-  -webkit-transition: opacity 0.3s ease-out;
-  transition: opacity 0.3s ease-out;
-}
-
-nav .circle i {
-  z-index: 10000;
-  -webkit-transform: translateZ(0);
-          transform: translateZ(0);
-  font-size: 80px;
-  color: white;
-}
-
-nav .card:hover i, nav .card:active i, nav .card:focus i {
-  color: var(--bg-color);
-}
-
-nav .overlay {
+section .overlay {
   width: 118px;
   position: absolute;
   height: 118px;
